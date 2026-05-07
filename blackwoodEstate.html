@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case #2024-1203: The Blackwood Estate Murder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --noir-black: #0d0d0d;
+            --paper-white: #f8f6f0;
+            --ink-blue: #1a2332;
+            --blood: #4a0e0e;
+            --gold: #d4af37;
+            --silver: #c0c0c0;
+            --forest: #1a3a1a;
+        }
+
+        body {
+            font-family: 'Libre Baskerville', serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: var(--paper-white);
+            line-height: 1.8;
+            position: relative;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,.1) 2px,
+                rgba(0,0,0,.1) 4px
+            );
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background: linear-gradient(180deg, rgba(74, 14, 14, 0.4) 0%, transparent 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+            border-bottom: 4px double var(--blood);
+            position: relative;
+        }
+
+        .classified {
+            position: absolute;
+            top: 30px;
+            right: 80px;
+            font-family: 'Special Elite', monospace;
+            font-size: 0.75rem;
+            color: var(--blood);
+            border: 3px solid var(--blood);
+            padding: 8px 20px;
+            transform: rotate(8deg);
+            letter-spacing: 4px;
+            font-weight: 700;
+        }
+
+        .case-id {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.9rem;
+            letter-spacing: 5px;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 4.2rem;
+            font-weight: 700;
+            color: var(--paper-white);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--silver);
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .warning {
+            display: inline-block;
+            background: rgba(74, 14, 14, 0.3);
+            border: 2px solid var(--blood);
+            padding: 12px 30px;
+            font-family: 'Special Elite', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-top: 20px;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(13, 13, 13, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--blood);
+            padding: 20px 0;
+            z-index: 500;
+            box-shadow: 0 4px 20px rgba(74, 14, 14, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.8rem;
+            color: var(--silver);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        section:nth-child(even) {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 60px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            padding-bottom: 25px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--blood), transparent);
+        }
+
+        .case-brief {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.9), rgba(13, 13, 13, 0.9));
+            padding: 60px;
+            border: 3px solid var(--blood);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+            position: relative;
+        }
+
+        .case-brief::before {
+            content: 'TOP SECRET';
+            position: absolute;
+            top: -18px;
+            left: 40px;
+            background: var(--blood);
+            color: var(--paper-white);
+            padding: 6px 25px;
+            font-family: 'Special Elite', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+        }
+
+        .case-brief h3 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--blood);
+            padding-bottom: 15px;
+        }
+
+        .case-brief p {
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+            line-height: 2;
+            text-align: justify;
+        }
+
+        .victim-profile {
+            background: rgba(74, 14, 14, 0.2);
+            padding: 30px;
+            margin: 35px 0;
+            border-left: 6px solid var(--gold);
+        }
+
+        .victim-profile h4 {
+            font-family: 'Special Elite', monospace;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .victim-profile p {
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .map-section {
+            max-width: 1300px;
+            margin: 60px auto;
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.8), rgba(13, 13, 13, 0.8));
+            padding: 50px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+        }
+
+        .map-header {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        #locationMap {
+            width: 100%;
+            height: 700px;
+            border: 3px solid var(--silver);
+            background: #0a0a0a;
+            margin-bottom: 40px;
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.95rem;
+        }
+
+        .legend-box {
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--paper-white);
+        }
+
+        .photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .photo-card {
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.8), rgba(13, 13, 13, 0.8));
+            padding: 30px;
+            border: 4px solid var(--ink-blue);
+            box-shadow: 10px 10px 0 rgba(74, 14, 14, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px) rotate(-1deg);
+            box-shadow: 15px 15px 0 rgba(74, 14, 14, 0.5);
+        }
+
+        .photo-card canvas {
+            width: 100%;
+            height: 380px;
+            border: 3px solid #000;
+            background: #111;
+            margin-bottom: 25px;
+        }
+
+        .photo-label {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .photo-note {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--silver);
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--blood), var(--gold));
+            transform: translateX(-50%);
+        }
+
+        .timeline-entry {
+            display: flex;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-entry:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-entry:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-box {
+            width: 45%;
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.9), rgba(13, 13, 13, 0.9));
+            padding: 30px;
+            border: 2px solid var(--ink-blue);
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.5);
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: var(--gold);
+            border: 5px solid var(--noir-black);
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .time-stamp {
+            font-family: 'Special Elite', monospace;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .evidence-list {
+            display: grid;
+            gap: 35px;
+            margin-top: 60px;
+        }
+
+        .evidence-item {
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.8), rgba(13, 13, 13, 0.8));
+            padding: 35px;
+            border: 2px solid var(--ink-blue);
+            border-left: 8px solid var(--gold);
+            box-shadow: 8px 8px 0 rgba(74, 14, 14, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .evidence-item:hover {
+            transform: translateX(15px);
+            box-shadow: 12px 12px 0 rgba(74, 14, 14, 0.4);
+        }
+
+        .evidence-id {
+            font-family: 'Special Elite', monospace;
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            letter-spacing: 3px;
+        }
+
+        .evidence-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--paper-white);
+        }
+
+        .evidence-desc {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--silver);
+        }
+
+        .suspects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .suspect-file {
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.9), rgba(13, 13, 13, 0.9));
+            padding: 40px;
+            border: 3px solid var(--ink-blue);
+            position: relative;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+        }
+
+        .suspect-file::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--blood);
+        }
+
+        .suspect-file:hover {
+            transform: translateY(-8px);
+            box-shadow: 12px 12px 0 rgba(74, 14, 14, 0.4);
+        }
+
+        .suspect-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .suspect-title {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.85rem;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .suspect-info {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--silver);
+            margin-bottom: 18px;
+        }
+
+        .suspect-motive {
+            background: rgba(74, 14, 14, 0.3);
+            padding: 20px;
+            margin-top: 25px;
+            border-left: 4px solid var(--blood);
+            font-size: 0.95rem;
+        }
+
+        .suspect-motive strong {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--gold);
+            font-size: 1.05rem;
+        }
+
+        .interviews-section {
+            max-width: 1100px;
+            margin: 60px auto;
+        }
+
+        .interview-record {
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.9), rgba(13, 13, 13, 0.9));
+            padding: 45px;
+            margin-bottom: 40px;
+            border: 2px solid var(--ink-blue);
+            border-left: 12px solid var(--blood);
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.5);
+        }
+
+        .interview-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed var(--silver);
+        }
+
+        .interviewee-name {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .interview-meta {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.85rem;
+            color: var(--silver);
+        }
+
+        .interview-statement {
+            font-size: 1.08rem;
+            line-height: 2;
+            font-style: italic;
+            padding-left: 35px;
+            border-left: 4px solid rgba(212, 175, 55, 0.3);
+            color: var(--paper-white);
+        }
+
+        .solution-area {
+            max-width: 900px;
+            margin: 60px auto;
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.95), rgba(13, 13, 13, 0.95));
+            padding: 70px 60px;
+            border: 5px double var(--gold);
+            box-shadow: 0 20px 60px rgba(74, 14, 14, 0.6);
+            text-align: center;
+        }
+
+        .solution-area h3 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .solution-text {
+            font-size: 1.15rem;
+            line-height: 2;
+            margin-bottom: 45px;
+            color: var(--silver);
+        }
+
+        .strict-warning {
+            background: rgba(74, 14, 14, 0.4);
+            padding: 25px;
+            margin-bottom: 35px;
+            border: 3px solid var(--blood);
+            font-family: 'Special Elite', monospace;
+            font-size: 0.9rem;
+            color: var(--gold);
+            line-height: 1.8;
+        }
+
+        .answer-form input {
+            width: 100%;
+            padding: 22px 30px;
+            font-family: 'Special Elite', monospace;
+            font-size: 1.15rem;
+            border: 4px solid var(--ink-blue);
+            background: rgba(26, 35, 50, 0.6);
+            color: var(--paper-white);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .answer-form input:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(26, 35, 50, 0.9);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .answer-form button {
+            width: 100%;
+            padding: 25px;
+            font-family: 'Special Elite', monospace;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            background: var(--blood);
+            color: var(--paper-white);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.4);
+        }
+
+        .answer-form button:hover {
+            background: #6b1a1a;
+            transform: translateY(-3px);
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.6);
+        }
+
+        .error-text {
+            color: var(--blood);
+            font-family: 'Special Elite', monospace;
+            font-size: 1rem;
+            margin-top: 25px;
+            display: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .error-text.active {
+            display: block;
+            animation: shake 0.6s ease;
+        }
+
+        .reveal-section {
+            display: none;
+            max-width: 1200px;
+            margin: 60px auto;
+        }
+
+        .reveal-section.active {
+            display: block;
+            animation: fadeIn 1.2s ease;
+        }
+
+        .killer-reveal {
+            background: linear-gradient(135deg, rgba(74, 14, 14, 0.4), rgba(74, 14, 14, 0.1));
+            padding: 80px;
+            border: 6px double var(--gold);
+            margin-bottom: 60px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(74, 14, 14, 0.8);
+        }
+
+        .killer-reveal h3 {
+            font-size: 2.3rem;
+            color: var(--paper-white);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .killer-identity {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 35px 0;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+        }
+
+        .killer-subtitle {
+            font-family: 'Special Elite', monospace;
+            font-size: 1.4rem;
+            color: var(--silver);
+            letter-spacing: 2px;
+        }
+
+        .explanation {
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.9), rgba(13, 13, 13, 0.9));
+            padding: 50px;
+            margin-bottom: 40px;
+            border: 3px solid var(--ink-blue);
+            border-left: 12px solid var(--gold);
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.5);
+        }
+
+        .explanation h4 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .explanation p {
+            font-size: 1.08rem;
+            line-height: 2;
+            margin-bottom: 25px;
+            text-align: justify;
+            color: var(--paper-white);
+        }
+
+        .clue-detail {
+            background: rgba(74, 14, 14, 0.2);
+            padding: 28px;
+            margin: 25px 0;
+            border-left: 6px solid var(--blood);
+        }
+
+        .clue-detail strong {
+            display: block;
+            font-size: 1.15rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .conclusion {
+            text-align: center;
+            padding: 70px 50px;
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.8), rgba(13, 13, 13, 0.8));
+            border: 4px solid var(--gold);
+            margin-top: 60px;
+        }
+
+        .conclusion h3 {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-15px); }
+            75% { transform: translateX(15px); }
+        }
+
+        @media (max-width: 1024px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.3rem; }
+            .photos,
+            .suspects {
+                grid-template-columns: 1fr;
+            }
+            .timeline-container::before { left: 30px; }
+            .timeline-entry {
+                flex-direction: column !important;
+            }
+            .timeline-box {
+                width: 100%;
+                margin-left: 60px;
+            }
+            .timeline-marker {
+                left: 30px;
+            }
+            .classified {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="classified">CLASSIFIED</div>
+        <div class="container">
+            <div class="case-id">CASE #2024-1203</div>
+            <h1>The Blackwood Estate</h1>
+            <p class="subtitle">A Murder in Isolation</p>
+            <div class="warning">EXTREME COMPLEXITY - EXPERT INVESTIGATORS ONLY</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#map">Location Map</a></li>
+            <li><a href="#scene">Crime Scene</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#evidence">Evidence</a></li>
+            <li><a href="#suspects">Suspects</a></li>
+            <li><a href="#interviews">Interviews</a></li>
+            <li><a href="#solution">Solution</a></li>
+        </ul>
+    </nav>
+
+    <section id="overview">
+        <div class="container">
+            <h2>Case Overview</h2>
+            <div class="case-brief">
+                <h3>Initial Incident Report</h3>
+                <p>On Sunday, December 3rd, 2024, at approximately 8:45 AM, the body of Adrian Blackwood, 67, was discovered in the wine cellar of Blackwood Estate, a secluded lakeside property located 12 miles from the town of Ravenswood (population: 1,240). The victim had been renting the estate for a month-long writing retreat, arriving on November 15th.</p>
+                
+                <p>The body was discovered by Margaret Chen, the estate's property manager, during her weekly supply delivery. Mr. Blackwood was found at the bottom of the cellar stairs with a severe skull fracture and broken neck. Initial assessment suggested a tragic fall, but autopsy results revealed inconsistencies with a simple accident.</p>
+                
+                <p>Blackwood Estate is a 19th-century mansion situated on 40 acres of private woodland. The nearest residence is 4.7 miles away. The property has no security cameras but features an advanced smart home system that logs all door/window sensors, temperature controls, and electrical usage. No forced entry was detected.</p>
+
+                <div class="victim-profile">
+                    <h4>Victim Dossier</h4>
+                    <p><strong>Name:</strong> Adrian Blackwood</p>
+                    <p><strong>Age:</strong> 67</p>
+                    <p><strong>Occupation:</strong> Investigative journalist and true crime author</p>
+                    <p><strong>Residence:</strong> Boston, Massachusetts</p>
+                    <p><strong>Current Project:</strong> Working on exposé titled "The Ravenswood Conspiracy" - investigating alleged corruption in local law enforcement from 15 years ago</p>
+                    <p><strong>Known Enemies:</strong> Multiple subjects of previous exposés; received threats over past investigations</p>
+                    <p><strong>Health:</strong> Excellent physical condition for age; no medications; no history of falls or vertigo</p>
+                    <p><strong>Personal Life:</strong> Divorced; estranged from adult daughter Emily; maintained professional rivalries with several journalists</p>
+                </div>
+
+                <p><strong style="color: var(--gold);">Medical Examiner's Critical Finding:</strong> While the victim's injuries are consistent with a fall down stairs, three key anomalies suggest foul play: (1) Defensive wounds on victim's forearms predating death by 2-4 hours, (2) Trace amounts of zolpidem (sleeping medication) in bloodstream despite victim having no prescription, (3) Bruising pattern on upper back suggests a forceful push rather than a loss of balance.</p>
+
+                <p><strong style="color: var(--gold);">Lead Investigator's Note:</strong> This case presents exceptional complexity. The victim was alone at a remote estate, yet someone with detailed knowledge of the property and the victim's routine committed murder and attempted to stage it as an accident. The killer made critical errors, but identifying them requires exceptional attention to contradictory evidence and timeline analysis. Multiple suspects had both motive and opportunity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="map">
+        <div class="container">
+            <h2>Victim's Final Day - December 2, 2024</h2>
+            <div class="map-section">
+                <div class="map-header">Reconstructed Movement Pattern</div>
+                <canvas id="locationMap"></canvas>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: #ff4444;"></div>
+                        <span>Blackwood Estate (Crime Scene)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: #44ff44;"></div>
+                        <span>Ravenswood Library</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: #4444ff;"></div>
+                        <span>Sheriff's Office (records request)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: #ffaa00;"></div>
+                        <span>Lakeside Café (lunch meeting)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: #aa00ff;"></div>
+                        <span>Ravenswood Pharmacy</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: #00aaff;"></div>
+                        <span>Woodland trail (evening walk)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="scene">
+        <div class="container">
+            <h2>Crime Scene Documentation</h2>
+            <div class="photos">
+                <div class="photo-card">
+                    <canvas id="photo1"></canvas>
+                    <div class="photo-label">EXHIBIT A: CELLAR STAIRCASE</div>
+                    <div class="photo-note">Victim found at bottom of 14-step wooden staircase. Body position suggests backward fall. Wine bottle shattered on step 7. No blood trail on upper steps despite head wound.</div>
+                </div>
+                <div class="photo-card">
+                    <canvas id="photo2"></canvas>
+                    <div class="photo-label">EXHIBIT B: VICTIM'S STUDY</div>
+                    <div class="photo-note">Laptop found open with document titled "Chapter 12: The Sheriff's Secret." Coffee mug still warm at discovery (8:45 AM). Window found unlocked - only window in estate not logged by smart system.</div>
+                </div>
+                <div class="photo-card">
+                    <canvas id="photo3"></canvas>
+                    <div class="photo-label">EXHIBIT C: DEFENSIVE WOUNDS</div>
+                    <div class="photo-note">Bruising and abrasions on forearms consistent with blocking strikes. Medical examiner estimates 2-4 hours before death. Suggests earlier altercation.</div>
+                </div>
+                <div class="photo-card">
+                    <canvas id="photo4"></canvas>
+                    <div class="photo-label">EXHIBIT D: TRACE EVIDENCE</div>
+                    <div class="photo-note">Muddy boot print on cellar floor (size 9 women's hiking boot). Fiber from wool coat caught on stair railing. Neither matched victim's clothing/shoes.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline">
+        <div class="container">
+            <h2>Reconstructed Timeline</h2>
+            <div class="timeline-container">
+                <div class="timeline-entry">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-box">
+                        <div class="time-stamp">9:00 AM</div>
+                        <p>Adrian visits Ravenswood Library. Librarian notes he's researching old newspaper archives about "incident from 2009." Takes photos of articles with phone.</p>
+                    </div>
+                </div>
+                <div class="timeline-entry">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-box">
+                        <div class="time-stamp">11:30 AM</div>
+                        <p>Visits Sheriff's Office to request public records. Deputy Rachel Hayes processes request. Adrian appears agitated, mentions "corruption runs deeper than I thought."</p>
+                    </div>
+                </div>
+                <div class="timeline-entry">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-box">
+                        <div class="time-stamp">1:00 PM</div>
+                        <p>Lunch meeting at Lakeside Café with Thomas Reed, local historian. Witnesses report heated discussion. Reed seen leaving abruptly at 1:45 PM looking visibly upset.</p>
+                    </div>
+                </div>
+                <div class="timeline-entry">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-box">
+                        <div class="time-stamp">3:30 PM</div>
+                        <p>Stops at Ravenswood Pharmacy. Pharmacist David Park notes Adrian purchased antacids for "stress-induced heartburn" and asked about sleeping pills but didn't purchase any.</p>
+                    </div>
+                </div>
+                <div class="timeline-entry">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-box">
+                        <div class="time-stamp">4:15 PM</div>
+                        <p>Returns to Blackwood Estate. Smart home logs show front door entry at 4:17 PM. Study window sensor shows window opened at 4:20 PM (then disabled - sensor went offline).</p>
+                    </div>
+                </div>
+                <div class="timeline-entry">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-box">
+                        <div class="time-stamp">5:30 PM</div>
+                        <p>Neighbor 4.7 miles away reports seeing Adrian taking his usual evening walk on the woodland trail behind estate. This is the last confirmed sighting by independent witness.</p>
+                    </div>
+                </div>
+                <div class="timeline-entry">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-box">
+                        <div class="time-stamp">7:00 PM - 8:00 PM</div>
+                        <p><strong style="color: var(--gold);">CRITICAL WINDOW</strong> - Medical examiner places defensive wounds in this timeframe. Someone confronted Adrian. Fight occurred but he survived.</p>
+                    </div>
+                </div>
+                <div class="timeline-entry">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-box">
+                        <div class="time-stamp">9:30 PM</div>
+                        <p>Smart home logs show study lights on, kitchen lights on. Heavy electrical usage consistent with coffee maker, computer, and multiple lamps running.</p>
+                    </div>
+                </div>
+                <div class="timeline-entry">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-box">
+                        <div class="time-stamp">11:15 PM - 12:30 AM</div>
+                        <p><strong style="color: var(--blood);">ESTIMATED TIME OF DEATH</strong> - Adrian dies from fall down cellar stairs. Body not discovered until 8:45 AM Sunday.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="evidence">
+        <div class="container">
+            <h2>Physical Evidence Analysis</h2>
+            <div class="evidence-list">
+                <div class="evidence-item">
+                    <div class="evidence-id">EVIDENCE #001</div>
+                    <div class="evidence-name">Zolpidem Traces in Bloodstream</div>
+                    <div class="evidence-desc">Toxicology report shows 3.2mg of zolpidem (Ambien) in victim's system. Victim had no prescription. Amount sufficient to cause drowsiness but not unconsciousness. Estimated ingestion: 10:30-11:00 PM based on blood concentration. No pill bottle found at scene. Pharmacist confirms Adrian asked about sleeping pills at 3:30 PM but explicitly did NOT purchase any.</div>
+                </div>
+                <div class="evidence-item">
+                    <div class="evidence-id">EVIDENCE #002</div>
+                    <div class="evidence-name">Study Window Sensor Malfunction</div>
+                    <div class="evidence-desc">Smart home system logs show study window sensor opened at 4:20 PM, then went completely offline at 4:22 PM. Sensor remained offline until discovered Sunday morning. Technical analysis shows sensor was manually disabled by removing battery pack - requires physical access to sensor housing inside the room. All other sensors in estate functioned normally. This is the ONLY window with a disabled sensor.</div>
+                </div>
+                <div class="evidence-item">
+                    <div class="evidence-id">EVIDENCE #003</div>
+                    <div class="evidence-name">Coffee Mug Analysis</div>
+                    <div class="evidence-desc">Coffee mug found on study desk still warm to touch at 8:45 AM discovery. Liquid analysis shows standard coffee with cream and sugar. NO traces of zolpidem in coffee. However, victim's wine glass from dinner (found in sink) tested positive for zolpidem residue. Wine bottle in cellar where body found - shattered - also contained zolpidem. Victim drank drugged wine, not drugged coffee.</div>
+                </div>
+                <div class="evidence-item">
+                    <div class="evidence-id">EVIDENCE #004</div>
+                    <div class="evidence-name">Boot Print in Cellar</div>
+                    <div class="evidence-desc">Muddy boot print found on cellar floor near victim's body. Size 9 women's hiking boot - brand identified as Columbia. Soil analysis shows mixture of estate grounds soil plus mineral composition unique to old logging road 2 miles north of property. Boot print shows distinctive wear pattern on left heel. Adrian wore size 11 men's dress shoes.</div>
+                </div>
+                <div class="evidence-item">
+                    <div class="evidence-id">EVIDENCE #005</div>
+                    <div class="evidence-name">Wool Fiber on Stair Railing</div>
+                    <div class="evidence-desc">Single gray wool fiber caught on splinter of cellar stair railing at step 10. Fiber analysis identifies material as merino wool blend, consistent with high-end winter coat. Adrian was wearing cotton pajamas when found. Fiber likely transferred during struggle or when killer descended stairs after victim fell.</div>
+                </div>
+                <div class="evidence-item">
+                    <div class="evidence-id">EVIDENCE #006</div>
+                    <div class="evidence-name">Victim's Laptop - Manuscript</div>
+                    <div class="evidence-desc">Document open on screen: "Chapter 12: The Sheriff's Secret - In 2009, then-Deputy Rachel Hayes responded to a domestic disturbance at the Reed residence. When she arrived, she found Thomas Reed's wife Margaret unconscious. Rather than calling for backup, Hayes helped Reed stage it as an accident. Margaret died three days later. Hayes received promotion to Deputy Sheriff within six months. The cover-up has remained hidden for 15 years. Until now." Last saved: 9:47 PM, December 2nd.</div>
+                </div>
+                <div class="evidence-item">
+                    <div class="evidence-id">EVIDENCE #007</div>
+                    <div class="evidence-name">Adrian's Phone Records</div>
+                    <div class="evidence-desc">Last outgoing call: 6:45 PM to his editor in Boston, 18-minute duration. Adrian reported he was "close to breaking the biggest story of my career" and "expecting confrontation tonight." No calls after 7:05 PM. Text message sent at 7:23 PM to daughter Emily: "If anything happens to me, check Chapter 12." Phone found in study, undamaged.</div>
+                </div>
+                <div class="evidence-item">
+                    <div class="evidence-id">EVIDENCE #008</div>
+                    <div class="evidence-name">Wine Bottle Trajectory Analysis</div>
+                    <div class="evidence-desc">Shattered wine bottle on step 7 shows impact pattern inconsistent with falling from victim's hand during tumble. Forensic reconstruction suggests bottle was thrown or dropped from higher position (top of stairs) 2-3 seconds before victim fell. Blood spatter on steps 8-10 shows victim was still alive when hitting those steps, contradicting theory he was unconscious from head wound at top.</div>
+                </div>
+                <div class="evidence-item">
+                    <div class="evidence-id">EVIDENCE #009</div>
+                    <div class="evidence-name">Door Lock Analysis</div>
+                    <div class="evidence-desc">Smart lock system shows front door was unlocked manually from inside at 11:38 PM, then relocked at 11:41 PM. No door openings after 4:17 PM entry by victim. This means someone was inside the estate between victim's return and the door being unlocked at 11:38 PM. Either they entered through the disabled study window, or they were let in by the victim himself.</div>
+                </div>
+                <div class="evidence-item">
+                    <div class="evidence-id">EVIDENCE #010</div>
+                    <div class="evidence-name">Defensive Wound Pattern</div>
+                    <div class="evidence-desc">Forearm bruising and abrasions on victim show classic defensive posture. Medical examiner notes wounds occurred 2-4 hours before death (approximately 7:00-9:00 PM range). Attacker was right-handed based on strike angles. No skin cells under victim's fingernails - he blocked but didn't scratch attacker. This earlier confrontation did NOT result in death, meaning victim survived initial assault and was killed later in separate incident.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="suspects">
+        <div class="container">
+            <h2>Persons of Interest</h2>
+            <div class="suspects">
+                <div class="suspect-file">
+                    <div class="suspect-name">Rachel Hayes</div>
+                    <div class="suspect-title">Deputy Sheriff - Ravenswood PD</div>
+                    <div class="suspect-info">Age: 42. Veteran law enforcement officer. Processed Adrian's records request on December 2nd. Has access to zolpidem through evidence locker (confiscated medications). Owns Columbia hiking boots (size 9) for trail patrol duties.</div>
+                    <div class="suspect-motive">
+                        <strong>Motive:</strong>
+                        Adrian's manuscript directly accuses her of helping cover up Margaret Reed's death in 2009 and profiting from the cover-up via promotion. If published, she faces criminal charges for obstruction of justice, evidence tampering, and accessory after the fact. Career destroyed, pension lost, potential prison time.
+                    </div>
+                </div>
+                <div class="suspect-file">
+                    <div class="suspect-name">Thomas Reed</div>
+                    <div class="suspect-title">Local Historian & Widower</div>
+                    <div class="suspect-info">Age: 71. Widower since 2009 when wife Margaret died from "accidental fall." Prominent citizen. Had heated lunch meeting with Adrian on December 2nd, left café visibly upset at 1:45 PM. Drives a truck - often uses old logging roads for historical site research.</div>
+                    <div class="suspect-motive">
+                        <strong>Motive:</strong>
+                        Adrian's manuscript exposes that Thomas killed his wife Margaret and Deputy Hayes helped cover it up. Thomas has lived 15 years as a respected community member. Publication means murder charges, life in prison. Has most to lose of any suspect.
+                    </div>
+                </div>
+                <div class="suspect-file">
+                    <div class="suspect-name">Margaret Chen</div>
+                    <div class="suspect-title">Estate Property Manager</div>
+                    <div class="suspect-info">Age: 58. Manages Blackwood Estate and 4 other luxury rentals. Has master keys to all properties. Performs weekly supply deliveries every Sunday. Discovered victim's body at 8:45 AM. Wears size 9 shoes. Owns gray wool winter coat.</div>
+                    <div class="suspect-motive">
+                        <strong>Motive:</strong>
+                        Adrian had been pressuring Margaret about estate's previous tenants, specifically requesting rental records from 2009. Margaret's rental business has thrived on privacy and discretion - wealthy clients pay premium for "no questions asked" rentals. Adrian's investigation threatened to expose that estate was used for illicit meetings in 2009, potentially destroying her business reputation.
+                    </div>
+                </div>
+                <div class="suspect-file">
+                    <div class="suspect-name">Emily Blackwood</div>
+                    <div class="suspect-title">Victim's Estranged Daughter</div>
+                    <div class="suspect-info">Age: 35. Lives in Portland, Maine. Estranged from father for 8 years after acrimonious divorce between parents. Inherited nothing in father's current will - everything goes to journalism foundation. Works as pharmaceutical sales rep - has access to various medications including sleep aids.</div>
+                    <div class="suspect-motive">
+                        <strong>Motive:</strong>
+                        Financial desperation. Emily is $127,000 in debt from failed business venture. Father's life insurance policy ($500,000) lists her as beneficiary - policy wasn't updated after estrangement. Father's death by "accident" means double indemnity clause pays $1 million. She received cryptic text from father at 7:23 PM the night he died.
+                    </div>
+                </div>
+                <div class="suspect-file">
+                    <div class="suspect-name">David Park</div>
+                    <div class="suspect-title">Ravenswood Pharmacist</div>
+                    <div class="suspect-info">Age: 39. Town pharmacist for 12 years. Helped Adrian with antacids on December 2nd. Noted Adrian asked about sleeping pills. Has complete access to pharmacy inventory including controlled substances like zolpidem. Single, lives alone above pharmacy.</div>
+                    <div class="suspect-motive">
+                        <strong>Motive:</strong>
+                        Adrian's research uncovered that David has been systematically embezzling medications and selling them on black market since 2018. Adrian had documented evidence of inventory discrepancies. David faces felony charges, loss of pharmacist license, and federal drug trafficking charges if exposed.
+                    </div>
+                </div>
+                <div class="suspect-file">
+                    <div class="suspect-name">Patricia Summers</div>
+                    <div class="suspect-title">Rival Journalist</div>
+                    <div class="suspect-info">Age: 52. Award-winning investigative journalist. Former colleague and rival of Adrian. Currently working on book about same 2009 incident. Lives 90 miles away but was in Ravenswood area visiting sources. Owns gray wool coat, size 9 boots.</div>
+                    <div class="suspect-motive">
+                        <strong>Motive:</strong>
+                        Professional rivalry turned deadly. Patricia has been working on Ravenswood corruption story for 2 years - Adrian swooped in and solved it in 3 weeks. Patricia's publisher threatened to drop her contract if Adrian published first. Adrian's death means Patricia gets the scoop, the book deal, and likely a Pulitzer nomination.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interviews">
+        <div class="container">
+            <h2>Interview Transcripts</h2>
+            <div class="interviews-section">
+                <div class="interview-record">
+                    <div class="interview-top">
+                        <div class="interviewee-name">Rachel Hayes</div>
+                        <div class="interview-meta">Interviewed: Dec 3, 2:00 PM</div>
+                    </div>
+                    <div class="interview-statement">
+                        "Yes, I processed his records request at 11:30 AM. He was looking into an old case from 2009 - a domestic incident at the Reed residence. It's all public record, so I gave him what we had. He seemed... intense. Kept saying things like 'the truth always comes out.' I worked a double shift Saturday into Sunday morning - I have timestamped patrol logs. I was nowhere near Blackwood Estate. I've never even been to that property. Those boots? Standard issue for trail patrol - half the women in this county wear Columbia hiking boots. The accusations in his manuscript are complete fiction. Margaret Reed's death was investigated thoroughly and ruled accidental. I did my job properly."
+                    </div>
+                </div>
+                <div class="interview-record">
+                    <div class="interview-top">
+                        <div class="interviewee-name">Thomas Reed</div>
+                        <div class="interview-meta">Interviewed: Dec 3, 3:30 PM</div>
+                    </div>
+                    <div class="interview-statement">
+                        "The lunch meeting was... difficult. Adrian showed me excerpts from his manuscript. Absolutely outrageous accusations about my late wife's death. Margaret fell down our stairs in 2009 - it was a tragic accident. We had an argument that evening, yes, but I never laid a hand on her. I was devastated when she died. Adrian was twisting facts to create a sensational story. I left the café upset because he was desecrating my wife's memory. After lunch, I went home. I was there all evening - my neighbor saw my truck in the driveway all night. I drive old logging roads for my historical research, yes, but I haven't been near Blackwood Estate in months. This whole thing is a nightmare."
+                    </div>
+                </div>
+                <div class="interview-record">
+                    <div class="interview-top">
+                        <div class="interviewee-name">Margaret Chen</div>
+                        <div class="interview-meta">Interviewed: Dec 3, 11:00 AM</div>
+                    </div>
+                    <div class="interview-statement">
+                        "I discovered the body during my regular Sunday morning delivery. I bring fresh linens and supplies every Sunday at 8:30 AM. The front door was locked - I used my master key. I called out for Mr. Blackwood, and when he didn't respond, I checked the usual rooms. I found him at the bottom of the cellar stairs. It was horrible. I immediately called 911. Mr. Blackwood had been asking about previous tenants, yes, particularly from 2009. I told him I don't keep detailed records that far back - client privacy is important in my business. I was home Saturday evening - my husband can confirm. I do own gray winter coats and Columbia boots - they're practical for property management. But I would never hurt anyone. This was clearly a tragic accident."
+                    </div>
+                </div>
+                <div class="interview-record">
+                    <div class="interview-top">
+                        <div class="interviewee-name">Emily Blackwood</div>
+                        <div class="interview-meta">Interviewed: Dec 4, 10:00 AM (via phone)</div>
+                    </div>
+                    <div class="interview-statement">
+                        "My father and I hadn't spoken in 8 years. When I got his text Saturday night - 'If anything happens to me, check Chapter 12' - I thought he was being dramatic. That's how he was. Always the investigative journalist, always surrounded by 'danger' and intrigue. I didn't respond to the text. I was in Portland all weekend - I have credit card receipts, my boyfriend can confirm I was home. Yes, I'm aware of the life insurance policy. Yes, I have debt. But I didn't kill my father for money. We may have been estranged, but I never wished him dead. I hadn't seen him or spoken to him in years. I couldn't have been at Blackwood Estate - it's a 5-hour drive from Portland."
+                    </div>
+                </div>
+                <div class="interview-record">
+                    <div class="interview-top">
+                        <div class="interviewee-name">David Park</div>
+                        <div class="interview-meta">Interviewed: Dec 3, 4:00 PM</div>
+                    </div>
+                    <div class="interview-statement">
+                        "Mr. Blackwood came in Saturday afternoon for antacids. He mentioned stress from his research. He asked about over-the-counter sleep aids - I showed him some options but he decided not to purchase anything. That's the extent of our interaction. These allegations about medication embezzlement are absurd. My inventory is audited quarterly - everything is accounted for. I was home above the pharmacy Saturday night. I live alone, so I have no alibi, but I had no reason to harm Mr. Blackwood. I barely knew the man. One pharmacy visit doesn't create a motive for murder."
+                    </div>
+                </div>
+                <div class="interview-record">
+                    <div class="interview-top">
+                        <div class="interviewee-name">Patricia Summers</div>
+                        <div class="interview-meta">Interviewed: Dec 4, 2:00 PM</div>
+                    </div>
+                    <div class="interview-statement">
+                        "Adrian and I were colleagues, not enemies. Yes, we were both investigating the Ravenswood case, but journalism isn't a zero-sum game. I was in Ravenswood on December 2nd interviewing sources - I stayed at the Ravenswood Inn, they have records. I heard about Adrian's death Sunday morning. It's tragic. Do I benefit professionally? Perhaps. But I didn't kill him for a book deal. I was at the inn Saturday evening - the night clerk saw me come in around 9 PM and I didn't leave until morning. My work stands on its own merit. I don't need to eliminate competition to succeed."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution">
+        <div class="container">
+            <h2>Submit Your Conclusion</h2>
+            <div class="solution-area">
+                <h3>Who Killed Adrian Blackwood?</h3>
+                <p class="solution-text">
+                    You have examined all evidence, witness testimonies, forensic analysis, timeline reconstructions, and the victim's own manuscript. This case requires exceptional deductive reasoning and attention to contradictory details.
+                </p>
+                <div class="strict-warning">
+                    ⚠️ STRICT PASSWORD ENFORCEMENT ⚠️<br><br>
+                    You must enter the killer's EXACT full name.<br>
+                    Format: FirstName LastName (proper capitalization required)<br>
+                    No variations, abbreviations, or nicknames accepted.<br>
+                    This is a 9/10 difficulty case - precision matters.
+                </div>
+                <form class="answer-form" id="answerForm">
+                    <input 
+                        type="text" 
+                        id="killerAnswer" 
+                        placeholder="Enter full name exactly"
+                        autocomplete="off"
+                    >
+                    <button type="submit">SUBMIT CONCLUSION</button>
+                    <div class="error-text" id="errorText">INCORRECT - Review all evidence carefully</div>
+                </form>
+            </div>
+
+            <div class="reveal-section" id="revealSection">
+                <div class="killer-reveal">
+                    <h3>The Killer Is</h3>
+                    <div class="killer-identity">PATRICIA SUMMERS</div>
+                    <div class="killer-subtitle">Rival Journalist</div>
+                </div>
+
+                <div class="explanation">
+                    <h4>The Truth Behind The Murder</h4>
+                    <p>Patricia Summers killed Adrian Blackwood in a calculated act of professional elimination disguised as an accident. While every other suspect had compelling motives tied to Adrian's exposé about the 2009 incident, Patricia's motive was simpler and more ruthless: career advancement through murder.</p>
+                    
+                    <p>Patricia had been working the Ravenswood story for two years when Adrian solved it in three weeks. Her publisher had explicitly warned that if Adrian published first, her contract would be cancelled. With a $200,000 advance on the line and her reputation as a "premier investigative journalist" at stake, Patricia made a cold-blooded decision: eliminate the competition.</p>
+                </div>
+
+                <div class="explanation">
+                    <h4>How She Did It - The Complete Timeline</h4>
+                    
+                    <div class="clue-detail">
+                        <strong>4:30 PM - The First Confrontation</strong>
+                        Patricia drove to Blackwood Estate, parked on the old logging road (explaining the unique soil composition in boot prints), and entered through the study window after disabling the sensor. Adrian was expecting her - they had arranged to "compare notes" on their competing investigations. The confrontation turned physical when Adrian refused to delay publication. Patricia struck him multiple times (defensive wounds), but Adrian fought back. She fled through the window, planning to return later.
+                    </div>
+
+                    <div class="clue-detail">
+                        <strong>7:00 PM - The Drugging</strong>
+                        Patricia returned to estate. This time Adrian, shaken from earlier fight, let her in through front door (explaining why no window entry this time). She apologized, suggested they share wine to calm nerves. Adrian, lonely and wanting professional companionship, agreed. Patricia had pre-drugged a wine bottle with zolpidem stolen from her own prescription. They talked in the study while Adrian slowly became drowsy.
+                    </div>
+
+                    <div class="clue-detail">
+                        <strong>11:00 PM - The Murder</strong>
+                        With Adrian heavily drowsy from zolpidem, Patricia convinced him to go to wine cellar to select another bottle "as a peace offering." As Adrian descended stairs, Patricia grabbed the wine bottle she'd drugged earlier, threw it down stairs ahead of him (explaining trajectory analysis), then pushed Adrian forcefully from behind. He tumbled down stairs, breaking his neck. Her wool coat caught on railing during descent to check his body.
+                    </div>
+
+                    <div class="clue-detail">
+                        <strong>11:40 PM - The Staging</strong>
+                        Patricia carefully staged the scene to look like Adrian got drunk, went to cellar for more wine, and fell. She left through front door (explaining 11:38 PM unlock/11:41 PM relock), drove back to Ravenswood Inn, and established "alibi" by being seen in lobby at 9 PM (she'd actually left and returned).
+                    </div>
+                </div>
+
+                <div class="explanation">
+                    <h4>The Evidence That Proves Patricia's Guilt</h4>
+                    
+                    <div class="clue-detail">
+                        <strong>The Study Window Sensor</strong>
+                        Only Patricia knew about the smart home system's blind spot. She'd stayed at Blackwood Estate herself during her own investigation months earlier (rental records confirm). She disabled the sensor to enter undetected for the 4:30 PM confrontation. Margaret Chen mentioned Adrian asked about "previous tenants from 2009" - Patricia had rented the estate in summer 2024 while researching the same story.
+                    </div>
+
+                    <div class="clue-detail">
+                        <strong>The Defensive Wounds Timeline</strong>
+                        Medical examiner placed defensive wounds 2-4 hours before death (7:00-9:00 PM range). But this was Patricia's critical error: the wounds actually occurred at 4:30 PM during their first confrontation. The timeline shows Adrian was alone 4:15-6:45 PM (when he called editor). Patricia attacked at 4:30 PM, left, then returned at 7:00 PM with drugged wine. The medical examiner's timeline was slightly off, but it still proves two separate incidents: assault and murder.
+                    </div>
+
+                    <div class="clue-detail">
+                        <strong>The Boot Print & Soil</strong>
+                        Size 9 Columbia hiking boots with soil from old logging road 2 miles north. Patricia owns identical boots (confirmed in interview). The soil is unique to that logging road - the same road Patricia used to access the estate discreetly. She parked there and walked through woods to avoid being seen on main road. Rachel Hayes uses logging roads for historical research (red herring), but the boots matched Patricia's.
+                    </div>
+
+                    <div class="clue-detail">
+                        <strong>The Gray Wool Fiber</strong>
+                        Patricia owns a gray merino wool winter coat (mentioned in interview as "practical"). The fiber caught on the stair railing when she descended to verify Adrian was dead. This was her crucial mistake - physical evidence placing her at the exact location of death.
+                    </div>
+
+                    <div class="clue-detail">
+                        <strong>The Zolpidem Source</strong>
+                        Pharmacist David Park confirmed Adrian asked about sleeping pills but didn't buy any. So where did the zolpidem come from? Patricia had her own prescription for sleep medication (mentioned in her medical records). She crushed pills into the wine. David Park was a red herring - he HAD access but so did Patricia through legitimate prescription.
+                    </div>
+
+                    <div class="clue-detail">
+                        <strong>The "Alibi" Fabrication</strong>
+                        Patricia claimed she was at Ravenswood Inn all evening, "seen by night clerk at 9 PM." But inn records show she checked in Friday and left her room key at desk at 5:00 PM Saturday, retrieved it at 9:00 PM, then returned it Sunday morning. She was absent 5:00-9:00 PM - exactly when she was murdering Adrian. The "night clerk saw me" is technically true but deliberately misleading - she returned AFTER the murder to establish false alibi.
+                    </div>
+
+                    <div class="clue-detail">
+                        <strong>The Manuscript Knowledge</strong>
+                        In her interview, Patricia mentioned Adrian's manuscript concerned "the Ravenswood case" - but she shouldn't have known specific content. Adrian's laptop was found Sunday morning. How did Patricia know what the manuscript contained unless she'd read it Saturday evening while Adrian was drowsy from drugged wine?
+                    </div>
+                </div>
+
+                <div class="explanation">
+                    <h4>Why Other Suspects Are Innocent</h4>
+                    
+                    <p><strong style="color: var(--gold);">Rachel Hayes:</strong> Despite being accused in manuscript and having access to zolpidem through evidence locker, Rachel has timestamped patrol logs placing her on duty across county all Saturday night. The digital patrol system requires GPS verification every 30 minutes - impossible to fake. She's guilty of 2009 cover-up but not this murder.</p>
+
+                    <p><strong style="color: var(--gold);">Thomas Reed:</strong> Guilty of killing his wife in 2009, but didn't kill Adrian. Neighbor confirms his truck was in driveway all Saturday evening. More importantly, Thomas is 71 and has severe arthritis (medical records) - physically incapable of overpowering 67-year-old Adrian in hand-to-hand fight that created defensive wounds.</p>
+
+                    <p><strong style="color: var(--gold);">Margaret Chen:</strong> Had access and means, but hotel security footage from 40 miles away shows her attending her daughter's engagement party Saturday evening 6:00 PM-11:00 PM. Husband and 30 guests confirm. She discovered body but didn't create it.</p>
+
+                    <p><strong style="color: var(--gold);">Emily Blackwood:</strong> Credit card records and traffic camera footage prove she was in Portland, Maine all weekend. A 5-hour drive each way makes it physically impossible to murder her father and return. Financial motive existed but opportunity did not.</p>
+
+                    <p><strong style="color: var(--gold);">David Park:</strong> Lives above pharmacy with security camera at entrance. Footage shows him entering building 5:30 PM Saturday, no exit until 8:00 AM Sunday. Continuous surveillance proves he never left. Inventory audits show no missing medications beyond normal prescription fills.</p>
+                </div>
+
+                <div class="explanation">
+                    <h4>Patricia's Critical Mistakes</h4>
+                    
+                    <p>1. Disabling the study window sensor - created digital evidence of forced entry method only someone familiar with the estate would know</p>
+                    <p>2. The gray wool fiber on stair railing - physical evidence placing her at scene</p>
+                    <p>3. Boot print with logging road soil - unique geographic marker connecting her parking location to crime scene</p>
+                    <p>4. Mentioning manuscript content she shouldn't have known about</p>
+                    <p>5. The timeline gap in her inn "alibi" - left 5:00 PM, returned 9:00 PM</p>
+                    <p>6. Using her own prescription zolpidem - traceable to her pharmacy records</p>
+                </div>
+
+                <div class="conclusion">
+                    <h3>CASE SOLVED</h3>
+                    <p style="font-size: 1.2rem; line-height: 1.9; margin-top: 25px; color: var(--paper-white);">
+                        Congratulations, Detective. You have successfully navigated one of the most complex cases in recent memory. Patricia Summers committed the perfect crime - almost. While Rachel Hayes, Thomas Reed, and others had devastating motives tied to Adrian's exposé, you identified that the killer with the simplest motive often hides behind the more sensational suspects.
+                    </p>
+                    <p style="font-size: 1.15rem; margin-top: 30px; color: var(--gold);">
+                        Patricia Summers is in custody, charged with first-degree murder.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Draw location map
+        function drawLocationMap() {
+            const canvas = document.getElementById('locationMap');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1300;
+            canvas.height = 700;
+
+            // Background - evening scene
+            const skyGrad = ctx.createLinearGradient(0, 0, 0, 350);
+            skyGrad.addColorStop(0, '#1a1a2e');
+            skyGrad.addColorStop(1, '#16213e');
+            ctx.fillStyle = skyGrad;
+            ctx.fillRect(0, 0, 1300, 350);
+
+            // Ground/Forest
+            const groundGrad = ctx.createLinearGradient(0, 350, 0, 700);
+            groundGrad.addColorStop(0, '#0f3460');
+            groundGrad.addColorStop(1, '#0a2647');
+            ctx.fillStyle = groundGrad;
+            ctx.fillRect(0, 350, 1300, 350);
+
+            // Lake
+            ctx.fillStyle = '#1a3a4a';
+            ctx.beginPath();
+            ctx.ellipse(650, 400, 300, 150, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Road
+            ctx.fillStyle = '#3a3a3a';
+            ctx.fillRect(0, 380, 1300, 60);
+            ctx.strokeStyle = '#888';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([20, 15]);
+            ctx.beginPath();
+            ctx.moveTo(0, 410);
+            ctx.lineTo(1300, 410);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Blackwood Estate (crime scene)
+            ctx.fillStyle = '#ff4444';
+            ctx.fillRect(150, 500, 100, 80);
+            ctx.fillStyle = '#8B4513';
+            ctx.beginPath();
+            ctx.moveTo(140, 500);
+            ctx.lineTo(200, 460);
+            ctx.lineTo(260, 500);
+            ctx.closePath();
+            ctx.fill();
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 11px Arial';
+            ctx.fillText('BLACKWOOD', 160, 600);
+            ctx.fillText('ESTATE', 172, 615);
+
+            // Library
+            ctx.fillStyle = '#44ff44';
+            ctx.fillRect(500, 300, 80, 60);
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 10px Arial';
+            ctx.fillText('Library', 515, 380);
+
+            // Sheriff's Office
+            ctx.fillStyle = '#4444ff';
+            ctx.fillRect(700, 300, 80, 60);
+            ctx.fillStyle = '#fff';
+            ctx.fillText("Sheriff", 718, 380);
+
+            // Lakeside Café
+            ctx.fillStyle = '#ffaa00';
+            ctx.fillRect(900, 300, 80, 60);
+            ctx.fillStyle = '#000';
+            ctx.fillText('Café', 925, 380);
+
+            // Pharmacy
+            ctx.fillStyle = '#aa00ff';
+            ctx.fillRect(1100, 300, 80, 60);
+            ctx.fillStyle = '#fff';
+            ctx.fillText('Pharmacy', 1110, 380);
+
+            // Woodland trail
+            ctx.fillStyle = '#00aaff';
+            ctx.fillRect(150, 620, 250, 25);
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 9px Arial';
+            ctx.fillText('Woodland Trail', 215, 637);
+
+            // Draw movement arrows
+            ctx.strokeStyle = '#ff0000';
+            ctx.lineWidth = 4;
+            
+            drawArrowMap(ctx, 250, 530, 500, 330);
+            ctx.fillStyle = '#fff';
+            ctx.font = '10px Arial';
+            ctx.fillText('9:00 AM', 350, 420);
+
+            drawArrowMap(ctx, 540, 330, 700, 330);
+            ctx.fillText('11:30 AM', 605, 320);
+
+            drawArrowMap(ctx, 740, 330, 900, 330);
+            ctx.fillText('1:00 PM', 805, 320);
+
+            drawArrowMap(ctx, 940, 330, 1100, 330);
+            ctx.fillText('3:30 PM', 1005, 320);
+
+            drawArrowMap(ctx, 1100, 360, 250, 530);
+            ctx.fillText('4:15 PM', 650, 460);
+
+            ctx.strokeStyle = '#ff0000';
+            ctx.beginPath();
+            ctx.moveTo(200, 580);
+            ctx.lineTo(200, 620);
+            ctx.stroke();
+            ctx.fillText('5:30 PM', 210, 605);
+        }
+
+        function drawArrowMap(ctx, x1, y1, x2, y2) {
+            const angle = Math.atan2(y2 - y1, x2 - x1);
+            const headlen = 12;
+            
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(x2, y2);
+            ctx.lineTo(x2 - headlen * Math.cos(angle - Math.PI / 6), y2 - headlen * Math.sin(angle - Math.PI / 6));
+            ctx.lineTo(x2 - headlen * Math.cos(angle + Math.PI / 6), y2 - headlen * Math.sin(angle + Math.PI / 6));
+            ctx.closePath();
+            ctx.fillStyle = '#ff0000';
+            ctx.fill();
+        }
+
+        // Draw crime scene photos
+        function drawPhoto1() {
+            const canvas = document.getElementById('photo1');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 800;
+            canvas.height = 600;
+
+            ctx.fillStyle = '#2a2a2a';
+            ctx.fillRect(0, 0, 800, 600);
+
+            // Stairs
+            for (let i = 0; i < 14; i++) {
+                ctx.fillStyle = '#654321';
+                ctx.fillRect(100, 50 + (i * 35), 300, 30);
+                ctx.strokeStyle = '#000';
+                ctx.strokeRect(100, 50 + (i * 35), 300, 30);
+            }
+
+            // Body at bottom
+            ctx.strokeStyle = '#ffff00';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.ellipse(500, 550, 80, 50, 0.5, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Blood pool
+            ctx.fillStyle = '#8B0000';
+            ctx.beginPath();
+            ctx.ellipse(480, 540, 90, 60, 0.5, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Broken wine bottle on step 7
+            ctx.fillStyle = '#2a5934';
+            for (let i = 0; i < 6; i++) {
+                ctx.beginPath();
+                ctx.moveTo(200 + (i * 15), 280 + (i * 5));
+                ctx.lineTo(220 + (i * 15), 270 + (i * 5));
+                ctx.lineTo(230 + (i * 15), 295 + (i * 5));
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            // Evidence markers
+            ctx.fillStyle = '#ffff00';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('1', 470, 520);
+            ctx.fillText('2', 245, 285);
+        }
+
+        function drawPhoto2() {
+            const canvas = document.getElementById('photo2');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 800;
+            canvas.height = 600;
+
+            ctx.fillStyle = '#3a3a3a';
+            ctx.fillRect(0, 0, 800, 600);
+
+            // Desk
+            ctx.fillStyle = '#654321';
+            ctx.fillRect(150, 350, 500, 200);
+            
+            // Laptop
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(300, 380, 300, 180);
+            ctx.fillStyle = '#2a4a6a';
+            ctx.fillRect(320, 400, 260, 140);
+            
+            // Screen text
+            ctx.fillStyle = '#fff';
+            ctx.font = '13px Courier';
+            ctx.fillText('Chapter 12: The Sheriff\'s Secret', 330, 430);
+            ctx.fillText('In 2009, Deputy Rachel Hayes...', 330, 455);
+
+            // Coffee mug
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(200, 420, 60, 80);
+            ctx.beginPath();
+            ctx.arc(180, 440, 20, Math.PI * 0.5, Math.PI * 1.5);
+            ctx.fill();
+
+            // Window (unlocked)
+            ctx.strokeStyle = '#888';
+            ctx.lineWidth = 5;
+            ctx.strokeRect(50, 100, 200, 180);
+            ctx.fillStyle = '#4a6a8a';
+            ctx.fillRect(55, 105, 190, 170);
+            ctx.fillStyle = '#ff0000';
+            ctx.font = 'bold 14px Arial';
+            ctx.fillText('UNLOCKED', 90, 200);
+        }
+
+        function drawPhoto3() {
+            const canvas = document.getElementById('photo3');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 800;
+            canvas.height = 600;
+
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(0, 0, 800, 600);
+
+            // Arm
+            ctx.fillStyle = '#d4a88c';
+            ctx.fillRect(200, 200, 400, 150);
+
+            // Bruises
+            ctx.fillStyle = 'rgba(100, 50, 150, 0.7)';
+            ctx.beginPath();
+            ctx.ellipse(300, 250, 40, 30, 0.3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(400, 280, 35, 25, -0.2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(500, 260, 45, 35, 0.1, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Measurement lines
+            ctx.strokeStyle = '#ffff00';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(280, 220);
+            ctx.lineTo(520, 220);
+            ctx.stroke();
+            ctx.fillStyle = '#ffff00';
+            ctx.font = '14px Arial';
+            ctx.fillText('Defensive wound pattern', 330, 210);
+
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(50, 450, 700, 120);
+            ctx.fillStyle = '#000';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('FOREARM BRUISING - 2-4 HOURS PRE-MORTEM', 60, 485);
+            ctx.font = '14px Arial';
+            ctx.fillText('Pattern consistent with blocking strikes', 60, 515);
+            ctx.fillText('Attacker: Right-handed, medium force', 60, 540);
+        }
+
+        function drawPhoto4() {
+            const canvas = document.getElementById('photo4');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 800;
+            canvas.height = 600;
+
+            ctx.fillStyle = '#4a3a2a';
+            ctx.fillRect(0, 0, 800, 600);
+
+            // Boot print
+            ctx.fillStyle = 'rgba(90, 70, 50, 0.8)';
+            ctx.fillRect(250, 200, 100, 200);
+            
+            // Tread pattern
+            ctx.strokeStyle = 'rgba(70, 50, 30, 0.9)';
+            ctx.lineWidth = 4;
+            for (let i = 0; i < 7; i++) {
+                ctx.beginPath();
+                ctx.moveTo(265, 220 + (i * 27));
+                ctx.lineTo(335, 220 + (i * 27));
+                ctx.stroke();
+            }
+
+            // Measurements
+            ctx.strokeStyle = '#ffff00';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(360, 200);
+            ctx.lineTo(360, 400);
+            ctx.stroke();
+            ctx.fillStyle = '#ffff00';
+            ctx.font = 'bold 14px Arial';
+            ctx.fillText('Size 9', 370, 300);
+            ctx.fillText('Women\'s', 370, 320);
+
+            // Wool fiber
+            ctx.fillStyle = '#888';
+            ctx.fillRect(500, 250, 80, 3);
+            ctx.fillText('Wool fiber', 510, 240);
+
+            ctx.fillStyle = '#000';
+            ctx.fillRect(50, 480, 700, 100);
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 15px Arial';
+            ctx.fillText('BOOT: Size 9 Women\'s Columbia Hiking Boot', 60, 515);
+            ctx.font = '13px Arial';
+            ctx.fillText('Soil: Estate grounds + logging road mineral composition', 60, 545);
+            ctx.fillText('Fiber: Gray merino wool from winter coat', 60, 565);
+        }
+
+        // Initialize
+        drawLocationMap();
+        drawPhoto1();
+        drawPhoto2();
+        drawPhoto3();
+        drawPhoto4();
+
+        // Form handler
+        document.getElementById('answerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const answer = document.getElementById('killerAnswer').value.trim();
+            const error = document.getElementById('errorText');
+            
+            if (answer === 'Patricia Summers') {
+                document.querySelector('.solution-area').style.display = 'none';
+                document.getElementById('revealSection').classList.add('active');
+                setTimeout(() => {
+                    document.getElementById('revealSection').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 150);
+            } else {
+                error.classList.add('active');
+                setTimeout(() => {
+                    error.classList.remove('active');
+                }, 3500);
+            }
+        });
+
+        // Navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

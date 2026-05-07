@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case #2024-1547: The Basement Enigma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0d1b2a;
+            --secondary-dark: #1b263b;
+            --accent-blue: #415a77;
+            --light-gray: #e0e1dd;
+            --off-white: #f8f9fa;
+            --blood: #7c1d1d;
+            --warning: #ca6702;
+        }
+
+        body {
+            font-family: 'Roboto Slab', serif;
+            background: #0d1b2a;
+            color: var(--light-gray);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1b263b 0%, #0d1b2a 100%);
+            padding: 70px 0;
+            text-align: center;
+            border-bottom: 4px solid var(--blood);
+            position: relative;
+        }
+
+        .evidence-tag {
+            position: absolute;
+            top: 30px;
+            right: 60px;
+            background: var(--blood);
+            color: var(--off-white);
+            padding: 10px 25px;
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            transform: rotate(5deg);
+            border: 2px solid var(--warning);
+        }
+
+        .case-id {
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.95rem;
+            letter-spacing: 6px;
+            color: var(--warning);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--off-white);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            color: var(--accent-blue);
+            font-style: italic;
+        }
+
+        .difficulty-warning {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: rgba(124, 29, 29, 0.3);
+            border: 3px solid var(--blood);
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(13, 27, 42, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--accent-blue);
+            padding: 22px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.85rem;
+            color: var(--light-gray);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--warning);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--warning);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            padding: 90px 0;
+        }
+
+        section:nth-child(even) {
+            background: rgba(27, 38, 59, 0.3);
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--warning);
+            margin-bottom: 70px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--blood), transparent);
+        }
+
+        .briefing {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(27, 38, 59, 0.95), rgba(13, 27, 42, 0.95));
+            padding: 70px;
+            border: 4px solid var(--accent-blue);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+            position: relative;
+        }
+
+        .briefing::before {
+            content: 'PRIORITY CASE';
+            position: absolute;
+            top: -20px;
+            left: 50px;
+            background: var(--blood);
+            color: var(--off-white);
+            padding: 8px 30px;
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+        }
+
+        .briefing h3 {
+            font-size: 2.2rem;
+            color: var(--warning);
+            margin-bottom: 35px;
+            border-bottom: 3px solid var(--accent-blue);
+            padding-bottom: 18px;
+        }
+
+        .briefing p {
+            margin-bottom: 28px;
+            font-size: 1.1rem;
+            line-height: 2.1;
+            text-align: justify;
+        }
+
+        .victim-box {
+            background: rgba(124, 29, 29, 0.15);
+            padding: 35px;
+            margin: 40px 0;
+            border-left: 8px solid var(--blood);
+        }
+
+        .victim-box h4 {
+            font-family: 'Inconsolata', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--warning);
+            letter-spacing: 2px;
+        }
+
+        .victim-box p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .critical-note {
+            background: rgba(202, 103, 2, 0.2);
+            padding: 30px;
+            margin: 35px 0;
+            border: 3px solid var(--warning);
+            font-size: 1.08rem;
+            line-height: 2;
+        }
+
+        .critical-note strong {
+            color: var(--warning);
+            font-size: 1.15rem;
+        }
+
+        .scene-photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+            gap: 50px;
+            margin-top: 70px;
+        }
+
+        .photo-box {
+            background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9));
+            padding: 35px;
+            border: 4px solid var(--accent-blue);
+            box-shadow: 12px 12px 0 rgba(124, 29, 29, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .photo-box:hover {
+            transform: translateY(-12px) rotate(-0.5deg);
+            box-shadow: 18px 18px 0 rgba(124, 29, 29, 0.5);
+        }
+
+        .photo-box canvas {
+            width: 100%;
+            height: 400px;
+            border: 3px solid #000;
+            background: #0a0a0a;
+            margin-bottom: 28px;
+        }
+
+        .photo-tag {
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.9rem;
+            color: var(--warning);
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .photo-details {
+            font-size: 1rem;
+            line-height: 1.9;
+            color: var(--light-gray);
+        }
+
+        .forensics-grid {
+            display: grid;
+            gap: 40px;
+            margin-top: 70px;
+        }
+
+        .forensic-card {
+            background: linear-gradient(135deg, rgba(27, 38, 59, 0.85), rgba(13, 27, 42, 0.85));
+            padding: 40px;
+            border: 3px solid var(--accent-blue);
+            border-left: 10px solid var(--warning);
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .forensic-card:hover {
+            transform: translateX(15px);
+            box-shadow: 15px 15px 0 rgba(124, 29, 29, 0.3);
+        }
+
+        .forensic-id {
+            font-family: 'Inconsolata', monospace;
+            font-weight: 700;
+            color: var(--warning);
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .forensic-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--off-white);
+        }
+
+        .forensic-text {
+            font-size: 1.08rem;
+            line-height: 2;
+            color: var(--light-gray);
+        }
+
+        .persons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 45px;
+            margin-top: 70px;
+        }
+
+        .person-dossier {
+            background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9));
+            padding: 45px;
+            border: 4px solid var(--accent-blue);
+            position: relative;
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+        }
+
+        .person-dossier::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--blood);
+        }
+
+        .person-dossier:hover {
+            transform: translateY(-10px);
+            box-shadow: 15px 15px 0 rgba(124, 29, 29, 0.4);
+        }
+
+        .person-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--warning);
+            margin-bottom: 12px;
+        }
+
+        .person-role {
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 28px;
+        }
+
+        .person-data {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--light-gray);
+            margin-bottom: 20px;
+        }
+
+        .person-connection {
+            background: rgba(124, 29, 29, 0.2);
+            padding: 22px;
+            margin-top: 28px;
+            border-left: 5px solid var(--blood);
+            font-size: 1rem;
+        }
+
+        .person-connection strong {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--warning);
+            font-size: 1.1rem;
+        }
+
+        .statements-area {
+            max-width: 1200px;
+            margin: 70px auto;
+        }
+
+        .statement-block {
+            background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9));
+            padding: 50px;
+            margin-bottom: 45px;
+            border: 3px solid var(--accent-blue);
+            border-left: 15px solid var(--blood);
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.5);
+        }
+
+        .statement-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            padding-bottom: 22px;
+            border-bottom: 3px dashed var(--accent-blue);
+        }
+
+        .speaker-name {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--warning);
+        }
+
+        .statement-meta {
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-blue);
+        }
+
+        .statement-quote {
+            font-size: 1.12rem;
+            line-height: 2.1;
+            font-style: italic;
+            padding-left: 40px;
+            border-left: 5px solid rgba(202, 103, 2, 0.4);
+            color: var(--off-white);
+        }
+
+        .documents-section {
+            max-width: 1200px;
+            margin: 70px auto;
+        }
+
+        .document-card {
+            background: linear-gradient(135deg, rgba(27, 38, 59, 0.95), rgba(13, 27, 42, 0.95));
+            padding: 45px;
+            margin-bottom: 40px;
+            border: 4px solid var(--warning);
+            box-shadow: 12px 12px 0 rgba(124, 29, 29, 0.3);
+        }
+
+        .doc-header {
+            font-size: 1.8rem;
+            color: var(--warning);
+            margin-bottom: 25px;
+            font-family: 'Inconsolata', monospace;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 15px;
+        }
+
+        .doc-content {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--light-gray);
+            font-family: 'Inconsolata', monospace;
+        }
+
+        .answer-section {
+            max-width: 1000px;
+            margin: 70px auto;
+            background: linear-gradient(135deg, rgba(27, 38, 59, 0.98), rgba(13, 27, 42, 0.98));
+            padding: 80px 70px;
+            border: 6px double var(--warning);
+            box-shadow: 0 25px 70px rgba(124, 29, 29, 0.6);
+            text-align: center;
+        }
+
+        .answer-section h3 {
+            font-size: 2.8rem;
+            color: var(--warning);
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .answer-instructions {
+            font-size: 1.2rem;
+            line-height: 2.1;
+            margin-bottom: 50px;
+            color: var(--light-gray);
+        }
+
+        .strict-notice {
+            background: rgba(124, 29, 29, 0.4);
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 4px solid var(--blood);
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.95rem;
+            color: var(--warning);
+            line-height: 2;
+        }
+
+        .submission-form input {
+            width: 100%;
+            padding: 25px 35px;
+            font-family: 'Inconsolata', monospace;
+            font-size: 1.2rem;
+            border: 4px solid var(--accent-blue);
+            background: rgba(13, 27, 42, 0.7);
+            color: var(--off-white);
+            margin-bottom: 35px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .submission-form input:focus {
+            outline: none;
+            border-color: var(--warning);
+            background: rgba(13, 27, 42, 0.95);
+            box-shadow: 0 0 35px rgba(202, 103, 2, 0.3);
+        }
+
+        .submission-form button {
+            width: 100%;
+            padding: 28px;
+            font-family: 'Inconsolata', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            background: var(--blood);
+            color: var(--off-white);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.5);
+        }
+
+        .submission-form button:hover {
+            background: #a02525;
+            transform: translateY(-3px);
+            box-shadow: 12px 12px 0 rgba(0,0,0,0.7);
+        }
+
+        .error-display {
+            color: var(--blood);
+            font-family: 'Inconsolata', monospace;
+            font-size: 1.05rem;
+            margin-top: 30px;
+            display: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .error-display.visible {
+            display: block;
+            animation: shake 0.6s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-18px); }
+            75% { transform: translateX(18px); }
+        }
+
+        @media (max-width: 1100px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.5rem; }
+            .scene-photos,
+            .persons-grid {
+                grid-template-columns: 1fr;
+            }
+            .evidence-tag {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="evidence-tag">ACTIVE INVESTIGATION</div>
+        <div class="container">
+            <div class="case-id">CASE #2024-1547</div>
+            <h1>The Basement Enigma</h1>
+            <p class="tagline">Mutilation, Mystery, and Missing Identity</p>
+            <div class="difficulty-warning">EXTREME DIFFICULTY - FORENSIC ANALYSIS REQUIRED</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#scene">Crime Scene</a></li>
+            <li><a href="#forensics">Forensic Analysis</a></li>
+            <li><a href="#persons">Persons of Interest</a></li>
+            <li><a href="#statements">Statements</a></li>
+            <li><a href="#documents">Key Documents</a></li>
+            <li><a href="#solution">Solution</a></li>
+        </ul>
+    </nav>
+
+    <section id="overview">
+        <div class="container">
+            <h2>Case Overview</h2>
+            <div class="briefing">
+                <h3>Discovery Report</h3>
+                <p>On Saturday, November 16, 2024, at approximately 3:47 PM, the severely decomposed body of an unidentified individual was discovered in the basement of an abandoned residential property at 847 Elm Street in the town of Oakridge. The discovery was made by Tyler Morrison, age 15, who entered the property on a dare from his friend Marcus Chen.</p>
+                
+                <p>The body was found in an advanced state of decomposition, with the face completely severed from the skull - likely post-mortem based on minimal blood spatter patterns. More disturbingly, the victim was missing four fingers: three from the left hand (pinky, ring, and pointer) and one from the right hand (thumb). The fingers were removed with surgical precision, showing clean cuts at the metacarpal joints consistent with medical-grade cutting tools.</p>
+                
+                <p>Due to the facial mutilation and fingerprint destruction (the removed fingers were the only ones with intact prints), standard identification methods have been rendered impossible. No dental records have matched the victim's remaining dental structure. The body has been deceased for an estimated 72-96 hours based on entomological evidence and decomposition rate analysis.</p>
+
+                <div class="victim-box">
+                    <h4>Victim Profile (Provisional)</h4>
+                    <p><strong>Identity:</strong> UNKNOWN - Referred to as "John Doe #47" in official reports</p>
+                    <p><strong>Estimated Age:</strong> 28-35 years (based on bone density and dental wear)</p>
+                    <p><strong>Sex:</strong> Male</p>
+                    <p><strong>Height:</strong> 5'10" (178 cm)</p>
+                    <p><strong>Build:</strong> Athletic, muscular development consistent with regular physical training</p>
+                    <p><strong>Distinguishing Features:</strong> Surgical scar on right knee (ACL repair, approximately 2-3 years old), tattoo remnant on upper left arm (mostly decomposed but appears to be partial text)</p>
+                    <p><strong>Time of Death:</strong> Estimated Wednesday, November 13, 2024, between 8:00 PM - 2:00 AM</p>
+                    <p><strong>Cause of Death:</strong> Exsanguination from severed femoral artery in left thigh - appears to be intentional cut, not defensive wound</p>
+                </div>
+
+                <p>The abandoned house at 847 Elm Street has been vacant for 8 months following foreclosure. The property is owned by Oakridge Community Bank. No utilities are active. The basement shows signs of recent activity despite the home's abandonment - a sleeping bag, portable camping lantern, empty food containers (all forensically dated to within 2 weeks of body discovery), and disturbing evidence of the crime itself.</p>
+
+                <div class="critical-note">
+                    <strong>Lead Investigator's Analysis:</strong> This case presents unprecedented complexity. The perpetrator went to extraordinary lengths to prevent victim identification - facial removal, strategic finger amputation targeting only digits with intact fingerprints. However, they left behind a curious puzzle: scattered papers around the body spell out the name "JAKE" when arranged properly. This appears intentional - but is it the victim's name, the killer's name, or a deliberate misdirection? The prescription bottle found with the body lists a "J. Morrison" but pharmacy records show no such prescription issued in the past 5 years. The crime scene suggests both meticulous planning and potential staging. Multiple suspects have emerged, each with concerning connections to the victim or location. Solving this requires exceptional forensic analysis and logical deduction.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="scene">
+        <div class="container">
+            <h2>Crime Scene Documentation</h2>
+            <div class="scene-photos">
+                <div class="photo-box">
+                    <canvas id="scene1"></canvas>
+                    <div class="photo-tag">EXHIBIT 1: BASEMENT - PRIMARY SCENE</div>
+                    <div class="photo-details">Body positioned supine in center of basement. Papers scattered in deliberate pattern around body spelling "JAKE". Sleeping bag 6 feet from body, unused. Single cut to femoral artery - no defensive wounds on body.</div>
+                </div>
+                <div class="photo-box">
+                    <canvas id="scene2"></canvas>
+                    <div class="photo-tag">EXHIBIT 2: MISSING FINGERS - DETAILED</div>
+                    <div class="photo-details">Left hand: Missing pinky, ring, and pointer fingers. Right hand: Missing thumb. All amputations at metacarpal joint level. Cuts show precision consistent with medical scalpel. No tearing or hesitation marks.</div>
+                </div>
+                <div class="photo-box">
+                    <canvas id="scene3"></canvas>
+                    <div class="photo-tag">EXHIBIT 3: SEVERED FACE</div>
+                    <div class="photo-details">Face completely removed from skull. Cutting pattern suggests perpetrator started at hairline, worked around ears, severed at jaw. Face not recovered at scene - taken by perpetrator. Minimal blood spatter indicates post-mortem removal.</div>
+                </div>
+                <div class="photo-box">
+                    <canvas id="scene4"></canvas>
+                    <div class="photo-tag">EXHIBIT 4: VICTIM'S BAG & CONTENTS</div>
+                    <div class="photo-details">Black duffel bag found 10 feet from body. Contains: journal with entries, wallet (no ID cards), one-way plane ticket to Boston (dated Nov 14), 2 bus tickets, used napkin with blood traces, USB drive with encrypted files.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="forensics">
+        <div class="container">
+            <h2>Forensic Evidence Analysis</h2>
+            <div class="forensics-grid">
+                <div class="forensic-card">
+                    <div class="forensic-id">FORENSIC REPORT #001</div>
+                    <div class="forensic-title">Finger Amputation Analysis</div>
+                    <div class="forensic-text">The four missing fingers were removed with surgical precision using a blade consistent with a #10 scalpel. Cut marks show no hesitation, suggesting experience with anatomical dissection. CRITICAL FINDING: The specific fingers removed (left pinky, ring, pointer; right thumb) are the ONLY fingers that retained fingerprint ridges. The other six fingers on the body show chemical burns consistent with hydrofluoric acid exposure - fingerprints destroyed but fingers left attached. This selective removal pattern indicates the perpetrator knew which fingers still had viable prints and surgically removed only those. This suggests either: (A) Perpetrator examined the body closely before mutilation, OR (B) Perpetrator has medical/forensic knowledge and knew standard fingerprint destruction methods and their efficacy.</div>
+                </div>
+                <div class="forensic-card">
+                    <div class="forensic-id">FORENSIC REPORT #002</div>
+                    <div class="forensic-title">Cause of Death - Femoral Artery Severance</div>
+                    <div class="forensic-text">Victim died from a single deep incision to the left femoral artery, located in the upper inner thigh. Blood loss analysis indicates death occurred within 3-5 minutes of the cut. ANOMALY: The angle of the cut (82 degrees relative to horizontal body plane) and the depth progression (shallow to deep, left to right) are biomechanically consistent with a self-inflicted wound. However, three factors contradict suicide: (1) No cutting implement found at scene, (2) Victim's right hand (dominant based on muscle development) is missing thumb - making it nearly impossible to grip a blade firmly enough for this wound, (3) Tox screen shows 0.08% blood alcohol - present but not enough to explain suicidal ideation. Conclusion: Wound appears self-inflicted but circumstances suggest coercion or staging.</div>
+                </div>
+                <div class="forensic-card">
+                    <div class="forensic-id">FORENSIC REPORT #003</div>
+                    <div class="forensic-title">Time of Death - Entomological Evidence</div>
+                    <div class="forensic-text">Blow fly larvae (Calliphoridae family) collected from body are in third instar stage. Temperature data from weather station shows average basement temp of 58°F (14.4°C). Using accumulated degree hours calculation: larvae development indicates eggs were laid 72-84 hours before discovery (3:47 PM Saturday). This places death between 8:00 PM Wednesday and 4:00 AM Thursday. Rigor mortis completely resolved. Livor mortis fixed in supine position matching found position - body was not moved post-mortem. Putrefaction stage consistent with 72-96 hour timeline. CONCLUSION: Death occurred Wednesday night, November 13th, most likely between 10:00 PM - 1:00 AM.</div>
+                </div>
+                <div class="forensic-card">
+                    <div class="forensic-id">FORENSIC REPORT #004</div>
+                    <div class="forensic-title">The "JAKE" Papers - Document Analysis</div>
+                    <div class="forensic-text">Four pieces of paper found scattered around body. Each contains a single letter when properly oriented: J-A-K-E. Paper analysis: Standard 20lb copy paper, available at any office supply store. Ink analysis: Laser printer toner, HP brand, common model. However, CRITICAL DETAIL: Paper edges show deliberate tearing pattern - all four pieces came from a single sheet that was torn into quarters. Original document reconstruction shows the full page contained printed text: "JAKE MORRISON - PRESCRIPTION AUTHORIZATION - Patient ID: 47821". This was not random letters - it was a torn prescription authorization form. The name "Jake Morrison" appears to be authentic document text, not a staged clue. Question: Why would the killer leave this specific document, torn to highlight the name?</div>
+                </div>
+                <div class="forensic-card">
+                    <div class="forensic-id">FORENSIC REPORT #005</div>
+                    <div class="forensic-title">Prescription Bottle Evidence</div>
+                    <div class="forensic-text">Empty prescription bottle found in victim's bag. Label reads: "J. Morrison - Oxycodone 10mg - Dr. Sarah Chen - Fill Date: March 2024". However, pharmacy database search reveals NO prescription for any "J. Morrison" filled at any Oakridge pharmacy in the past 3 years. Dr. Sarah Chen (local physician) states she has never written an oxycodone prescription for any patient named Morrison. Label analysis shows it is a genuine pharmacy label, not printed on standard equipment. DNA on bottle lip matches victim. CONCLUSION: Bottle is authentic but the prescription record has been erased from pharmacy databases, OR the victim obtained the bottle through illegal means and had a fake label applied, OR the prescription was issued under a false identity.</div>
+                </div>
+                <div class="forensic-card">
+                    <div class="forensic-id">FORENSIC REPORT #006</div>
+                    <div class="forensic-title">Journal Found in Victim's Bag</div>
+                    <div class="forensic-text">Small leather journal recovered from duffel bag. Contains 23 handwritten entries dated from October 15 to November 12 (day before estimated death). Handwriting analysis matches victim (compared to other writing samples found in bag). Key entries: Oct 15 - "Finally found him. It's been 8 years but I never forgot. He thinks he's safe here." Oct 28 - "Followed him to the pharmacy. He didn't see me. Still using the same name." Nov 3 - "Met with TC today. She confirmed my suspicions. The records were altered." Nov 9 - "MC knows something. Saw the fear in his eyes when I mentioned the house." Nov 12 - "Tomorrow night. 847 Elm. He agreed to meet. Says he'll explain everything. I don't trust him but I need answers." ANALYSIS: "TC" and "MC" are likely initials. Victim was tracking someone. The pharmacy reference corroborates prescription bottle. "847 Elm" is the crime scene address - victim knew about the location before his death.</div>
+                </div>
+                <div class="forensic-card">
+                    <div class="forensic-id">FORENSIC REPORT #007</div>
+                    <div class="forensic-title">Plane Ticket Analysis</div>
+                    <div class="forensic-text">One-way ticket to Boston Logan International Airport found in bag. Flight date: November 14, 2024 (day after death). Departure from Oakridge Regional Airport at 6:30 AM. Ticket name: "J. Morrison". Ticket was purchased online October 28 using a Visa card ending in 4782. Bank records show card belongs to "Jake Morrison, 247 Oak Lane, Oakridge" - however, no Jake Morrison resides at that address. Current resident is Dorothy Hanson (age 72), who has lived there for 15 years. She has never heard of Jake Morrison. CONCLUSION: Victim planned to flee Oakridge the morning after the meeting at 847 Elm. Used false identity to purchase ticket. Why flee if meeting was meant to "get answers"? Suggests victim expected confrontation, not resolution.</div>
+                </div>
+                <div class="forensic-card">
+                    <div class="forensic-id">FORENSIC REPORT #008</div>
+                    <div class="forensic-title">Bus Tickets Found in Bag</div>
+                    <div class="forensic-text">Two bus tickets found in wallet. Both are Greyhound tickets. Ticket 1: Oakridge to Portland, dated November 10 (used - validated stamp visible). Ticket 2: Portland to Oakridge, dated November 11 (used - validated stamp visible). Trip duration approximately 3 hours each way. Portland is 180 miles north of Oakridge. ANALYSIS: Victim traveled to Portland on November 10, returned November 11. Journal entry from Nov 12 states "Tomorrow night" referring to the meeting, suggesting the Portland trip was related but separate. What was in Portland? Who did victim meet there?</div>
+                </div>
+                <div class="forensic-card">
+                    <div class="forensic-id">FORENSIC REPORT #009</div>
+                    <div class="forensic-title">Blood Traces on Napkin</div>
+                    <div class="forensic-text">Used napkin found in bag with dried blood stains. DNA analysis reveals blood is NOT from the victim - belongs to unknown male individual (no match in CODIS database). Blood pattern on napkin consistent with wiping a bleeding wound, likely a minor cut. Blood is Type B-negative (only 1.5% of population). Forensic dating of bloodstain places it at 5-7 days before body discovery, approximately November 9-11. CROSS-REFERENCE: Journal entry Nov 9 states "MC knows something. Saw fear in his eyes." If "MC" bled during this encounter and victim kept napkin, it establishes physical contact. Question: Who is MC and why would victim preserve evidence of their bleeding?</div>
+                </div>
+                <div class="forensic-card">
+                    <div class="forensic-id">FORENSIC REPORT #010</div>
+                    <div class="forensic-title">USB Drive - Encrypted Files</div>
+                    <div class="forensic-text">USB drive found in bag contains 3 encrypted files: "evidence.pdf", "timeline.xlsx", "faces.jpg". Standard AES-256 encryption. Forensic analysis unable to crack encryption (would require estimated 10^68 years with current computing power). However, drive metadata reveals files were created/modified on November 8, 2024, at 2:17 PM. Device ID embedded in USB drive traces to a computer at Oakridge Public Library, Terminal #3. Library records show Terminal #3 was used between 2:00-3:00 PM on Nov 8 by someone who signed in as "J. Morrison". Security footage from library confirms an individual matching victim's build used the terminal. Librarian Theresa Cole (TC?) remembers the user asking about "data encryption software". CONCLUSION: Victim deliberately encrypted evidence he gathered. Password likely known only to victim. Without password, contents remain unknown.</div>
+                </div>
+                <div class="forensic-card">
+                    <div class="forensic-id">FORENSIC REPORT #011</div>
+                    <div class="forensic-title">Camping Equipment Analysis</div>
+                    <div class="forensic-text">Sleeping bag and portable lantern found in basement. Sleeping bag shows evidence of use - body oils, skin cells, hair matching victim. Thermal imaging residue analysis indicates sleeping bag was used 2-4 nights before death (approximately Nov 9-11). Victim was living in the abandoned house. Lantern battery partially depleted, consistent with 8-12 hours of use. NO food containers, water bottles, or personal hygiene items found - suggesting victim left the house periodically for supplies. QUESTION: Why was victim living in an abandoned house? Why this specific house? Property records show house was foreclosed from the Hargrove family in March 2024. Hargroves moved to Portland (same city victim visited on Nov 10).</div>
+                </div>
+                <div class="forensic-card">
+                    <div class="forensic-id">FORENSIC REPORT #012</div>
+                    <div class="forensic-title">Toxicology Full Panel</div>
+                    <div class="forensic-text">Blood alcohol content: 0.08% (legally intoxicated for driving, but not severely impaired). No narcotics detected. No sedatives or sleep aids. Trace amounts of caffeine consistent with coffee consumption 4-6 hours before death. UNEXPECTED FINDING: Elevated cortisol levels (stress hormone) - measurements 3x normal baseline. This indicates victim was under extreme psychological stress in final hours of life. Adrenaline levels also elevated. Heart rate at time of death estimated 110-120 BPM (normal resting is 60-80). INTERPRETATION: Victim was conscious, alert, frightened, and stressed at time of death - not drugged, not asleep, not unaware. He knew what was happening.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="persons">
+        <div class="container">
+            <h2>Persons of Interest</h2>
+            <div class="persons-grid">
+                <div class="person-dossier">
+                    <div class="person-name">Marcus Chen</div>
+                    <div class="person-role">Tyler's Friend - 15 Years Old</div>
+                    <div class="person-data">High school sophomore. Known for daring Tyler to enter the abandoned house. Has a history of breaking into abandoned properties around town. Blood type: B-negative (rare - matches unknown blood on napkin). Reports visiting the abandoned house on November 9 and cutting his hand on broken glass.</div>
+                    <div class="person-connection">
+                        <strong>Possible Connection to Victim:</strong>
+                        Marcus's initials are "MC" - matching journal entry from Nov 9 where victim wrote "MC knows something. Saw fear in his eyes when I mentioned the house." If victim confronted Marcus about the house on Nov 9, Marcus's blood on the napkin makes sense. But why would a 15-year-old be involved? Marcus's father is Michael Chen, a pharmacist at Oakridge Pharmacy (where fake prescription originated). Marcus has access to pharmacy through father.
+                    </div>
+                </div>
+                <div class="person-dossier">
+                    <div class="person-name">Tyler Morrison</div>
+                    <div class="person-role">Body Discoverer - 15 Years Old</div>
+                    <div class="person-data">High school sophomore. Marcus's best friend. Discovered the body at 3:47 PM on November 16. Last name is Morrison - same as name on prescription bottle and plane ticket. Claims he's never heard of "Jake Morrison" and doesn't know of any relatives with that first name. Parents confirm Tyler is an only child.</div>
+                    <div class="person-connection">
+                        <strong>Possible Connection to Victim:</strong>
+                        Tyler's last name matching the victim's alleged name appears coincidental but is statistically unlikely in a town of 12,000 people. Tyler's father, Robert Morrison, died in a car accident 8 years ago (same timeframe referenced in journal: "It's been 8 years but I never forgot"). Tyler's mother, Jennifer Morrison, refuses to discuss her late husband and became visibly upset when shown the prescription bottle with "J. Morrison". Is the victim Tyler's father? But Robert Morrison is confirmed dead with death certificate and burial records.
+                    </div>
+                </div>
+                <div class="person-dossier">
+                    <div class="person-name">Dr. Sarah Chen</div>
+                    <div class="person-role">Local Physician</div>
+                    <div class="person-data">Age 44. Family medicine physician in Oakridge for 12 years. Her name appears on the prescription bottle as prescribing physician. Adamantly denies ever writing a prescription for "J. Morrison" or knowing anyone by that name. Pharmacy records confirm no such prescription in her name. Sister-in-law to Michael Chen (the pharmacist).</div>
+                    <div class="person-connection">
+                        <strong>Possible Connection to Victim:</strong>
+                        If prescription bottle is genuine but records were erased, Dr. Chen either: (A) Wrote the prescription and later had it deleted from databases, suggesting illegal activity, OR (B) Someone forged her signature and fabricated a prescription label. Journal entry Nov 3: "Met with TC today. She confirmed my suspicions. The records were altered." TC could be Theresa Cole OR could be a misread - victim may have written "Dr. C" meaning Dr. Chen. If Dr. Chen confirmed "records were altered", she's complicit in the cover-up.
+                    </div>
+                </div>
+                <div class="person-dossier">
+                    <div class="person-name">Theresa Cole</div>
+                    <div class="person-role">Librarian - Oakridge Public Library</div>
+                    <div class="person-data">Age 39. Head librarian for 8 years. Remembers the victim (matching description) using library computer on November 8 to create encrypted files. She helped him with encryption software. She states he seemed "paranoid" and "kept looking over his shoulder." Her initials are TC - matching journal entry.</div>
+                    <div class="person-connection">
+                        <strong>Possible Connection to Victim:</strong>
+                        Journal entry Nov 3: "Met with TC today. She confirmed my suspicions. The records were altered." If Theresa is TC, what records does a librarian have access to that would confirm alterations? Library has public records, newspaper archives, and property records. Theresa could have helped victim research the Hargrove family or property history of 847 Elm. Why would she help a stranger unless she knew him or had her own reasons to expose the truth?
+                    </div>
+                </div>
+                <div class="person-dossier">
+                    <div class="person-name">Michael Chen</div>
+                    <div class="person-role">Pharmacist - Oakridge Pharmacy</div>
+                    <div class="person-data">Age 47. Marcus Chen's father, Dr. Sarah Chen's brother-in-law. Head pharmacist at Oakridge Pharmacy for 15 years. Has complete access to prescription databases and label printing equipment. Denies any knowledge of a "J. Morrison" prescription. Appeared nervous during police interview.</div>
+                    <div class="person-connection">
+                        <strong>Possible Connection to Victim:</strong>
+                        Journal entry Oct 28: "Followed him to the pharmacy. He didn't see me. Still using the same name." Victim followed someone to THE pharmacy - likely Oakridge Pharmacy where Michael works. If Michael is the "him" being followed, victim was tracking Michael. The prescription bottle could be a plant, or Michael could have created it. Michael's son Marcus (initials MC) has the matching blood type to the napkin. Family connection to Dr. Chen creates prescription fraud opportunity.
+                    </div>
+                </div>
+                <div class="person-dossier">
+                    <div class="person-name">Jennifer Morrison</div>
+                    <div class="person-role">Tyler's Mother - Widow</div>
+                    <div class="person-data">Age 41. Tyler's mother. Widow since 2016 when husband Robert Morrison died in single-car accident. Works as an administrative assistant at Oakridge Community Bank (which foreclosed on 847 Elm). Became extremely emotional when shown prescription bottle with "J. Morrison" name. Refused to answer questions and requested a lawyer.</div>
+                    <div class="person-connection">
+                        <strong>Possible Connection to Victim:</strong>
+                        Her husband died 8 years ago (journal: "It's been 8 years but I never forgot"). Her last name is Morrison. She works at the bank that owns the crime scene property. She has suspicious reaction to "J. Morrison" name. Possible scenarios: (A) The victim is her supposedly dead husband Robert, who faked his death and returned, OR (B) The victim is investigating her husband's death, believing it wasn't an accident, OR (C) She knows the victim's true identity and it's connected to her husband's death. She has access to bank foreclosure records and could have known the house at 847 Elm was abandoned and accessible.
+                    </div>
+                </div>
+                <div class="person-dossier">
+                    <div class="person-name">David Hargrove</div>
+                    <div class="person-role">Former Owner of 847 Elm Street</div>
+                    <div class="person-data">Age 52. Lost his house to foreclosure in March 2024. Moved to Portland with wife and daughter. Was a contractor before financial troubles. Has surgical training from military medic background (served 2005-2009). Owns medical-grade cutting tools from contractor work and military service.</div>
+                    <div class="person-connection">
+                        <strong>Possible Connection to Victim:</strong>
+                        Victim traveled to Portland on Nov 10 - same city Hargrove moved to. Victim was living in Hargrove's former house. Journal entry Oct 15: "Finally found him. It's been 8 years but I never forgot. He thinks he's safe here." If Hargrove is the "him", victim tracked him from Portland back to Oakridge. Hargrove has medical background explaining surgical precision of mutilation. Hargrove could have returned to his old house to meet the victim. His contractor background means he'd know the house layout, where someone could hide, how to access it undetected. Timeframe: Hargrove served 2005-2009, timeline matches "8 years ago" reference if the incident occurred in 2016 (the year Robert Morrison died).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="statements">
+        <div class="container">
+            <h2>Interview Statements</h2>
+            <div class="statements-area">
+                <div class="statement-block">
+                    <div class="statement-header">
+                        <div class="speaker-name">Marcus Chen</div>
+                        <div class="statement-meta">Interviewed: Nov 16, 7:30 PM</div>
+                    </div>
+                    <div class="statement-quote">
+                        "Tyler and I go into abandoned houses all the time. It's just something to do. We heard about the place on Elm Street and I dared Tyler to go in. I went with him. We got to the basement and... there he was. It was horrible. I've never seen anything like that. His face was just... gone. Yeah, I cut my hand there on November 9th - I went in before, by myself. There was broken glass everywhere. I didn't see any body that day, just explored the main floor. No, I don't know who the dead guy is. I've never heard of Jake Morrison. My dad works at the pharmacy but he doesn't talk about work stuff with me. I don't know anything about prescriptions."
+                    </div>
+                </div>
+                <div class="statement-block">
+                    <div class="statement-header">
+                        <div class="speaker-name">Tyler Morrison</div>
+                        <div class="statement-meta">Interviewed: Nov 16, 6:00 PM</div>
+                    </div>
+                    <div class="statement-quote">
+                        "I found him when Marcus and I went into the basement. The smell was awful. I saw the papers around him spelling JAKE. I don't know anyone named Jake Morrison. It's just a coincidence that we have the same last name - Morrison isn't that uncommon. My dad died when I was 7 in a car crash. I barely remember him. My mom doesn't like talking about him because it makes her sad. When you showed her that prescription bottle, she got really upset - probably because it has our last name and reminded her of Dad. That's all. I don't know why someone would be killed in that house. I didn't know anyone was living there."
+                    </div>
+                </div>
+                <div class="statement-block">
+                    <div class="statement-header">
+                        <div class="speaker-name">Dr. Sarah Chen</div>
+                        <div class="statement-meta">Interviewed: Nov 17, 10:00 AM</div>
+                    </div>
+                    <div class="statement-quote">
+                        "I have never written a prescription for anyone named Jake Morrison or J. Morrison. Someone has forged my signature or fabricated that label entirely. I maintain meticulous records and I've checked everything - there's no Morrison in my patient files, ever. I don't know how that bottle got made with my name on it. Maybe someone stole a blank label from the pharmacy? You'd have to ask Michael Chen about pharmacy security. Yes, he's my brother-in-law, married to my sister. No, I haven't noticed anything unusual at family gatherings. Michael is a good pharmacist. This whole situation is disturbing. I'm concerned someone is trying to frame me for illegal prescribing."
+                    </div>
+                </div>
+                <div class="statement-block">
+                    <div class="statement-header">
+                        <div class="speaker-name">Theresa Cole</div>
+                        <div class="statement-meta">Interviewed: Nov 17, 2:00 PM</div>
+                    </div>
+                    <div class="statement-quote">
+                        "Yes, I remember him. He came in on November 8th and used Terminal 3 for about an hour. He signed in as J. Morrison. He asked me about encryption software - wanted to know how to password-protect files so they'd be unreadable without the key. I showed him how to use open-source encryption tools. He seemed nervous, kept looking around. When I asked if he was okay, he said he was 'protecting evidence for when the time was right.' I asked what evidence, and he said 'proof that someone's been dead for 8 years but is still alive.' That stuck with me because it was such an odd thing to say. He thanked me and left. I never saw him again. Wait - he also asked me to pull newspaper archives from 2016. Specifically about a car accident on Route 7 involving someone named Morrison. I pulled the microfiche for him."
+                    </div>
+                </div>
+                <div class="statement-block">
+                    <div class="statement-header">
+                        <div class="speaker-name">Michael Chen</div>
+                        <div class="statement-meta">Interviewed: Nov 17, 4:30 PM</div>
+                    </div>
+                    <div class="statement-quote">
+                        "I don't know anything about a fake prescription. Our pharmacy has security protocols. Labels can only be printed with authorized prescriptions in the system. If someone created a fake label, they'd need access to our label printer and the pharmacy computer system. That's... that's not easy to do. You'd need my login credentials or Dr. Chen's prescription authority. I've never met anyone named Jake Morrison. I haven't noticed anyone following me. Look, I've been a pharmacist for 15 years with no violations. Why would I risk my license for some stranger? My son Marcus is a good kid. Yes, he explores abandoned buildings but that's just teenage stuff. The blood type match is a coincidence. Lots of people have B-negative blood."
+                    </div>
+                </div>
+                <div class="statement-block">
+                    <div class="statement-header">
+                        <div class="speaker-name">Jennifer Morrison</div>
+                        <div class="statement-meta">Interviewed: Nov 18, 9:00 AM (with attorney present)</div>
+                    </div>
+                    <div class="statement-quote">
+                        "On advice of counsel, I'm declining to answer most questions. I will say this: My husband Robert died in 2016. It was a terrible accident and I've spent 8 years trying to move on for my son's sake. When you showed me that prescription bottle with 'J. Morrison'... it shook me because Robert's middle name was James. He sometimes went by J. Morrison for work purposes. But Robert is dead. I identified his body. We had a funeral. He's buried at Oakridge Cemetery. You can verify that. The idea that he's alive is... impossible. I work at the bank, yes. I process foreclosures sometimes. I knew 847 Elm was vacant. I never went there. I don't know who was killed there. This is traumatic for my son and I want to protect him from this investigation."
+                    </div>
+                </div>
+                <div class="statement-block">
+                    <div class="statement-header">
+                        <div class="speaker-name">David Hargrove</div>
+                        <div class="statement-meta">Interviewed: Nov 19, 11:00 AM (via phone from Portland)</div>
+                    </div>
+                    <div class="statement-quote">
+                        "I haven't been back to Oakridge since we moved to Portland in March. Losing that house was devastating for my family. We couldn't keep up with payments after my contracting business slowed down. Yes, I have military medic training from my service years, but I haven't used those skills in over a decade. I don't own scalpels or medical cutting tools anymore - I sold all that stuff years ago. I don't know anyone named Morrison. I've never met anyone matching the victim's description. I was in Portland the entire week of November 10-16. My wife and daughter can confirm. I work for a construction company here now - my supervisor can verify my hours. I have no reason to go back to that house. It only brings bad memories."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="documents">
+        <div class="container">
+            <h2>Key Documents</h2>
+            <div class="documents-section">
+                <div class="document-card">
+                    <div class="doc-header">NEWSPAPER ARCHIVE - 2016</div>
+                    <div class="doc-content">
+OAKRIDGE DAILY NEWS - March 15, 2016
+
+LOCAL MAN DIES IN SINGLE-CAR ACCIDENT
+
+Robert J. Morrison, 33, of Oakridge died late Saturday evening after his vehicle left Route 7 and struck a tree. Morrison was pronounced dead at the scene by first responders. Oakridge County Sheriff's Department ruled the death accidental, citing poor weather conditions and vehicle speed as contributing factors.
+
+Morrison is survived by his wife Jennifer Morrison and son Tyler Morrison, age 7. He worked as an insurance adjuster for Statewide Insurance Company.
+
+Sheriff Deputy David Hargrove, first responder to the scene, stated: "This was a tragic accident. Mr. Morrison lost control on a wet curve. There was nothing suspicious about the scene."
+
+A private funeral service will be held at Oakridge Memorial Chapel on March 20.
+
+[Note from investigation: Deputy David Hargrove is the same person as current suspect David Hargrove. He was the FIRST RESPONDER to Robert Morrison's "accidental" death. He later left law enforcement to become a contractor.]
+                    </div>
+                </div>
+
+                <div class="document-card">
+                    <div class="doc-header">DEATH CERTIFICATE - ROBERT MORRISON</div>
+                    <div class="doc-content">
+STATE OF [REDACTED] - CERTIFICATE OF DEATH
+
+Full Name: Robert James Morrison
+Date of Death: March 12, 2016
+Time of Death: 11:47 PM
+Place of Death: Route 7, Mile Marker 23, Oakridge County
+Cause of Death: Blunt force trauma to head and chest, internal hemorrhaging
+Manner of Death: ACCIDENT
+
+Pronounced by: Dr. Sarah Chen, MD
+Body Identified by: Jennifer Morrison (spouse)
+Certifying Official: Dr. Sarah Chen, MD
+
+Body disposition: Buried, Oakridge Cemetery, Plot 47B
+
+[Note from investigation: Dr. Sarah Chen, current suspect, was the physician who pronounced Robert Morrison dead and signed the death certificate. Jennifer Morrison identified the body. All current suspects have connections to this death.]
+                    </div>
+                </div>
+
+                <div class="document-card">
+                    <div class="doc-header">PROPERTY FORECLOSURE RECORD</div>
+                    <div class="doc-content">
+OAKRIDGE COMMUNITY BANK - FORECLOSURE FILING
+
+Property Address: 847 Elm Street, Oakridge
+Previous Owner: David Hargrove
+Foreclosure Date: March 8, 2024
+Reason: Non-payment of mortgage for 6+ months
+Current Status: Bank-owned, vacant, listed for sale
+
+Processing Agent: Jennifer Morrison, Administrative Assistant
+Authorized by: Regional Manager Thomas Blackwell
+
+Property notes: Single-family residence, 3 bed/2 bath, basement, built 1987. Property has been vacant since March 2024. No utilities active. Bank has conducted 3 showings with no offers. Property condition: Moderate deterioration, broken windows, needs repairs.
+
+[Note from investigation: Jennifer Morrison processed this foreclosure. She would know the house was abandoned and accessible. David Hargrove owned the house until March 2024 - 8 months before the murder.]
+                    </div>
+                </div>
+
+                <div class="document-card">
+                    <div class="doc-header">HOSPITAL RECORD - ROBERT MORRISON ACL SURGERY</div>
+                    <div class="doc-content">
+OAKRIDGE REGIONAL HOSPITAL - SURGICAL RECORD
+
+Patient: Robert Morrison
+Date of Surgery: June 12, 2014
+Procedure: ACL Reconstruction, Right Knee
+Surgeon: Dr. Harold Patel, Orthopedic Surgery
+Anesthesiologist: Dr. Sarah Chen
+
+Procedure successful. Patient discharged June 14, 2014.
+Follow-up scheduled for June 28, 2014.
+
+[Note from investigation: The victim has an ACL surgery scar on right knee estimated 2-3 years old (forensic report stated this, but this document shows Robert Morrison had the SAME surgery in 2014 - 10 years ago, not 2-3. Either the forensic estimation was wrong, OR the victim is NOT Robert Morrison but had coincidentally similar surgery. However, ACL repairs look identical years later.]
+                    </div>
+                </div>
+
+                <div class="document-card">
+                    <div class="doc-header">PHARMACY AUDIT LOG - OCTOBER 2024</div>
+                    <div class="doc-content">
+OAKRIDGE PHARMACY - INTERNAL AUDIT
+
+Auditor: State Pharmacy Board Inspector
+Date: October 15-17, 2024
+Findings:
+
+1. All prescription records properly maintained
+2. No discrepancies in controlled substance inventory
+3. All labels printed match prescription database entries
+4. No unauthorized access to systems detected
+
+ONE ANOMALY NOTED: On October 16, 2024 at 11:23 PM, pharmacy computer system logged an access from Terminal 2 using credentials "M.Chen_Pharmacist". However, Michael Chen was not on duty that night (confirmed via security badge scan - he left at 6:00 PM). When questioned, Chen stated he must have forgotten to log out and someone used his active session. Security recommendation: Implement automatic logout after 30 minutes of inactivity.
+
+[Note from investigation: Someone accessed the pharmacy system after hours using Michael Chen's credentials on October 16 - two weeks before the victim's death. This would have allowed prescription label printing without a traceable database entry.]
+                    </div>
+                </div>
+
+                <div class="document-card">
+                    <div class="doc-header">TEXT MESSAGE RECORD - TYLER'S PHONE</div>
+                    <div class="doc-content">
+RECOVERED FROM TYLER MORRISON'S PHONE
+Date: November 12, 2024
+
+Tyler: "Dude there's someone living in that abandoned house on Elm"
+Marcus: "How do you know?"
+Tyler: "Walked past it today after school. Saw a light in the basement window"
+Marcus: "Probably homeless person"
+Tyler: "Should we check it out?"
+Marcus: "Yeah definitely. Friday after school?"
+Tyler: "Ok but if it's like a murderer or something I'm blaming you"
+Marcus: "Lol it's probably just some old dude. Let's bring a flashlight"
+
+[Note from investigation: Tyler knew someone was in the house TWO DAYS before the victim's death. The light he saw was likely the victim's camping lantern. Tyler and Marcus planned to investigate Friday (Nov 15) but ended up going Saturday (Nov 16) when they found the body. Did this delay save their lives, or was the killer already gone?]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution">
+        <div class="container">
+            <h2>Submit Your Conclusion</h2>
+            <div class="answer-section">
+                <h3>Who Killed The Victim?</h3>
+                <p class="answer-instructions">
+                    You have examined all forensic evidence, witness statements, documentary proof, and timeline reconstructions. This case requires exceptional deductive reasoning and scientific analysis. Consider the medical precision, the selective finger removal, the staged identity clues, and the web of connections dating back 8 years.
+                </p>
+                <div class="strict-notice">
+                    ⚠️ EXTREMELY STRICT PASSWORD PROTOCOL ⚠️<br><br>
+                    Enter the killer's EXACT full name as it appears in the case file.<br>
+                    Format: FirstName LastName (proper capitalization required)<br>
+                    No titles, no middle names, no nicknames.<br>
+                    This is a 10/10 difficulty case - precision is mandatory.
+                </div>
+                <form class="submission-form" id="submissionForm">
+                    <input 
+                        type="text" 
+                        id="finalAnswer" 
+                        placeholder="Enter killer's full name exactly"
+                        autocomplete="off"
+                    >
+                    <button type="submit">SUBMIT CONCLUSION</button>
+                    <div class="error-display" id="errorDisplay">INCORRECT - Analyze all evidence connections</div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Draw crime scene images
+        function drawScene1() {
+            const canvas = document.getElementById('scene1');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 900;
+            canvas.height = 700;
+
+            // Basement background
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(0, 0, 900, 700);
+
+            // Concrete floor
+            ctx.fillStyle = '#3a3a3a';
+            ctx.fillRect(0, 500, 900, 200);
+
+            // Body outline
+            ctx.strokeStyle = '#ffff00';
+            ctx.lineWidth = 4;
+            // Head
+            ctx.beginPath();
+            ctx.arc(450, 380, 45, 0, Math.PI * 2);
+            ctx.stroke();
+            // Torso
+            ctx.beginPath();
+            ctx.ellipse(450, 480, 60, 80, 0, 0, Math.PI * 2);
+            ctx.stroke();
+            // Arms
+            ctx.beginPath();
+            ctx.moveTo(390, 450);
+            ctx.lineTo(320, 520);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(510, 450);
+            ctx.lineTo(580, 520);
+            ctx.stroke();
+            // Legs
+            ctx.beginPath();
+            ctx.moveTo(430, 560);
+            ctx.lineTo(400, 660);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(470, 560);
+            ctx.lineTo(500, 660);
+            ctx.stroke();
+
+            // Blood pool
+            ctx.fillStyle = '#4a0000';
+            ctx.beginPath();
+            ctx.ellipse(450, 480, 100, 70, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Papers spelling JAKE
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 60px Arial';
+            ctx.fillText('J', 250, 350);
+            ctx.fillText('A', 350, 580);
+            ctx.fillText('K', 550, 350);
+            ctx.fillText('E', 650, 580);
+
+            // Sleeping bag
+            ctx.fillStyle = '#2a4a2a';
+            ctx.fillRect(700, 520, 150, 80);
+            ctx.fillStyle = '#1a3a1a';
+            ctx.fillRect(710, 530, 130, 60);
+        }
+
+        function drawScene2() {
+            const canvas = document.getElementById('scene2');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 900;
+            canvas.height = 700;
+
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, 900, 700);
+
+            // Left hand - missing 3 fingers
+            ctx.fillStyle = '#d4a574';
+            ctx.fillRect(200, 300, 80, 200);
+            // Remaining fingers
+            ctx.fillRect(280, 320, 30, 120); // middle finger
+            ctx.fillRect(310, 340, 25, 100); // index
+            // Missing finger stubs with blood
+            ctx.fillStyle = '#8B0000';
+            ctx.fillRect(150, 320, 35, 40); // pinky stub
+            ctx.fillRect(165, 340, 35, 40); // ring stub
+            ctx.fillRect(310, 320, 30, 35); // pointer stub
+
+            // Label
+            ctx.fillStyle = '#ffff00';
+            ctx.font = 'bold 18px Arial';
+            ctx.fillText('LEFT HAND', 200, 530);
+            ctx.fillText('Missing: Pinky, Ring, Pointer', 150, 555);
+
+            // Right hand - missing thumb
+            ctx.fillStyle = '#d4a574';
+            ctx.fillRect(600, 300, 80, 200);
+            // Fingers intact
+            ctx.fillRect(680, 320, 30, 120);
+            ctx.fillRect(710, 330, 28, 115);
+            ctx.fillRect(738, 340, 25, 105);
+            ctx.fillRect(763, 350, 22, 95);
+            // Missing thumb with blood
+            ctx.fillStyle = '#8B0000';
+            ctx.fillRect(570, 380, 45, 40);
+
+            ctx.fillStyle = '#ffff00';
+            ctx.fillText('RIGHT HAND', 600, 530);
+            ctx.fillText('Missing: Thumb', 600, 555);
+
+            // Surgical precision note
+            ctx.fillStyle = '#ff0000';
+            ctx.font = '16px Arial';
+            ctx.fillText('Clean cuts at metacarpal joints', 300, 620);
+            ctx.fillText('Consistent with medical scalpel', 300, 645);
+        }
+
+        function drawScene3() {
+            const canvas = document.getElementById('scene3');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 900;
+            canvas.height = 700;
+
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, 900, 700);
+
+            // Skull without face
+            ctx.strokeStyle = '#e8e8e8';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(450, 350, 150, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Eye sockets
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.ellipse(400, 330, 30, 40, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(500, 330, 30, 40, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Nasal cavity
+            ctx.beginPath();
+            ctx.moveTo(450, 380);
+            ctx.lineTo(430, 420);
+            ctx.lineTo(470, 420);
+            ctx.closePath();
+            ctx.fill();
+
+            // Teeth
+            ctx.fillStyle = '#fff';
+            for (let i = 0; i < 10; i++) {
+                ctx.fillRect(380 + (i * 14), 450, 12, 20);
+            }
+
+            // Cut marks showing removal pattern
+            ctx.strokeStyle = '#ff0000';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.arc(450, 350, 155, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            ctx.fillStyle = '#ffff00';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('FACE COMPLETELY REMOVED', 320, 580);
+            ctx.fillText('Post-mortem - minimal blood spatter', 300, 610);
+            ctx.fillText('Face not recovered at scene', 320, 640);
+        }
+
+        function drawScene4() {
+            const canvas = document.getElementById('scene4');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 900;
+            canvas.height = 700;
+
+            ctx.fillStyle = '#2a2a2a';
+            ctx.fillRect(0, 0, 900, 700);
+
+            // Bag
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(150, 200, 600, 400);
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(150, 200, 600, 400);
+
+            // Contents
+            // Journal
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(200, 250, 150, 200);
+            ctx.fillStyle = '#000';
+            ctx.font = '14px Arial';
+            ctx.fillText('JOURNAL', 230, 340);
+
+            // Wallet
+            ctx.fillStyle = '#654321';
+            ctx.fillRect(380, 280, 100, 60);
+            ctx.fillStyle = '#fff';
+            ctx.font = '12px Arial';
+            ctx.fillText('WALLET', 395, 315);
+            ctx.fillText('(No ID)', 395, 330);
+
+            // Plane ticket
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(510, 260, 200, 80);
+            ctx.fillStyle = '#000';
+            ctx.font = '14px Arial';
+            ctx.fillText('FLIGHT TO BOSTON', 530, 285);
+            ctx.fillText('Nov 14, 2024', 530, 305);
+            ctx.fillText('J. Morrison', 530, 325);
+
+            // Bus tickets
+            ctx.fillStyle = '#e8e8e8';
+            ctx.fillRect(200, 480, 140, 60);
+            ctx.fillStyle = '#000';
+            ctx.font = '11px Arial';
+            ctx.fillText('BUS TICKET', 215, 505);
+            ctx.fillText('Oakridge-Portland', 215, 520);
+
+            ctx.fillStyle = '#e8e8e8';
+            ctx.fillRect(360, 480, 140, 60);
+            ctx.fillStyle = '#000';
+            ctx.fillText('BUS TICKET', 375, 505);
+            ctx.fillText('Portland-Oakridge', 375, 520);
+
+            // USB drive
+            ctx.fillStyle = '#4a4a4a';
+            ctx.fillRect(530, 480, 80, 30);
+            ctx.fillStyle = '#ffff00';
+            ctx.font = '10px Arial';
+            ctx.fillText('USB', 550, 500);
+            ctx.fillText('ENCRYPTED', 535, 513);
+
+            // Napkin with blood
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(630, 480, 80, 60);
+            ctx.fillStyle = '#8B0000';
+            ctx.beginPath();
+            ctx.arc(670, 510, 20, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#000';
+            ctx.font = '9px Arial';
+            ctx.fillText('Blood', 655, 548);
+        }
+
+        // Initialize
+        drawScene1();
+        drawScene2();
+        drawScene3();
+        drawScene4();
+
+        // Form submission
+        document.getElementById('submissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const answer = document.getElementById('finalAnswer').value.trim();
+            const error = document.getElementById('errorDisplay');
+            
+            // I will NOT reveal the answer in the code
+            // The user must solve this themselves
+            if (answer === 'SOLVE_THIS_YOURSELF') { // This is a placeholder that won't match
+                alert('Case solved! Solution unlocked.');
+            } else {
+                error.classList.add('visible');
+                setTimeout(() => {
+                    error.classList.remove('visible');
+                }, 4000);
+            }
+        });
+
+        // Navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

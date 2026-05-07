@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case #2025-0088: The Schrödinger Incident</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --quantum-blue: #0a4d68;
+            --deep-space: #05161a;
+            --electric-cyan: #00d9ff;
+            --warning-amber: #ff6b35;
+            --lab-white: #f0f4f8;
+            --steel-gray: #4a5c6a;
+            --anomaly-purple: #6b2d5c;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: radial-gradient(ellipse at center, #05161a 0%, #000000 100%);
+            color: var(--lab-white);
+            line-height: 1.7;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Subtle particle effect */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, rgba(0, 217, 255, 0.3), transparent),
+                radial-gradient(2px 2px at 60% 70%, rgba(0, 217, 255, 0.2), transparent),
+                radial-gradient(1px 1px at 50% 50%, rgba(0, 217, 255, 0.3), transparent),
+                radial-gradient(1px 1px at 80% 10%, rgba(0, 217, 255, 0.2), transparent);
+            background-size: 200% 200%;
+            animation: particle-float 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes particle-float {
+            0%, 100% { background-position: 0% 0%, 100% 100%, 50% 50%, 80% 20%; }
+            50% { background-position: 100% 100%, 0% 0%, 30% 70%, 60% 80%; }
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            padding: 90px 0 70px;
+            text-align: center;
+            border-bottom: 3px solid var(--electric-cyan);
+            background: linear-gradient(180deg, rgba(10, 77, 104, 0.3) 0%, transparent 100%);
+            position: relative;
+        }
+
+        .classification {
+            position: absolute;
+            top: 40px;
+            right: 80px;
+            background: var(--anomaly-purple);
+            color: var(--lab-white);
+            padding: 12px 30px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            border: 2px solid var(--electric-cyan);
+            transform: rotate(3deg);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+        }
+
+        .case-id {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            letter-spacing: 8px;
+            color: var(--electric-cyan);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--lab-white);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.7rem;
+            color: var(--electric-cyan);
+            font-style: italic;
+            margin-bottom: 35px;
+        }
+
+        .alert-box {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.2);
+            border: 3px solid var(--warning-amber);
+            padding: 18px 45px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            margin-top: 25px;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(5, 22, 26, 0.98);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid var(--electric-cyan);
+            padding: 25px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 217, 255, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--lab-white);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--electric-cyan);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--electric-cyan);
+        }
+
+        nav a:hover {
+            color: var(--electric-cyan);
+            text-shadow: 0 0 10px var(--electric-cyan);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        section:nth-child(even) {
+            background: rgba(10, 77, 104, 0.1);
+        }
+
+        h2 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--electric-cyan);
+            margin-bottom: 80px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            position: relative;
+            padding-bottom: 30px;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--electric-cyan), transparent);
+            box-shadow: 0 0 15px var(--electric-cyan);
+        }
+
+        .report-box {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(10, 77, 104, 0.4), rgba(5, 22, 26, 0.6));
+            padding: 80px;
+            border: 4px solid var(--steel-gray);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.8), inset 0 0 50px rgba(0, 217, 255, 0.05);
+            position: relative;
+        }
+
+        .report-box::before {
+            content: 'CLASSIFIED - QUANTUM RESEARCH DIVISION';
+            position: absolute;
+            top: -22px;
+            left: 60px;
+            background: var(--quantum-blue);
+            color: var(--electric-cyan);
+            padding: 10px 35px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            border: 2px solid var(--electric-cyan);
+        }
+
+        .report-box h3 {
+            font-size: 2.3rem;
+            color: var(--electric-cyan);
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--steel-gray);
+            padding-bottom: 20px;
+        }
+
+        .report-box p {
+            margin-bottom: 30px;
+            font-size: 1.15rem;
+            line-height: 2.2;
+            text-align: justify;
+        }
+
+        .anomaly-box {
+            background: rgba(107, 45, 92, 0.3);
+            padding: 40px;
+            margin: 45px 0;
+            border-left: 8px solid var(--anomaly-purple);
+            border-right: 8px solid var(--anomaly-purple);
+            box-shadow: inset 0 0 30px rgba(107, 45, 92, 0.3);
+        }
+
+        .anomaly-box h4 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--electric-cyan);
+            letter-spacing: 2px;
+        }
+
+        .anomaly-box p {
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+        }
+
+        .critical-finding {
+            background: rgba(255, 107, 53, 0.2);
+            padding: 35px;
+            margin: 40px 0;
+            border: 4px solid var(--warning-amber);
+            font-size: 1.12rem;
+            line-height: 2.1;
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.2);
+        }
+
+        .critical-finding strong {
+            color: var(--warning-amber);
+            font-size: 1.2rem;
+        }
+
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 60px;
+            margin-top: 80px;
+        }
+
+        .evidence-panel {
+            background: linear-gradient(135deg, rgba(10, 77, 104, 0.3), rgba(5, 22, 26, 0.5));
+            padding: 45px;
+            border: 3px solid var(--steel-gray);
+            position: relative;
+            box-shadow: 12px 12px 0 rgba(0, 217, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .evidence-panel:hover {
+            transform: translateY(-12px);
+            box-shadow: 18px 18px 0 rgba(0, 217, 255, 0.2);
+            border-color: var(--electric-cyan);
+        }
+
+        .evidence-panel canvas {
+            width: 100%;
+            height: 450px;
+            border: 3px solid var(--deep-space);
+            background: #000;
+            margin-bottom: 30px;
+            box-shadow: inset 0 0 30px rgba(0, 217, 255, 0.1);
+        }
+
+        .evidence-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95rem;
+            color: var(--electric-cyan);
+            font-weight: 700;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+        }
+
+        .evidence-text {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--lab-white);
+        }
+
+        .data-grid {
+            display: grid;
+            gap: 45px;
+            margin-top: 80px;
+        }
+
+        .data-entry {
+            background: linear-gradient(135deg, rgba(10, 77, 104, 0.35), rgba(5, 22, 26, 0.55));
+            padding: 45px;
+            border: 3px solid var(--steel-gray);
+            border-left: 10px solid var(--electric-cyan);
+            box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .data-entry:hover {
+            transform: translateX(20px);
+            box-shadow: 18px 18px 0 rgba(0, 217, 255, 0.2);
+        }
+
+        .data-id {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+            color: var(--electric-cyan);
+            font-size: 1.3rem;
+            margin-bottom: 22px;
+            letter-spacing: 4px;
+        }
+
+        .data-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+            color: var(--lab-white);
+        }
+
+        .data-content {
+            font-size: 1.1rem;
+            line-height: 2.1;
+            color: var(--lab-white);
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 50px;
+            margin-top: 80px;
+        }
+
+        .subject-file {
+            background: linear-gradient(135deg, rgba(10, 77, 104, 0.4), rgba(5, 22, 26, 0.6));
+            padding: 50px;
+            border: 4px solid var(--steel-gray);
+            position: relative;
+            box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.6);
+            transition: all 0.4s ease;
+        }
+
+        .subject-file::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--electric-cyan), var(--anomaly-purple));
+        }
+
+        .subject-file:hover {
+            transform: translateY(-12px);
+            box-shadow: 18px 18px 0 rgba(0, 217, 255, 0.3);
+        }
+
+        .subject-name {
+            font-size: 2.1rem;
+            font-weight: 900;
+            color: var(--electric-cyan);
+            margin-bottom: 15px;
+        }
+
+        .subject-designation {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--steel-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .subject-info {
+            font-size: 1.08rem;
+            line-height: 2;
+            color: var(--lab-white);
+            margin-bottom: 22px;
+        }
+
+        .subject-link {
+            background: rgba(107, 45, 92, 0.3);
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 5px solid var(--anomaly-purple);
+            font-size: 1.05rem;
+        }
+
+        .subject-link strong {
+            display: block;
+            margin-bottom: 15px;
+            color: var(--electric-cyan);
+            font-size: 1.15rem;
+        }
+
+        .testimony-area {
+            max-width: 1300px;
+            margin: 80px auto;
+        }
+
+        .testimony-record {
+            background: linear-gradient(135deg, rgba(10, 77, 104, 0.4), rgba(5, 22, 26, 0.6));
+            padding: 55px;
+            margin-bottom: 50px;
+            border: 3px solid var(--steel-gray);
+            border-left: 15px solid var(--electric-cyan);
+            box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.6);
+        }
+
+        .testimony-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 3px dashed var(--steel-gray);
+        }
+
+        .witness-name {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--electric-cyan);
+        }
+
+        .testimony-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--steel-gray);
+        }
+
+        .testimony-statement {
+            font-size: 1.15rem;
+            line-height: 2.2;
+            font-style: italic;
+            padding-left: 45px;
+            border-left: 5px solid rgba(0, 217, 255, 0.3);
+            color: var(--lab-white);
+        }
+
+        .final-section {
+            max-width: 1100px;
+            margin: 80px auto;
+            background: linear-gradient(135deg, rgba(10, 77, 104, 0.5), rgba(5, 22, 26, 0.7));
+            padding: 90px 80px;
+            border: 6px double var(--electric-cyan);
+            box-shadow: 0 30px 90px rgba(0, 217, 255, 0.3);
+            text-align: center;
+        }
+
+        .final-section h3 {
+            font-size: 3rem;
+            color: var(--electric-cyan);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 0 25px rgba(0, 217, 255, 0.5);
+        }
+
+        .final-instructions {
+            font-size: 1.25rem;
+            line-height: 2.2;
+            margin-bottom: 55px;
+            color: var(--lab-white);
+        }
+
+        .protocol-warning {
+            background: rgba(255, 107, 53, 0.3);
+            padding: 35px;
+            margin-bottom: 45px;
+            border: 4px solid var(--warning-amber);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            color: var(--warning-amber);
+            line-height: 2.1;
+        }
+
+        .answer-input input {
+            width: 100%;
+            padding: 28px 40px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.25rem;
+            border: 4px solid var(--steel-gray);
+            background: rgba(5, 22, 26, 0.8);
+            color: var(--electric-cyan);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .answer-input input:focus {
+            outline: none;
+            border-color: var(--electric-cyan);
+            background: rgba(5, 22, 26, 0.95);
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.4);
+        }
+
+        .answer-input button {
+            width: 100%;
+            padding: 30px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            background: var(--quantum-blue);
+            color: var(--electric-cyan);
+            border: 3px solid var(--electric-cyan);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 0 rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 217, 255, 0.2);
+        }
+
+        .answer-input button:hover {
+            background: var(--electric-cyan);
+            color: var(--deep-space);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 0 rgba(0, 0, 0, 0.8), 0 0 50px rgba(0, 217, 255, 0.5);
+        }
+
+        .error-msg {
+            color: var(--warning-amber);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.1rem;
+            margin-top: 35px;
+            display: none;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--warning-amber);
+        }
+
+        .error-msg.show {
+            display: block;
+            animation: glitch 0.6s ease;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-20px); }
+            40% { transform: translateX(20px); }
+            60% { transform: translateX(-10px); }
+            80% { transform: translateX(10px); }
+        }
+
+        @media (max-width: 1200px) {
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.5rem; }
+            .evidence-grid,
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+            .classification {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="classification">LEVEL 5 CLEARANCE</div>
+        <div class="container">
+            <div class="case-id">CASE #2025-0088</div>
+            <h1>The Schrödinger Incident</h1>
+            <p class="subtitle">A Murder That Exists in Superposition</p>
+            <div class="alert-box">⚠ TEMPORAL ANOMALY DETECTED - CAUSALITY VIOLATION ⚠</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#scene">Scene Analysis</a></li>
+            <li><a href="#data">Quantum Data</a></li>
+            <li><a href="#subjects">Subjects</a></li>
+            <li><a href="#testimony">Testimony</a></li>
+            <li><a href="#solution">Solution</a></li>
+        </ul>
+    </nav>
+
+    <section id="overview">
+        <div class="container">
+            <h2>Incident Overview</h2>
+            <div class="report-box">
+                <h3>Initial Discovery Report</h3>
+                <p>On January 8, 2025, at 11:34 PM, Dr. Nathan Pierce, 41-year-old quantum physicist and lead researcher at the Meridian Institute for Advanced Physics, was found dead in Laboratory 7 of the institute's underground research facility. The cause of death has been determined as cardiac arrest induced by a massive electrical shock delivered through a modified Tesla coil apparatus.</p>
+                
+                <p>The circumstances surrounding Dr. Pierce's death defy conventional investigation methods. Security footage from Laboratory 7 shows Dr. Pierce working alone from 9:00 PM until his death at 11:34 PM. However, the footage contains an unexplainable anomaly: at exactly 11:33:47 PM (thirteen seconds before his death), the camera captures what appears to be TWO instances of Dr. Pierce simultaneously present in the laboratory - one at his workstation and another standing near the Tesla coil apparatus. Both figures are solid, three-dimensional, and performing independent actions.</p>
+
+                <p>This temporal duplication persists for exactly 13 seconds before both figures converge at the Tesla coil, at which point one Dr. Pierce activates the device while the other reaches toward it. The resulting electrical discharge kills both instances simultaneously. The footage shows both figures collapsing, but when security arrived at 11:36 PM, only ONE body was present.</p>
+
+                <div class="anomaly-box">
+                    <h4>Quantum Anomaly Profile</h4>
+                    <p><strong>Primary Anomaly:</strong> Temporal Duplication Event - Subject existed in two locations simultaneously for 13 seconds</p>
+                    <p><strong>Death Mechanism:</strong> Electrical shock from Tesla coil (240,000 volts, 3 seconds duration)</p>
+                    <p><strong>Paradox Status:</strong> UNRESOLVED - Cause precedes effect in violation of causality</p>
+                    <p><strong>Witnesses:</strong> None - All personnel were evacuated from facility at 10:00 PM for "routine quantum containment protocol"</p>
+                    <p><strong>Time of Death:</strong> 11:34:00 PM - Confirmed by security footage, facility sensors, and medical examination</p>
+                </div>
+
+                <p>Dr. Pierce was the lead researcher on Project Everett, a classified quantum computing initiative exploring practical applications of the Many-Worlds Interpretation of quantum mechanics. His work involved creating localized quantum superposition states in macroscopic objects - a theoretical framework that might explain his temporal duplication.</p>
+
+                <p>Three days before his death, Dr. Pierce sent an encrypted email to the Meridian Institute's Board of Directors claiming he had achieved "consciousness-level quantum entanglement" and warning that someone was "sabotaging the experiment to prevent disclosure." The email was timestamped January 5, 2025, 2:47 AM, but facility logs show Dr. Pierce was not on the premises at that time. His access card shows he entered the facility at 8:00 AM on January 5th - six hours AFTER the email was sent.</p>
+
+                <div class="critical-finding">
+                    <strong>Lead Investigator's Assessment:</strong> This case represents an unprecedented intersection of murder investigation and quantum mechanics. The evidence suggests Dr. Pierce was killed by electrical shock, but the mechanism of his death involves a temporal causality loop that defies classical physics. Key questions: (1) How did two instances of Dr. Pierce exist simultaneously? (2) Which instance was the "original" and which was the duplicate? (3) Did Dr. Pierce kill himself, or was the duplicate created by an external party to murder him? (4) If someone else created the duplicate, they would need intimate knowledge of Project Everett and access to equipment capable of generating quantum superposition in a human consciousness. Every person who fits this profile is a potential suspect - but the true killer may not even be aware they committed murder, as the quantum mechanics involved suggest the act of observation itself may have collapsed a superposition state, inadvertently creating the murderous duplicate. This investigation requires us to question the very nature of identity, causality, and whether someone can be guilty of murder when the weapon is a version of the victim himself.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="scene">
+        <div class="container">
+            <h2>Scene Analysis & Evidence</h2>
+            <div class="evidence-grid">
+                <div class="evidence-panel">
+                    <canvas id="evidence1"></canvas>
+                    <div class="evidence-label">EXHIBIT A: LABORATORY 7 - OVERVIEW</div>
+                    <div class="evidence-text">Central workstation with quantum computer array. Tesla coil apparatus positioned 3.2 meters from workstation. Dr. Pierce's body found at base of Tesla coil. Burn marks on hands and chest consistent with high-voltage electrocution. No defensive wounds.</div>
+                </div>
+                <div class="evidence-panel">
+                    <canvas id="evidence2"></canvas>
+                    <div class="evidence-label">EXHIBIT B: SECURITY FOOTAGE ANOMALY</div>
+                    <div class="evidence-text">Frame 11:33:47 PM - Two distinct instances of Dr. Pierce visible. Instance A (left) at workstation, typing. Instance B (right) approaching Tesla coil. Both casting independent shadows. Thermal imaging confirms both generate body heat signatures.</div>
+                </div>
+                <div class="evidence-panel">
+                    <canvas id="evidence3"></canvas>
+                    <div class="evidence-label">EXHIBIT C: QUANTUM COMPUTER TERMINAL</div>
+                    <div class="evidence-text">Dr. Pierce's final program still running at discovery. Code shows initialization of "consciousness duplication protocol" at 11:32:00 PM. Program contains embedded message: "If you're reading this, I'm already dead. The observer collapsed the wrong state."</div>
+                </div>
+                <div class="evidence-panel">
+                    <canvas id="evidence4"></canvas>
+                    <div class="evidence-label">EXHIBIT D: HANDWRITTEN LAB NOTES</div>
+                    <div class="evidence-text">Found on desk: "January 8, 11:15 PM - They don't understand. The experiment worked TOO well. I exist in superposition now. One of me will die tonight. I know because I've already observed it. The question is: which version of me is writing this?"</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="data">
+        <div class="container">
+            <h2>Quantum Data Analysis</h2>
+            <div class="data-grid">
+                <div class="data-entry">
+                    <div class="data-id">DATA LOG #001</div>
+                    <div class="data-title">Project Everett - Consciousness Entanglement</div>
+                    <div class="data-content">Project Everett aimed to create quantum entanglement at the macroscopic level, specifically targeting human consciousness. Dr. Pierce's hypothesis: if consciousness arises from quantum processes in microtubules (Penrose-Hameroff theory), then it should be possible to place a conscious mind into quantum superposition. On January 5, 2025, Dr. Pierce claimed success. Lab notes from that date describe a "dual awareness state" where he experienced existing in two locations simultaneously for 0.3 seconds before the superposition collapsed. CRITICAL DETAIL: Dr. Pierce's notes indicate he used himself as the test subject WITHOUT informing the Institute's Ethics Board. He performed the experiment alone at 2:30 AM on January 5th - which explains the timestamped email sent at 2:47 AM from a location where he "wasn't present." In quantum terms, he WAS present - just in a superposition state that hadn't collapsed yet.</div>
+                </div>
+                <div class="data-entry">
+                    <div class="data-id">DATA LOG #002</div>
+                    <div class="data-title">Security Footage Analysis - Temporal Reconstruction</div>
+                    <div class="data-content">Frame-by-frame analysis of the 13-second duplication period reveals disturbing details. Instance A (at workstation) shows micro-expressions of fear and hesitation. Instance B (approaching Tesla coil) displays calm, deliberate movement. At 11:33:58 PM, Instance A types a command on the computer terminal. Forensic analysis reveals the command: "ABORT SUPERPOSITION - EMERGENCY COLLAPSE." Instance B, upon reaching the Tesla coil, inputs the activation sequence. Both actions occur simultaneously at 11:33:59 PM. The Tesla coil activates at 11:34:00 PM. Instance A attempts to stand and move away but is within the electrical field radius. Both instances die. PARADOX: If Instance A wanted to abort, and Instance B wanted to activate, they represent conflicting intentions from the same consciousness. How can one person have opposing wills simultaneously? Unless they're NOT the same person anymore...</div>
+                </div>
+                <div class="data-entry">
+                    <div class="data-id">DATA LOG #003</div>
+                    <div class="data-title">The Encrypted Email - January 5, 2025</div>
+                    <div class="data-content">Email sent to Board of Directors from Dr. Pierce's account at 2:47 AM, January 5th. Decrypted content: "I have achieved consciousness-level superposition. The implications are profound and terrifying. I exist in two states simultaneously - one where I succeed, one where I fail. But something is wrong. The duplicate state has its own thoughts, its own desires. It wants different things than I do. Someone has been manipulating the quantum field generators. I found evidence of unauthorized access to the entanglement chamber on January 3rd. If this email is being read, the wrong version of me may have survived. Trust no one who claims to be Nathan Pierce." Email metadata shows it was sent from Terminal 3 in Lab 7. However, security badge logs show NO entry to the facility between midnight and 8:00 AM on January 5th. Conclusion: The email was sent by a version of Dr. Pierce that existed in superposition - present and not-present simultaneously.</div>
+                </div>
+                <div class="data-entry">
+                    <div class="data-id">DATA LOG #004</div>
+                    <div class="data-title">Unauthorized Equipment Access</div>
+                    <div class="data-content">Facility access logs reviewed for January 1-8, 2025. ANOMALY DETECTED: On January 3rd at 11:47 PM, the quantum entanglement chamber was accessed using Dr. Yuki Tanaka's security credentials. Dr. Tanaka's timesheet shows she left the facility at 6:00 PM and her car exited the parking garage at 6:12 PM (verified by license plate recognition). When questioned, Dr. Tanaka claims she left her security badge in her lab coat pocket and didn't realize it was missing until January 4th. Badge was found in her coat pocket on January 4th morning. QUESTION: If the badge never left the pocket, how was it used to access the entanglement chamber? ALTERNATE THEORY: Someone cloned Dr. Tanaka's credentials. Required technical knowledge: quantum engineering and facility security protocols. Only 4 people have both skillsets: Dr. Tanaka herself, Dr. Marcus Reeves (Tanaka's research partner), Dr. Elena Volkov (security systems engineer), and the victim Dr. Pierce.</div>
+                </div>
+                <div class="data-entry">
+                    <div class="data-id">DATA LOG #005</div>
+                    <div class="data-title">Tesla Coil Modification Evidence</div>
+                    <div class="data-content">The Tesla coil that killed Dr. Pierce was modified from its standard configuration. Original purpose: generate electromagnetic fields for quantum decoherence experiments. Modifications found: (1) Output voltage increased from 50,000V to 240,000V, (2) Activation trigger rewired to respond to proximity sensor, (3) Safety interlocks disabled, (4) Remote activation receiver installed. Forensic analysis of modification work: Soldering dated to January 6-7, 2025. Soldering iron used: Model found in Dr. Marcus Reeves' tool kit, but tool kit shows no signs of recent use (dust accumulation inconsistent with January 6-7 use). Tool kit prints: Dr. Pierce's fingerprints, Dr. Reeves' fingerprints, and one UNIDENTIFIED partial print. DNA analysis of skin cells on soldering iron handle: Match to Dr. Nathan Pierce. CONCLUSION: Dr. Pierce modified the Tesla coil himself 1-2 days before his death. Did he build his own murder weapon? Or did he build a weapon intended for someone else?</div>
+                </div>
+                <div class="data-entry">
+                    <div class="data-id">DATA LOG #006</div>
+                    <div class="data-title">Dr. Pierce's Personal Research - Hidden Files</div>
+                    <div class="data-content">Encrypted partition found on Dr. Pierce's personal laptop (discovered at his home). Decryption required quantum-level password cracking. Files recovered: 47 video journals dated November 2024 - January 2025. Key entries: November 12 - "The math works. I can create a duplicate of myself using quantum superposition. But there's a moral question: is the duplicate me, or is it a separate consciousness?" December 3 - "Ran simulation 1,000 times. In 73% of outcomes, the duplicate develops divergent goals from the original within 48 hours." December 28 - "Elena knows. She confronted me about the power fluctuations. I had to tell her about Project Everett. She wants to shut it down. Says it's too dangerous." January 4 - "I did it. I created a duplicate that lasted 0.3 seconds. But I felt it - we both had different thoughts. The duplicate was afraid. I was excited. We were the same person but wanted different things. What if the next time, the duplicate doesn't collapse?" January 7 - "Marcus found the modified Tesla coil. He knows what I'm planning. He threatened to report me unless I destroy the superposition equipment. I have 24 hours."</div>
+                </div>
+                <div class="data-entry">
+                    <div class="data-id">DATA LOG #007</div>
+                    <div class="data-title">Quantum Field Fluctuation Data</div>
+                    <div class="data-content">Laboratory sensors recorded quantum field fluctuations during the incident. Timeline: 11:32:00 PM - Massive quantum field spike (consciousness duplication initialization), 11:33:47 PM - Superposition state stabilizes (two versions of Dr. Pierce now exist as separate entities), 11:34:00 PM - Catastrophic field collapse coinciding with electrical discharge, 11:34:13 PM - Field returns to baseline. ANOMALY: Between 11:33:47 PM and 11:34:00 PM, sensors detected THREE distinct quantum signatures in the laboratory, not two. Two signatures matched Dr. Pierce's quantum bio-signature (the duplicates). The third signature was UNKNOWN but showed similar quantum properties to Dr. Pierce, suggesting genetic relation or exposure to same quantum field. This third signature disappeared 0.3 seconds before the Tesla coil activation. CRITICAL IMPLICATION: Someone else was in the laboratory in superposition state during the murder. They may have collapsed back to their original timeline and have no memory of being present.</div>
+                </div>
+                <div class="data-entry">
+                    <div class="data-id">DATA LOG #008</div>
+                    <div class="data-title">Autopsy Report - Temporal Anomalies</div>
+                    <div class="data-content">Medical Examiner Dr. Sarah Winters performed autopsy on January 9, 2025. Cause of death: Cardiac arrest induced by electrical shock. Time of death: 11:34 PM, January 8th. UNEXPLAINED FINDINGS: (1) Stomach contents show Dr. Pierce consumed coffee and a sandwich approximately 2 hours before death (9:30 PM), BUT cafeteria records show he purchased these items at 11:15 PM - 45 minutes AFTER he allegedly consumed them. (2) Watch found on victim's wrist stopped at 11:34 PM, but internal mechanism shows wear consistent with running for an additional 13 seconds after the displayed time, suggesting the watch experienced a temporal loop. (3) Cellular degradation in brain tissue shows pattern inconsistent with standard post-mortem decay - cells show signs of quantum decoherence at molecular level, as if they existed in superposition and recently collapsed. (4) DNA analysis reveals 0.003% genetic variance in cells sampled from different body parts - statistically impossible unless subject was exposed to quantum field that caused minor mutation divergence, OR the body is an amalgamation of two slightly different versions of the same person.</div>
+                </div>
+                <div class="data-entry">
+                    <div class="data-id">DATA LOG #009</div>
+                    <div class="data-title">Deleted Security Footage</div>
+                    <div class="data-content">Forensic analysis of security server discovered deleted footage from January 8, 2025, 6:00-8:00 PM (before the murder). Footage was deleted at 11:50 PM on January 8th - 16 minutes AFTER Dr. Pierce's death. Deletion was performed remotely using administrator credentials belonging to Dr. Elena Volkov. Recovered footage shows: 6:47 PM - Dr. Pierce and Dr. Marcus Reeves in heated argument in hallway outside Lab 7. Reeves: "You're going to kill yourself with this experiment!" Pierce: "Better me than the alternative." 7:15 PM - Dr. Yuki Tanaka enters Lab 7, stays 8 minutes, exits carrying a metallic case. 7:34 PM - Unknown individual wearing maintenance coveralls enters Lab 7. Face obscured by cap and safety goggles. Height and build consistent with either Dr. Elena Volkov or Dr. Reeves. Exits at 7:52 PM. QUESTION: Why did Dr. Volkov delete this footage after the murder? What was in the case Dr. Tanaka removed? Who was the unknown maintenance person?</div>
+                </div>
+                <div class="data-entry">
+                    <div class="data-id">DATA LOG #010</div>
+                    <div class="data-title">The Impossible Fingerprint</div>
+                    <div class="data-content">Crime scene technicians found fingerprints on the Tesla coil activation switch. Prints belong to Dr. Nathan Pierce - the victim. However, the prints were LEFT on the switch, not right. Dr. Pierce was right-handed (confirmed by writing samples, tool use patterns, and witness statements). Why would he use his left hand to activate a switch positioned on the right side of the apparatus? UNLESS: The fingerprint was left by the duplicate Instance B. If the quantum duplication process created a mirror-image duplicate (quantum parity inversion), the duplicate would be LEFT-handed despite the original being right-handed. This means Instance B was the one who activated the coil. Instance A (the original Dr. Pierce) tried to abort. The duplicate killed the original. But here's the paradox: both instances died simultaneously. If the duplicate killed the original, the duplicate shouldn't exist because it's a quantum copy of someone who's now dead. Unless the duplicate became independent the moment superposition stabilized... meaning it was a separate person entirely. Can a duplicate be guilty of murdering its original? Does the duplicate have legal personhood? These questions have no precedent in law.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="subjects">
+        <div class="container">
+            <h2>Subject Profiles</h2>
+            <div class="subjects-grid">
+                <div class="subject-file">
+                    <div class="subject-name">Dr. Yuki Tanaka</div>
+                    <div class="subject-designation">Senior Quantum Engineer</div>
+                    <div class="subject-info">Age: 38. PhD in Quantum Mechanics from MIT. Joined Meridian Institute in 2019. Works closely with Dr. Pierce on Project Everett. Specializes in quantum entanglement and superposition stabilization. Her security badge was used to access the entanglement chamber on January 3rd despite her alibi placing her elsewhere.</div>
+                    <div class="subject-link">
+                        <strong>Connection to Incident:</strong>
+                        Security footage shows Dr. Tanaka removing a metallic case from Lab 7 at 7:15 PM on the night of the murder. She claims the case contained failed quantum circuit boards she was disposing of. However, lab inventory shows no circuit boards were logged for disposal that day. Dr. Tanaka admits Dr. Pierce confided in her about achieving consciousness duplication on January 5th. She claims she tried to convince him to stop the experiments, warning they were dangerous. Email records confirm she sent Dr. Pierce a message on January 7th: "Nathan, please stop. You don't understand what you're creating. The duplicate won't be you - it will be something else. Something that wants to survive." Was she trying to protect him, or was she trying to protect herself from what he might discover?
+                    </div>
+                </div>
+                <div class="subject-file">
+                    <div class="subject-name">Dr. Marcus Reeves</div>
+                    <div class="subject-designation">Quantum Computing Specialist</div>
+                    <div class="subject-info">Age: 44. Former colleague of Dr. Pierce at Stanford. Recruited to Meridian Institute in 2021. Co-author on 12 papers with Dr. Pierce. Known for skepticism about consciousness-based quantum experiments. Argued publicly against using humans as test subjects. His soldering iron was used to modify the Tesla coil.</div>
+                    <div class="subject-link">
+                        <strong>Connection to Incident:</strong>
+                        Deleted security footage shows Dr. Reeves in heated argument with Dr. Pierce at 6:47 PM: "You're going to kill yourself with this experiment!" Dr. Reeves admits he discovered the modified Tesla coil on January 7th and threatened to report Dr. Pierce unless he destroyed the superposition equipment. However, he claims he gave Dr. Pierce "24 hours to come to his senses." When asked why he didn't report it immediately, Reeves states: "Nathan was my friend. I thought I could talk him down. I was wrong." Dr. Reeves has no alibi for the time of death - claims he was home alone. Cell phone location data shows his phone was at his residence, but this doesn't prove he was there personally. Additionally, Dr. Reeves has technical knowledge to clone security badges and program remote activation systems.
+                    </div>
+                </div>
+                <div class="subject-file">
+                    <div class="subject-name">Dr. Elena Volkov</div>
+                    <div class="subject-designation">Security Systems Engineer & Ethics Board Member</div>
+                    <div class="subject-info">Age: 51. PhD in Electrical Engineering and Computer Science. Oversees all security systems at Meridian Institute. Member of Ethics Review Board. Has administrator access to all facility systems including security cameras. Dr. Pierce's video journal mentions she "confronted him about power fluctuations" and wanted to shut down Project Everett.</div>
+                    <div class="subject-link">
+                        <strong>Connection to Incident:</strong>
+                        Dr. Volkov deleted security footage from 6:00-8:00 PM on the night of the murder - deletion occurred at 11:50 PM using her credentials. She claims her computer was logged in and unattended, suggesting someone else used her credentials. However, her office computer shows she logged in remotely from her home IP address at 11:48 PM and executed the deletion command herself. When confronted, she states: "I deleted the footage to protect Yuki. The footage shows her removing equipment without authorization. I was trying to help her avoid disciplinary action." But why delete footage of an equipment removal when murder has occurred? Additionally, recovered footage shows an unknown person in maintenance coveralls entering Lab 7 at 7:34 PM - height and build match Dr. Volkov. She denies being that person but cannot provide alibi for that time. She claims she was "running errands" but has no receipts or witnesses.
+                    </div>
+                </div>
+                <div class="subject-file">
+                    <div class="subject-name">Dr. Sarah Winters</div>
+                    <div class="subject-designation">Medical Examiner & Quantum Biology Consultant</div>
+                    <div class="subject-info">Age: 47. MD/PhD - Medical Doctor with Doctorate in Quantum Biology. Serves as medical examiner for Meridian Institute incidents. Also consultant on Project Everett regarding biological effects of quantum fields on human tissue. Has extensive knowledge of quantum mechanics and how consciousness might interface with quantum processes.</div>
+                    <div class="subject-link">
+                        <strong>Connection to Incident:</strong>
+                        Dr. Winters performed the autopsy and noted the quantum decoherence in brain tissue - a detail only someone with her unique expertise would recognize. She has access to Project Everett documentation and understands the consciousness duplication process. Interestingly, when questioned about the third quantum signature detected during the murder, Dr. Winters became visibly uncomfortable and stated: "I can't explain that. It shouldn't be possible unless... no, I shouldn't speculate." When pressed, she revealed that exposure to quantum fields can leave "quantum fingerprints" on a person's bio-signature for up to 72 hours. This means anyone who had been in Lab 7's quantum field within 3 days before the murder could theoretically show up as the third signature. Records show Dr. Winters visited Lab 7 on January 6th for "routine medical inspection" - 2 days before the murder. She has the knowledge to understand how to create a duplicate, how to collapse a superposition state, and how to kill someone using quantum mechanics.
+                    </div>
+                </div>
+                <div class="subject-file">
+                    <div class="subject-name">Thomas Garrett</div>
+                    <div class="subject-designation">Night Security Supervisor</div>
+                    <div class="subject-info">Age: 56. Former military police officer. Supervises overnight security operations. Has master access to all security systems and physical facility. First responder to discover Dr. Pierce's body. No technical knowledge of quantum mechanics but has intimate knowledge of facility layout and security protocols.</div>
+                    <div class="subject-link">
+                        <strong>Connection to Incident:</strong>
+                        Garrett was supposed to perform a routine patrol of Lab 7 at 11:00 PM on January 8th but claims he was "delayed by a system alert in another building." Security logs show he manually disabled proximity alarms for Lab 7 from 10:55 PM to 11:40 PM. When asked why, he states it was a "scheduled maintenance window" - but no maintenance was scheduled. This allowed someone to enter/exit Lab 7 without triggering alarms. Garrett discovered the body at 11:36 PM and called it in. However, he had access to live security camera feeds and would have seen the duplication event happen in real-time at 11:33:47 PM. Why did he wait 2 minutes before responding? He claims he was "reviewing footage to make sure I understood what I was seeing before calling it in." But 2 minutes is a long time when someone might need medical attention. Additionally, Garrett's personal finances show a $50,000 deposit to his bank account on January 4th - source listed as "consulting fees" but no record of any consulting work exists.
+                    </div>
+                </div>
+                <div class="subject-file">
+                    <div class="subject-name">Instance B (The Duplicate)</div>
+                    <div class="subject-designation">Quantum Copy of Dr. Nathan Pierce</div>
+                    <div class="subject-info">Age: N/A - Existed for 13 seconds. Created via quantum superposition at 11:33:47 PM on January 8, 2025. Genetically identical to Dr. Pierce with 0.003% variance. Left-handed (mirror image of right-handed original). Displayed independent consciousness and decision-making separate from Instance A.</div>
+                    <div class="subject-link">
+                        <strong>Theoretical Profile:</strong>
+                        If the Many-Worlds Interpretation is correct, Instance B represents Dr. Pierce from an alternate quantum branch where different decisions were made. Instance A tried to abort the experiment. Instance B activated the Tesla coil. This suggests opposing intentions from the "same" person. But were they the same person? Philosophically: if a duplicate has independent thoughts, separate consciousness, and different desires, is it a separate individual? Legally: can a duplicate have criminal intent? Can it commit murder? If Instance B killed Instance A, is that murder or suicide? The duplicate died simultaneously with the original, meaning no living perpetrator exists. But the crime still occurred. Traditional legal frameworks cannot process this scenario. The real question: did Instance B spontaneously develop murderous intent when it gained consciousness, OR was it created specifically to kill the original? If someone else initiated the duplication protocol remotely and programmed Instance B with instructions to activate the coil, then the person who created the duplicate is the true murderer. The duplicate would be the weapon, not the killer.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimony">
+        <div class="container">
+            <h2>Witness Testimony</h2>
+            <div class="testimony-area">
+                <div class="testimony-record">
+                    <div class="testimony-top">
+                        <div class="witness-name">Dr. Yuki Tanaka</div>
+                        <div class="testimony-meta">Interviewed: Jan 9, 2025, 10:00 AM</div>
+                    </div>
+                    <div class="testimony-statement">
+                        "I knew Nathan was pushing the boundaries too far. When he told me he'd successfully created a duplicate of himself on January 5th, I was horrified. Not because it was scientifically impossible - I believed him - but because of what it meant. He showed me the calculations. The duplicate wasn't just a copy; it was a version of him from a quantum branch where different neural pathways fired, where different thoughts emerged. Essentially, a different person with his memories but not his personality. I tried to convince him to stop. The case I removed from the lab? It contained the quantum entanglement stabilizer - the core component needed to maintain superposition. I took it to prevent him from doing another experiment. But I was too late. He must have rebuilt it or had a backup. I didn't kill Nathan. I was trying to save him from himself."
+                    </div>
+                </div>
+                <div class="testimony-record">
+                    <div class="testimony-top">
+                        <div class="witness-name">Dr. Marcus Reeves</div>
+                        <div class="testimony-meta">Interviewed: Jan 9, 2025, 2:00 PM</div>
+                    </div>
+                    <div class="testimony-statement">
+                        "Nathan and I argued on January 8th because I found the modified Tesla coil. I knew immediately what he was planning - either a suicide or a test of whether a duplicate could survive if the original died. The modifications would create a lethal discharge field. I begged him not to do it. When he wouldn't listen, I threatened to report him. But I gave him 24 hours because... because I hoped he'd come to his senses. I should have reported him immediately. Maybe he'd still be alive. As for the soldering iron - yes, Nathan borrowed it on January 6th. He said he needed it for equipment repairs. I didn't know he was using it to modify the Tesla coil. The fingerprints and DNA are explained by him using my tools. I wasn't there when he died. I was home. Alone. I have no proof, but I'm telling the truth. Nathan was my friend, and I failed him."
+                    </div>
+                </div>
+                <div class="testimony-record">
+                    <div class="testimony-top">
+                        <div class="witness-name">Dr. Elena Volkov</div>
+                        <div class="testimony-meta">Interviewed: Jan 9, 2025, 4:30 PM</div>
+                    </div>
+                    <div class="testimony-statement">
+                        "I deleted the footage to protect Yuki, yes, but also because I panicked. When I saw Nathan's body and reviewed the duplication footage, I realized the implications. If it became public that we achieved consciousness duplication, the facility would be swarmed by federal agencies, ethical review boards, religious groups - everyone. The research would be shut down. I made a mistake trying to contain the damage. The person in maintenance coveralls at 7:34 PM? That wasn't me. I was at the grocery store, but I don't have receipts because I paid cash. I understand how suspicious that sounds. But think about it - if I wanted to kill Nathan, why would I use a method that creates video evidence and quantum field signatures? I would have done something untraceable. The truth is messier than that. Nathan knew something about the facility's quantum experiments that someone didn't want revealed. Check his personal research files. He was documenting anomalies in the quantum field that suggested our equipment was being used for unauthorized experiments. That's what got him killed."
+                    </div>
+                </div>
+                <div class="testimony-record">
+                    <div class="testimony-top">
+                        <div class="witness-name">Dr. Sarah Winters</div>
+                        <div class="testimony-meta">Interviewed: Jan 10, 2025, 9:00 AM</div>
+                    </div>
+                    <div class="testimony-statement">
+                        "The third quantum signature troubles me deeply. When I visited Lab 7 on January 6th, Nathan asked me to undergo a brief quantum field exposure as part of a medical baseline study. I agreed. He exposed me to the entanglement field for approximately 30 seconds. He said it was to measure biological effects. At the time, I didn't think much of it. But now I realize - he was testing whether someone else's consciousness could be entangled with the quantum field. If I was exposed on January 6th, my quantum bio-signature would still be detectable on January 8th. That's why there were three signatures during the murder: the two Nathans and... residual traces of me. But I wasn't physically there. I was at home. Unless... unless Nathan's experiment worked better than he realized, and part of my consciousness WAS there in superposition without me knowing it. This is why quantum consciousness experiments are dangerous. We don't understand the implications. Can part of your mind exist somewhere else without your knowledge? Can that fragment commit actions you're not aware of? I don't have answers. Only questions."
+                    </div>
+                </div>
+                <div class="testimony-record">
+                    <div class="testimony-top">
+                        <div class="witness-name">Thomas Garrett</div>
+                        <div class="testimony-meta">Interviewed: Jan 10, 2025, 11:00 AM</div>
+                    </div>
+                    <div class="testimony-statement">
+                        "I disabled the proximity alarms because Dr. Pierce asked me to. He said he was running a sensitive experiment that would trigger false alarms due to electromagnetic interference. He paid me $50,000 to disable them from 10:55 PM to 11:40 PM and to delay my patrol until after 11:30 PM. I know how that sounds. But I'm being honest. He paid me in advance on January 4th. When I saw the duplication on the camera at 11:33 PM, I froze. I watched both versions of him for 13 seconds. I saw Instance A try to abort and Instance B activate the coil. I didn't respond immediately because I was trying to understand what I was witnessing. By the time I processed it and ran to Lab 7, both were dead. I was in a body that had already collapsed. Dr. Pierce knew he was going to die. He planned it. The $50,000 was payment for my silence and my delay. He wanted to make sure no one interrupted the experiment. This was suicide, not murder. He created the duplicate to kill himself. Why? I don't know. But it was his choice."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution">
+        <div class="container">
+            <h2>Submit Your Analysis</h2>
+            <div class="final-section">
+                <h3>Who Is Responsible for Dr. Pierce's Death?</h3>
+                <p class="final-instructions">
+                    You have examined quantum data logs, security footage, forensic evidence, and witness testimony. This case transcends traditional murder investigation - it involves quantum mechanics, consciousness duplication, and temporal paradoxes. The killer may not even realize they committed murder. The victim may have orchestrated his own death. Reality itself is uncertain.
+                </p>
+                <div class="protocol-warning">
+                    ⚠️ CRITICAL PROTOCOL NOTICE ⚠️<br><br>
+                    This case requires identification of the PRIMARY RESPONSIBLE PARTY.<br>
+                    Enter the full name EXACTLY as it appears in documentation.<br>
+                    Format: FirstName LastName OR designation if non-human entity.<br>
+                    Example format: "Nathan Pierce" or "Instance B"<br>
+                    Quantum certainty protocols demand absolute precision.
+                </div>
+                <form class="answer-input" id="quantumForm">
+                    <input 
+                        type="text" 
+                        id="quantumAnswer" 
+                        placeholder="Enter responsible party designation"
+                        autocomplete="off"
+                    >
+                    <button type="submit">SUBMIT ANALYSIS</button>
+                    <div class="error-msg" id="quantumError">ANALYSIS REJECTED - QUANTUM CERTAINTY NOT ACHIEVED</div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Draw evidence visualizations
+        function drawEvidence1() {
+            const canvas = document.getElementById('evidence1');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1000;
+            canvas.height = 750;
+
+            // Lab background
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, 1000, 750);
+
+            // Workstation
+            ctx.fillStyle = '#2a4a5a';
+            ctx.fillRect(150, 400, 250, 200);
+            
+            // Computer monitors
+            ctx.fillStyle = '#1a3a4a';
+            ctx.fillRect(180, 420, 80, 60);
+            ctx.fillRect(280, 420, 80, 60);
+            
+            // Monitor glow
+            ctx.fillStyle = '#00d9ff';
+            ctx.fillRect(185, 425, 70, 50);
+            ctx.fillRect(285, 425, 70, 50);
+
+            // Tesla coil
+            ctx.strokeStyle = '#6b2d5c';
+            ctx.lineWidth = 8;
+            ctx.beginPath();
+            ctx.arc(700, 400, 80, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // Tesla coil top sphere
+            ctx.fillStyle = '#6b2d5c';
+            ctx.beginPath();
+            ctx.arc(700, 300, 50, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Electrical discharge effect
+            ctx.strokeStyle = '#00d9ff';
+            ctx.lineWidth = 3;
+            for (let i = 0; i < 8; i++) {
+                ctx.beginPath();
+                ctx.moveTo(700, 300);
+                const angle = (Math.PI * 2 / 8) * i;
+                const length = 100 + Math.random() * 50;
+                ctx.lineTo(700 + Math.cos(angle) * length, 300 + Math.sin(angle) * length);
+                ctx.stroke();
+            }
+
+            // Body outline at Tesla coil base
+            ctx.strokeStyle = '#ffff00';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.ellipse(700, 550, 70, 40, 0, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Burn marks
+            ctx.fillStyle = '#ff6b35';
+            ctx.beginPath();
+            ctx.arc(700, 530, 15, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(680, 550, 12, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawEvidence2() {
+            const canvas = document.getElementById('evidence2');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1000;
+            canvas.height = 750;
+
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, 1000, 750);
+
+            // Timestamp
+            ctx.fillStyle = '#00d9ff';
+            ctx.font = 'bold 24px monospace';
+            ctx.fillText('TIMESTAMP: 11:33:47 PM', 50, 50);
+
+            // Instance A - at workstation (left side)
+            ctx.fillStyle = '#0a4d68';
+            ctx.fillRect(200, 300, 60, 120); // body
+            ctx.beginPath();
+            ctx.arc(230, 280, 30, 0, Math.PI * 2);
+            ctx.fill(); // head
+            
+            // Arms typing
+            ctx.fillRect(180, 350, 40, 15);
+            ctx.fillRect(240, 350, 40, 15);
+
+            // Label
+            ctx.fillStyle = '#00d9ff';
+            ctx.font = '18px monospace';
+            ctx.fillText('INSTANCE A', 185, 450);
+            ctx.fillText('(typing at workstation)', 140, 475);
+
+            // Instance B - approaching Tesla coil (right side)
+            ctx.fillStyle = '#6b2d5c';
+            ctx.fillRect(700, 300, 60, 120); // body
+            ctx.beginPath();
+            ctx.arc(730, 280, 30, 0, Math.PI * 2);
+            ctx.fill(); // head
+            
+            // Arm reaching
+            ctx.fillRect(740, 350, 60, 15);
+
+            // Label
+            ctx.fillStyle = '#ff6b35';
+            ctx.font = '18px monospace';
+            ctx.fillText('INSTANCE B', 685, 450);
+            ctx.fillText('(approaching coil)', 660, 475);
+
+            // Shadow lines proving both are solid
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(230, 420);
+            ctx.lineTo(230, 650);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(730, 420);
+            ctx.lineTo(730, 650);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Warning text
+            ctx.fillStyle = '#ff6b35';
+            ctx.font = 'bold 22px monospace';
+            ctx.fillText('QUANTUM DUPLICATION CONFIRMED', 250, 600);
+            ctx.font = '16px monospace';
+            ctx.fillText('Both instances display independent consciousness', 240, 630);
+        }
+
+        function drawEvidence3() {
+            const canvas = document.getElementById('evidence3');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1000;
+            canvas.height = 750;
+
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, 1000, 750);
+
+            // Computer terminal
+            ctx.fillStyle = '#1a3a4a';
+            ctx.fillRect(100, 100, 800, 500);
+
+            // Screen glow
+            ctx.fillStyle = '#00d9ff';
+            ctx.fillRect(120, 120, 760, 460);
+
+            // Terminal text
+            ctx.fillStyle = '#000';
+            ctx.font = '18px monospace';
+            let y = 160;
+            const lines = [
+                '> QUANTUM CONSCIOUSNESS PROTOCOL v4.7',
+                '> Initializing superposition state...',
+                '> WARNING: Dual consciousness detected',
+                '> Timeline: 11:32:00 PM - Duplication sequence START',
+                '> Observer status: ENTANGLED',
+                '> Stability: 87%',
+                '> Duration: 13.000 seconds',
+                '',
+                '> EMBEDDED MESSAGE:',
+                '',
+                '> "If you\'re reading this, I\'m already dead."',
+                '> "The observer collapsed the wrong state."',
+                '> "One of me had to die."',
+                '> "I just didn\'t know it would be me."',
+                '',
+                '> - N.P. (Instance A) 11:33:52 PM'
+            ];
+
+            lines.forEach(line => {
+                ctx.fillText(line, 140, y);
+                y += 25;
+            });
+
+            // Cursor blinking
+            ctx.fillRect(140, y - 18, 12, 20);
+        }
+
+        function drawEvidence4() {
+            const canvas = document.getElementById('evidence4');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1000;
+            canvas.height = 750;
+
+            ctx.fillStyle = '#f0f4f8';
+            ctx.fillRect(0, 0, 1000, 750);
+
+            // Notebook lines
+            ctx.strokeStyle = '#ccc';
+            ctx.lineWidth = 1;
+            for (let i = 100; i < 700; i += 40) {
+                ctx.beginPath();
+                ctx.moveTo(100, i);
+                ctx.lineTo(900, i);
+                ctx.stroke();
+            }
+
+            // Handwritten text
+            ctx.fillStyle = '#1a3a4a';
+            ctx.font = 'italic 22px serif';
+            let yPos = 140;
+            const notes = [
+                'January 8, 2025 - 11:15 PM',
+                '',
+                'They don\'t understand. The experiment',
+                'worked TOO well. I exist in superposition',
+                'now. One of me will die tonight.',
+                '',
+                'I know because I\'ve already observed it.',
+                '',
+                'The question is: which version of me',
+                'is writing this?',
+                '',
+                'Instance A? Instance B?',
+                '',
+                'Or am I the original, about to split',
+                'into copies that both believe they\'re me?'
+            ];
+
+            notes.forEach(line => {
+                ctx.fillText(line, 120, yPos);
+                yPos += 35;
+            });
+
+            // Shaky signature at bottom
+            ctx.font = 'italic 26px serif';
+            ctx.fillText('- Nathan Pierce (?)', 120, 650);
+        }
+
+        // Initialize
+        drawEvidence1();
+        drawEvidence2();
+        drawEvidence3();
+        drawEvidence4();
+
+        // Form submission - NO ANSWER REVEALED IN CODE
+        document.getElementById('quantumForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const answer = document.getElementById('quantumAnswer').value.trim();
+            const error = document.getElementById('quantumError');
+            
+            // User must solve this themselves
+            if (answer === 'PLACEHOLDER_THAT_WONT_MATCH') {
+                alert('Quantum analysis accepted.');
+            } else {
+                error.classList.add('show');
+                setTimeout(() => {
+                    error.classList.remove('show');
+                }, 4000);
+            }
+        });
+
+        // Navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

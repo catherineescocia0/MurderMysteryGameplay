@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case #2024-1147: The Sterling Tech Murder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-medium: #1a1a1a;
+            --bg-light: #2a2a2a;
+            --accent-red: #8B0000;
+            --accent-yellow: #ffd700;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a8a8a8;
+            --evidence-bg: #151515;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(180deg, rgba(139, 0, 0, 0.2) 0%, transparent 100%);
+            border-bottom: 3px solid var(--accent-red);
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .case-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: var(--accent-yellow);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            animation: slideDown 0.8s ease-out 0.2s both;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+            animation: slideDown 0.8s ease-out 0.4s both;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            animation: slideDown 0.8s ease-out 0.6s both;
+        }
+
+        .confidential {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 30px;
+            background: rgba(139, 0, 0, 0.3);
+            border: 2px solid var(--accent-red);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            transform: rotate(-2deg);
+            animation: slideDown 0.8s ease-out 0.8s both;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--accent-red);
+            padding: 20px 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-yellow);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-yellow);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        section:nth-child(even) {
+            background: rgba(26, 26, 26, 0.3);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-yellow);
+        }
+
+        /* Case Overview */
+        .case-overview {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--evidence-bg);
+            padding: 40px;
+            border-left: 4px solid var(--accent-red);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .case-overview p {
+            margin-bottom: 20px;
+        }
+
+        /* Crime Scene Photos */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .photo-card {
+            background: var(--evidence-bg);
+            padding: 20px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.3);
+        }
+
+        .photo-card canvas {
+            width: 100%;
+            height: 300px;
+            background: #000;
+            border: 2px solid #444;
+            margin-bottom: 15px;
+        }
+
+        .photo-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-yellow);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .photo-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Suspects Grid */
+        .suspects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .suspect-card {
+            background: var(--evidence-bg);
+            padding: 30px;
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .suspect-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--accent-red);
+            transition: height 0.3s ease;
+        }
+
+        .suspect-card:hover::before {
+            height: 100%;
+        }
+
+        .suspect-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);
+        }
+
+        .suspect-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .suspect-position {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-yellow);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .suspect-age {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .suspect-motive {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+
+        .suspect-motive strong {
+            color: var(--accent-red);
+        }
+
+        /* Evidence Table */
+        .evidence-table {
+            width: 100%;
+            margin-top: 40px;
+            border-collapse: collapse;
+            background: var(--evidence-bg);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .evidence-table th {
+            background: var(--accent-red);
+            color: var(--text-primary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .evidence-table td {
+            padding: 20px;
+            border-bottom: 1px solid #333;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .evidence-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .evidence-table tr:hover {
+            background: rgba(139, 0, 0, 0.1);
+        }
+
+        .evidence-number {
+            font-family: 'Space Mono', monospace;
+            color: var(--accent-yellow);
+            font-weight: 700;
+        }
+
+        /* Witness Statements */
+        .statements {
+            max-width: 900px;
+            margin: 40px auto 0;
+        }
+
+        .statement {
+            background: var(--evidence-bg);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent-yellow);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .statement:hover {
+            transform: translateX(10px);
+        }
+
+        .witness-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .interview-time {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .statement-text {
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            padding-left: 20px;
+            border-left: 2px solid #333;
+        }
+
+        /* Clues List */
+        .clues-list {
+            max-width: 900px;
+            margin: 40px auto 0;
+        }
+
+        .clue-item {
+            background: var(--evidence-bg);
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .clue-item::before {
+            content: '🔍';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+
+        .clue-item strong {
+            color: var(--accent-yellow);
+        }
+
+        /* Solution Section */
+        #solution {
+            background: linear-gradient(180deg, rgba(139, 0, 0, 0.1) 0%, rgba(139, 0, 0, 0.05) 100%);
+        }
+
+        .solution-box {
+            max-width: 600px;
+            margin: 40px auto;
+            background: var(--evidence-bg);
+            padding: 50px;
+            border: 2px solid var(--accent-red);
+            box-shadow: 0 15px 50px rgba(139, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .solution-box h3 {
+            font-size: 1.8rem;
+            color: var(--accent-yellow);
+            margin-bottom: 20px;
+        }
+
+        .solution-box p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .password-form {
+            margin-top: 30px;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem;
+            background: var(--bg-dark);
+            border: 2px solid #333;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: var(--accent-yellow);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: var(--accent-red);
+            color: var(--text-primary);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(139, 0, 0, 0.3);
+        }
+
+        .submit-btn:hover {
+            background: #a00000;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.5);
+        }
+
+        .error-message {
+            color: #ff4444;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.5s ease;
+        }
+
+        /* Solution Content (Hidden initially) */
+        .solution-content {
+            display: none;
+            max-width: 900px;
+            margin: 40px auto;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .solution-content.revealed {
+            display: block;
+        }
+
+        .killer-reveal {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.3), rgba(139, 0, 0, 0.1));
+            padding: 40px;
+            border: 3px solid var(--accent-red);
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(139, 0, 0, 0.4);
+        }
+
+        .killer-reveal h3 {
+            font-size: 2.5rem;
+            color: var(--accent-red);
+            margin-bottom: 10px;
+        }
+
+        .killer-reveal .killer-name {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .explanation-section {
+            background: var(--evidence-bg);
+            padding: 40px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent-yellow);
+        }
+
+        .explanation-section h4 {
+            font-size: 1.8rem;
+            color: var(--accent-yellow);
+            margin-bottom: 20px;
+        }
+
+        .explanation-section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .evidence-point {
+            background: rgba(139, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--accent-red);
+        }
+
+        .evidence-point strong {
+            color: var(--accent-yellow);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 215, 0, 0.05);
+            border-left: 3px solid var(--accent-yellow);
+        }
+
+        .timeline-time {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            min-width: 80px;
+        }
+
+        .congratulations {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent);
+            border: 2px solid var(--accent-yellow);
+            margin-top: 40px;
+        }
+
+        .congratulations h3 {
+            font-size: 2.5rem;
+            color: var(--accent-yellow);
+            margin-bottom: 15px;
+        }
+
+        .congratulations p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .photo-grid,
+            .suspects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .case-overview,
+            .solution-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="case-number">Case #2024-1147</div>
+            <h1>The Sterling Tech Murder</h1>
+            <p class="subtitle">A Murder Mystery Investigation</p>
+            <div class="confidential">CONFIDENTIAL</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#crime-scene">Crime Scene</a></li>
+            <li><a href="#suspects">Suspects</a></li>
+            <li><a href="#evidence">Evidence</a></li>
+            <li><a href="#statements">Statements</a></li>
+            <li><a href="#clues">Clues</a></li>
+            <li><a href="#solution">Solution</a></li>
+        </ul>
+    </nav>
+
+    <section id="overview">
+        <div class="container">
+            <h2>Case Overview</h2>
+            <div class="case-overview">
+                <p>On Friday, November 15th, 2024, at 11:47 PM, security discovered the body of Victor Sterling, 45-year-old CEO of Sterling Tech, in his private office on the 12th floor. The victim was found lying face-down near his desk with severe head trauma. Time of death is estimated between 10:30 PM and 11:15 PM.</p>
+                
+                <p>The building's security logs show that four individuals were still in the building at the time of death: Marcus Webb (CFO), Diana Cole (Head of R&D), Robert Hayes (Lead Developer), and Jennifer Park (Executive Assistant). All four had access to the executive floor.</p>
+                
+                <p><strong style="color: var(--accent-red);">Your mission:</strong> Review all evidence, witness statements, and clues to determine who killed Victor Sterling and how they committed the crime.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="crime-scene">
+        <div class="container">
+            <h2>Crime Scene Photographs</h2>
+            <div class="photo-grid">
+                <div class="photo-card">
+                    <canvas id="crimeScene"></canvas>
+                    <div class="photo-label">PHOTO 1: CRIME SCENE OVERVIEW</div>
+                    <div class="photo-description">Victim found near desk, coffee cup spilled, chair overturned. Timestamp: 11:47 PM</div>
+                </div>
+                <div class="photo-card">
+                    <canvas id="coffeeCup"></canvas>
+                    <div class="photo-label">EVIDENCE A-103: COFFEE CUP</div>
+                    <div class="photo-description">Victim's coffee cup found spilled on floor. Contains traces of sedative.</div>
+                </div>
+                <div class="photo-card">
+                    <canvas id="brokenGlass"></canvas>
+                    <div class="photo-label">EVIDENCE A-104: BROKEN GLASS AWARD</div>
+                    <div class="photo-description">Confirmed as murder weapon. Blood type matches victim.</div>
+                </div>
+                <div class="photo-card">
+                    <canvas id="fingerprint"></canvas>
+                    <div class="photo-label">FORENSIC EVIDENCE: FINGERPRINT ANALYSIS</div>
+                    <div class="photo-description">Primary prints: Marcus Webb (90% match). Secondary prints: Diana Cole.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="suspects">
+        <div class="container">
+            <h2>Suspect Profiles</h2>
+            <div class="suspects-grid">
+                <div class="suspect-card">
+                    <div class="suspect-name">Marcus Webb</div>
+                    <div class="suspect-position">Chief Financial Officer</div>
+                    <div class="suspect-age">Age: 52</div>
+                    <div class="suspect-motive"><strong>Motive:</strong> Recently discovered Victor was planning to fire him for embezzlement of $2.3 million.</div>
+                </div>
+                <div class="suspect-card">
+                    <div class="suspect-name">Diana Cole</div>
+                    <div class="suspect-position">Head of R&D</div>
+                    <div class="suspect-age">Age: 38</div>
+                    <div class="suspect-motive"><strong>Motive:</strong> Victor stole her revolutionary AI algorithm and claimed it as his own invention.</div>
+                </div>
+                <div class="suspect-card">
+                    <div class="suspect-name">Robert Hayes</div>
+                    <div class="suspect-position">Lead Developer</div>
+                    <div class="suspect-age">Age: 29</div>
+                    <div class="suspect-motive"><strong>Motive:</strong> Passed over for promotion despite being promised the senior architect position.</div>
+                </div>
+                <div class="suspect-card">
+                    <div class="suspect-name">Jennifer Park</div>
+                    <div class="suspect-position">Executive Assistant</div>
+                    <div class="suspect-age">Age: 31</div>
+                    <div class="suspect-motive"><strong>Motive:</strong> Was having an affair with Victor; he was ending the relationship.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="evidence">
+        <div class="container">
+            <h2>Physical Evidence Analysis</h2>
+            <table class="evidence-table">
+                <thead>
+                    <tr>
+                        <th>Evidence #</th>
+                        <th>Item</th>
+                        <th>Analysis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="evidence-number">A-101</span></td>
+                        <td>Victim's laptop</td>
+                        <td>Email draft to board members about CFO embezzlement discovered at 10:42 PM. Never sent.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="evidence-number">A-102</span></td>
+                        <td>Security keycard logs</td>
+                        <td>Marcus Webb: accessed 12th floor at 10:43 PM<br>Diana Cole: accessed 12th floor at 10:14 PM<br>No other access recorded</td>
+                    </tr>
+                    <tr>
+                        <td><span class="evidence-number">A-103</span></td>
+                        <td>Coffee cup</td>
+                        <td>Contains traces of sedative (Zolpidem). Fingerprints: Marcus Webb (primary), Diana Cole (secondary)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="evidence-number">A-104</span></td>
+                        <td>Glass award</td>
+                        <td>Murder weapon. Blood type matches victim. Partial fingerprints too smudged to identify.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="evidence-number">A-105</span></td>
+                        <td>Victim's phone</td>
+                        <td>Last call: 10:18 PM to Marcus Webb (3 min duration). Text at 10:40 PM: "Come to my office NOW."</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="statements">
+        <div class="container">
+            <h2>Witness Statements</h2>
+            <div class="statements">
+                <div class="statement">
+                    <div class="witness-name">Marcus Webb</div>
+                    <div class="interview-time">Interviewed at 12:15 AM</div>
+                    <div class="statement-text">"I was in my office working on quarterly reports until about 11:00 PM. I went to Victor's office around 10:45 PM to discuss the budget meeting, but he wasn't there. His office was dark, so I assumed he'd left early. I returned to my office and left the building at 11:20 PM. I have the security logs to prove it."</div>
+                </div>
+                <div class="statement">
+                    <div class="witness-name">Diana Cole</div>
+                    <div class="interview-time">Interviewed at 12:45 AM</div>
+                    <div class="statement-text">"I was in the R&D lab on the 11th floor until past midnight. I brought Victor a coffee around 10:15 PM - we were supposed to discuss the patent filings for my algorithm. He seemed agitated. I left after 10 minutes. I didn't hear anything unusual from upstairs."</div>
+                </div>
+                <div class="statement">
+                    <div class="witness-name">Robert Hayes</div>
+                    <div class="interview-time">Interviewed at 1:10 AM</div>
+                    <div class="statement-text">"I was debugging code in my cubicle on the 10th floor. I worked straight through from 8 PM to 11:30 PM without leaving my desk. I never went to the executive floor. Check my computer logs - I was actively coding the entire time."</div>
+                </div>
+                <div class="statement">
+                    <div class="witness-name">Jennifer Park</div>
+                    <div class="interview-time">Interviewed at 1:35 AM</div>
+                    <div class="statement-text">"I left the office at 10:00 PM. Victor asked me to stay late to finish some correspondence, but I had dinner plans. He was alive when I left - I heard him on a phone call as I walked past his office. Security can confirm I left the building at 10:05 PM and didn't return."</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clues">
+        <div class="container">
+            <h2>Additional Clues</h2>
+            <div class="clues-list">
+                <div class="clue-item">
+                    <strong>Security Camera Footage:</strong> Elevator camera shows Marcus Webb entering elevator to 12th floor at 10:43 PM. He appeared nervous and was carrying a folder. He exited the elevator at 11:22 PM, walking quickly.
+                </div>
+                <div class="clue-item">
+                    <strong>Forensic Timeline:</strong> Victim's computer activity shows the embezzlement email draft was created at 10:42 PM. No activity after 10:51 PM.
+                </div>
+                <div class="clue-item">
+                    <strong>Toxicology Report:</strong> Victim's blood showed traces of Zolpidem (sleeping medication). Amount insufficient to cause unconsciousness but enough to cause drowsiness. Estimated ingestion: 10:15-10:20 PM.
+                </div>
+                <div class="clue-item">
+                    <strong>Office Observations:</strong> Victim's coffee was still warm when discovered. No signs of forced entry. Office door was found unlocked. The glass award (now broken) usually sat on Victor's desk as 'CFO of the Year 2023' award - it belonged to Marcus Webb.
+                </div>
+                <div class="clue-item">
+                    <strong>Financial Records:</strong> Audit discovered $2.3 million missing from company accounts over 18 months. All transactions authorized by Marcus Webb's login credentials.
+                </div>
+                <div class="clue-item">
+                    <strong>Background Check:</strong> Marcus Webb purchased a one-way ticket to Cayman Islands, departing Saturday morning (day after the murder). Ticket purchased on Wednesday.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution">
+        <div class="container">
+            <h2>Submit Your Solution</h2>
+            <div class="solution-box">
+                <h3>Who Killed Victor Sterling?</h3>
+                <p>Review all the evidence, witness statements, and clues above. When you believe you have identified the killer, enter their full name below to reveal the solution.</p>
+                <form class="password-form" id="solutionForm">
+                    <input 
+                        type="text" 
+                        class="password-input" 
+                        id="killerName" 
+                        placeholder="Enter killer's full name (e.g., John Doe)"
+                        autocomplete="off"
+                    >
+                    <button type="submit" class="submit-btn">Reveal Solution</button>
+                    <div class="error-message" id="errorMessage">Incorrect. Review the evidence and try again.</div>
+                </form>
+            </div>
+
+            <div class="solution-content" id="solutionContent">
+                <div class="killer-reveal">
+                    <h3>THE KILLER IS</h3>
+                    <div class="killer-name">MARCUS WEBB</div>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem;">Chief Financial Officer</p>
+                </div>
+
+                <div class="explanation-section">
+                    <h4>Summary of the Crime</h4>
+                    <p>Marcus Webb murdered Victor Sterling to prevent the exposure of his $2.3 million embezzlement scheme and avoid prosecution. Webb used a calculated plan involving drugging the victim and staging the scene to cast suspicion on others, but critical forensic evidence and timeline analysis revealed his guilt.</p>
+                </div>
+
+                <div class="explanation-section">
+                    <h4>Timeline of the Murder</h4>
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:14 PM</div>
+                        <div>Diana Cole brings coffee to Victor's office (innocent - she leaves at 10:25 PM)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:18 PM</div>
+                        <div>Victor calls Marcus Webb, likely confronting him about embezzlement</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:30 PM</div>
+                        <div>Marcus drugs Victor's coffee with sleeping medication while Victor is distracted</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:40 PM</div>
+                        <div>Victor discovers proof of embezzlement, texts Marcus to come to office</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:43 PM</div>
+                        <div>Marcus enters 12th floor (security log), goes to Victor's office</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:51 PM</div>
+                        <div>Marcus grabs his own "CFO of the Year" award and strikes Victor on the head</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">11:22 PM</div>
+                        <div>Marcus exits building via elevator (security footage shows nervous demeanor)</div>
+                    </div>
+                </div>
+
+                <div class="explanation-section">
+                    <h4>Key Evidence Against Marcus Webb</h4>
+                    
+                    <div class="evidence-point">
+                        <strong>Fingerprints on Coffee Cup</strong>
+                        Marcus's fingerprints were the PRIMARY prints on the coffee cup, not Diana's. While Diana brought the coffee, Marcus handled it when drugging it. Diana's secondary prints are from when she prepared and carried the cup.
+                    </div>
+
+                    <div class="evidence-point">
+                        <strong>Security Access Logs</strong>
+                        Marcus accessed the 12th floor at 10:43 PM, exactly 3 minutes after Victor sent the text "Come to my office NOW." This text was sent after Victor discovered the embezzlement email draft at 10:42 PM.
+                    </div>
+
+                    <div class="evidence-point">
+                        <strong>The Murder Weapon</strong>
+                        The glass award that killed Victor was Marcus's own "CFO of the Year 2023" award that had been displayed on Victor's desk. Marcus used his own award in a moment of rage - a deeply symbolic choice.
+                    </div>
+
+                    <div class="evidence-point">
+                        <strong>Financial Motive</strong>
+                        Marcus had embezzled $2.3 million and was about to be exposed. Victor's laptop contained an unsent email to the board detailing the embezzlement, drafted just 9 minutes before Marcus arrived.
+                    </div>
+
+                    <div class="evidence-point">
+                        <strong>Flight Plans</strong>
+                        Marcus purchased a one-way ticket to the Cayman Islands departing the morning after the murder. This was purchased two days before the murder, suggesting premeditation of his escape.
+                    </div>
+
+                    <div class="evidence-point">
+                        <strong>The Lie in His Statement</strong>
+                        Marcus claimed Victor's office was dark when he arrived at 10:45 PM, but security footage and forensic evidence prove Victor was alive and the lights were on until at least 10:51 PM.
+                    </div>
+                </div>
+
+                <div class="explanation-section">
+                    <h4>Why the Other Suspects Are Innocent</h4>
+                    
+                    <p><strong style="color: var(--accent-yellow);">Diana Cole:</strong> Left the building before the murder. Her fingerprints on the cup are from preparing and delivering the coffee. Security logs show no return to 12th floor.</p>
+
+                    <p><strong style="color: var(--accent-yellow);">Robert Hayes:</strong> Computer logs prove continuous coding activity from 8 PM to 11:30 PM on 10th floor. Never accessed 12th floor. Alibi is airtight and verified by digital timestamps.</p>
+
+                    <p><strong style="color: var(--accent-yellow);">Jennifer Park:</strong> Security confirms she left the building at 10:05 PM and never returned. Building entry/exit logs are biometric and cannot be faked.</p>
+                </div>
+
+                <div class="congratulations">
+                    <h3>CASE SOLVED</h3>
+                    <p>Congratulations, Detectives! You've successfully identified the killer and solved the Sterling Tech murder.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Draw crime scene photo
+        function drawCrimeScene() {
+            const canvas = document.getElementById('crimeScene');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 800;
+            canvas.height = 600;
+
+            // Background
+            ctx.fillStyle = '#2a2a2a';
+            ctx.fillRect(0, 0, 800, 600);
+
+            // Desk
+            ctx.fillStyle = '#4a3520';
+            ctx.fillRect(100, 350, 300, 200);
+            ctx.strokeStyle = '#000';
+            ctx.strokeRect(100, 350, 300, 200);
+
+            // Chair (knocked over)
+            ctx.fillStyle = '#1a1a1a';
+            ctx.beginPath();
+            ctx.moveTo(450, 450);
+            ctx.lineTo(480, 420);
+            ctx.lineTo(520, 460);
+            ctx.lineTo(490, 490);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            // Body outline
+            ctx.fillStyle = '#8B0000';
+            // Head
+            ctx.beginPath();
+            ctx.ellipse(300, 240, 50, 40, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+            // Arms and legs
+            ctx.beginPath();
+            ctx.moveTo(300, 280);
+            ctx.lineTo(250, 400);
+            ctx.lineTo(270, 405);
+            ctx.lineTo(300, 320);
+            ctx.closePath();
+            ctx.fill();
+            ctx.beginPath();
+            ctx.moveTo(300, 280);
+            ctx.lineTo(350, 400);
+            ctx.lineTo(330, 405);
+            ctx.lineTo(300, 320);
+            ctx.closePath();
+            ctx.fill();
+
+            // Coffee cup spilled
+            ctx.fillStyle = '#654321';
+            ctx.beginPath();
+            ctx.ellipse(465, 315, 15, 15, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+            // Spill
+            ctx.fillStyle = '#3a2410';
+            ctx.beginPath();
+            ctx.moveTo(465, 330);
+            ctx.lineTo(480, 360);
+            ctx.lineTo(450, 360);
+            ctx.closePath();
+            ctx.fill();
+
+            // Broken glass
+            ctx.fillStyle = '#d4d4d4';
+            ctx.strokeStyle = '#000';
+            ctx.beginPath();
+            ctx.moveTo(550, 200);
+            ctx.lineTo(580, 180);
+            ctx.lineTo(600, 220);
+            ctx.lineTo(570, 240);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            // Evidence markers
+            ctx.fillStyle = '#ffd700';
+            ctx.beginPath();
+            ctx.arc(450, 300, 10, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#000';
+            ctx.stroke();
+            ctx.fillStyle = '#000';
+            ctx.font = 'bold 12px Arial';
+            ctx.fillText('1', 446, 305);
+
+            ctx.fillStyle = '#ffd700';
+            ctx.beginPath();
+            ctx.arc(590, 200, 10, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#000';
+            ctx.fillText('2', 586, 205);
+
+            // Timestamp
+            ctx.fillStyle = '#000';
+            ctx.fillRect(10, 10, 240, 30);
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 14px monospace';
+            ctx.fillText('CRIME SCENE - 11:47 PM', 20, 30);
+        }
+
+        // Draw coffee cup evidence
+        function drawCoffeeCup() {
+            const canvas = document.getElementById('coffeeCup');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 600;
+            canvas.height = 600;
+
+            // Background
+            ctx.fillStyle = '#e8e8e8';
+            ctx.fillRect(0, 0, 600, 600);
+
+            // Evidence bag
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(50, 50, 500, 500);
+            ctx.fillStyle = '#000';
+            ctx.font = 'bold 16px monospace';
+            ctx.fillText('EVIDENCE BAG #A-103', 180, 80);
+
+            // Coffee cup
+            ctx.fillStyle = '#654321';
+            ctx.fillRect(200, 200, 200, 250);
+            ctx.beginPath();
+            ctx.ellipse(300, 210, 105, 20, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#000';
+            ctx.stroke();
+
+            // Handle
+            ctx.strokeStyle = '#654321';
+            ctx.lineWidth = 15;
+            ctx.beginPath();
+            ctx.arc(440, 330, 50, Math.PI * 1.5, Math.PI * 0.5);
+            ctx.stroke();
+
+            // Coffee stain
+            ctx.fillStyle = '#3a2410';
+            ctx.beginPath();
+            ctx.ellipse(300, 285, 50, 35, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Label
+            ctx.fillStyle = '#ffd700';
+            ctx.fillRect(100, 480, 400, 50);
+            ctx.fillStyle = '#000';
+            ctx.font = 'bold 14px Arial';
+            ctx.fillText("VICTIM'S COFFEE CUP", 170, 505);
+            ctx.font = '12px Arial';
+            ctx.fillText('Found: Spilled on floor', 170, 520);
+        }
+
+        // Draw broken glass evidence
+        function drawBrokenGlass() {
+            const canvas = document.getElementById('brokenGlass');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 600;
+            canvas.height = 600;
+
+            // Background
+            ctx.fillStyle = '#e8e8e8';
+            ctx.fillRect(0, 0, 600, 600);
+
+            // Evidence bag
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(50, 50, 500, 500);
+            ctx.fillStyle = '#000';
+            ctx.font = 'bold 16px monospace';
+            ctx.fillText('EVIDENCE BAG #A-104', 160, 80);
+
+            // Glass shards
+            ctx.fillStyle = '#d4d4d4';
+            ctx.strokeStyle = '#666';
+            ctx.lineWidth = 2;
+            const shards = [
+                [150, 200], [250, 210], [350, 200],
+                [150, 280], [250, 290], [350, 280],
+                [150, 360], [250, 370]
+            ];
+            shards.forEach(([x, y]) => {
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(x + 40, y + 10);
+                ctx.lineTo(x + 50, y + 50);
+                ctx.lineTo(x + 10, y + 60);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+            });
+
+            // Label
+            ctx.fillStyle = '#ffd700';
+            ctx.fillRect(100, 480, 400, 50);
+            ctx.fillStyle = '#000';
+            ctx.font = 'bold 14px Arial';
+            ctx.fillText('BROKEN AWARD GLASS', 170, 505);
+            ctx.font = '12px Arial';
+            ctx.fillText("Found: Near victim's head", 170, 520);
+        }
+
+        // Draw fingerprint
+        function drawFingerprint() {
+            const canvas = document.getElementById('fingerprint');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 600;
+            canvas.height = 600;
+
+            // Background
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, 600, 600);
+
+            // Fingerprint pattern
+            ctx.strokeStyle = '#0f0';
+            ctx.lineWidth = 2;
+            const centerX = 300, centerY = 300;
+            for (let i = 0; i < 12; i++) {
+                const offset = i * 15;
+                ctx.beginPath();
+                ctx.ellipse(centerX, centerY, 100 + offset, 120 + offset, 0, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+
+            // Label
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(50, 500, 500, 80);
+            ctx.fillStyle = '#000';
+            ctx.font = 'bold 14px Arial';
+            ctx.fillText('PARTIAL PRINT FROM COFFEE CUP', 80, 525);
+            ctx.font = '12px Arial';
+            ctx.fillText('Match: Marcus Webb (90% confidence)', 80, 545);
+            ctx.fillText('Secondary prints: Diana Cole', 80, 565);
+        }
+
+        // Initialize all crime scene photos
+        drawCrimeScene();
+        drawCoffeeCup();
+        drawBrokenGlass();
+        drawFingerprint();
+
+        // Solution form handling
+        document.getElementById('solutionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const input = document.getElementById('killerName').value.trim().toLowerCase();
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Accept various formats
+            const correctAnswers = [
+                'marcus webb',
+                'marcuswebb',
+                'webb',
+                'marcus'
+            ];
+            
+            if (correctAnswers.includes(input)) {
+                document.querySelector('.solution-box').style.display = 'none';
+                document.getElementById('solutionContent').classList.add('revealed');
+                
+                // Smooth scroll to solution
+                setTimeout(() => {
+                    document.getElementById('solutionContent').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            } else {
+                errorMessage.classList.add('show');
+                setTimeout(() => {
+                    errorMessage.classList.remove('show');
+                }, 3000);
+            }
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

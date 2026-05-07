@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cold Case Files - Murder Mystery Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --noir-black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #2a2a2a;
+            --light-gray: #d4d4d4;
+            --blood-red: #8B0000;
+            --gold: #d4af37;
+            --paper: #f4f1e8;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            color: var(--light-gray);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Film grain effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 80px 0 60px;
+            border-bottom: 4px solid var(--blood-red);
+            position: relative;
+            background: linear-gradient(180deg, rgba(139, 0, 0, 0.1) 0%, transparent 100%);
+        }
+
+        .stamp {
+            position: absolute;
+            top: 30px;
+            right: 60px;
+            width: 180px;
+            height: 180px;
+            border: 5px solid var(--blood-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-15deg);
+            opacity: 0.4;
+        }
+
+        .stamp-text {
+            font-family: 'Special Elite', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--blood-red);
+            text-align: center;
+            line-height: 1.3;
+            letter-spacing: 2px;
+        }
+
+        .department {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--paper);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .tagline {
+            font-size: 1.6rem;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .warning-banner {
+            display: inline-block;
+            background: rgba(139, 0, 0, 0.3);
+            border: 3px solid var(--blood-red);
+            padding: 15px 40px;
+            font-family: 'Special Elite', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            margin-top: 20px;
+        }
+
+        /* Intro Section */
+        .intro {
+            max-width: 900px;
+            margin: 80px auto;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(10, 10, 10, 0.8));
+            border: 3px solid var(--medium-gray);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+        }
+
+        .intro h2 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--light-gray);
+            margin-bottom: 20px;
+        }
+
+        /* Case Files Grid */
+        .cases-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            color: var(--blood-red);
+            margin-bottom: 70px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            position: relative;
+            padding-bottom: 25px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .case-file {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(10, 10, 10, 0.95));
+            border: 4px solid var(--medium-gray);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 12px 12px 0 rgba(139, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .case-file:hover {
+            transform: translateY(-15px) rotate(-1deg);
+            box-shadow: 20px 20px 0 rgba(139, 0, 0, 0.5);
+            border-color: var(--blood-red);
+        }
+
+        .case-header {
+            background: var(--blood-red);
+            padding: 25px 30px;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .case-number {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .case-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--paper);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .case-location {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+
+        .case-body {
+            padding: 35px 30px;
+        }
+
+        .case-description {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--light-gray);
+            margin-bottom: 25px;
+            min-height: 120px;
+        }
+
+        .case-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(139, 0, 0, 0.1);
+            border-left: 4px solid var(--gold);
+        }
+
+        .meta-item {
+            font-size: 0.95rem;
+        }
+
+        .meta-label {
+            font-family: 'Special Elite', monospace;
+            color: var(--gold);
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta-value {
+            color: var(--light-gray);
+            font-weight: 600;
+        }
+
+        .difficulty {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 2px solid var(--gold);
+            font-family: 'Special Elite', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .difficulty.easy {
+            border-color: #4CAF50;
+            color: #4CAF50;
+        }
+
+        .difficulty.medium {
+            border-color: #FF9800;
+            color: #FF9800;
+        }
+
+        .difficulty.hard {
+            border-color: #f44336;
+            color: #f44336;
+        }
+
+        .difficulty.extreme {
+            border-color: var(--blood-red);
+            color: var(--blood-red);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .open-case-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: var(--blood-red);
+            color: var(--paper);
+            border: none;
+            font-family: 'Special Elite', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .open-case-btn:hover {
+            background: #a00000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 0 rgba(0, 0, 0, 0.7);
+        }
+
+        .open-case-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-top: 3px solid var(--medium-gray);
+            margin-top: 100px;
+        }
+
+        footer p {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.9rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .warning-footer {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--blood-red);
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stamp {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .case-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="stamp">
+            <div class="stamp-text">UNSOLVED<br>CASES</div>
+        </div>
+        <div class="container">
+            <div class="department">Detective Division</div>
+            <h1>Cold Case Files</h1>
+            <p class="tagline">Three Unsolved Murders. Three Mysteries. Can You Crack Them?</p>
+            <div class="warning-banner">⚠ ACTIVE INVESTIGATIONS - CLASSIFIED MATERIAL ⚠</div>
+        </div>
+    </header>
+
+    <section class="intro">
+        <h2>Welcome, Detective</h2>
+        <p>You've been granted access to three of our most perplexing unsolved murder cases. Each investigation contains crime scene photos, forensic evidence, witness statements, and critical documents that hold the key to identifying the killer.</p>
+        <p>Your mission: Analyze the evidence, connect the dots, and solve the case. Each mystery has been designed to test your deductive reasoning, attention to detail, and ability to see through misdirection.</p>
+        <p><strong style="color: var(--blood-red);">Warning:</strong> These cases range from moderately challenging to exceptionally difficult. You'll need patience, logic, and careful analysis to crack them.</p>
+    </section>
+
+    <section class="cases-section">
+        <div class="container">
+            <h2 class="section-title">Active Case Files</h2>
+            
+            <div class="cases-grid">
+                <!-- Case 1: Sterling Tech Murder -->
+                <div class="case-file">
+                    <div class="case-header">
+                        <div class="case-number">CASE #2024-1147</div>
+                        <div class="case-title">The Sterling Tech Murder</div>
+                        <div class="case-location">Sterling Tech Headquarters, 12th Floor</div>
+                    </div>
+                    <div class="case-body">
+                        <div class="difficulty medium">DIFFICULTY: MEDIUM (6/10)</div>
+                        <p class="case-description">
+                            Victor Sterling, 45-year-old CEO of Sterling Tech, found dead in his private office with severe head trauma. Four suspects with strong motives, fingerprint evidence, and a complex timeline. The killer made critical mistakes—but can you spot them?
+                        </p>
+                        <div class="case-meta">
+                            <div class="meta-item">
+                                <div class="meta-label">Victim</div>
+                                <div class="meta-value">Victor Sterling</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Date</div>
+                                <div class="meta-value">Nov 15, 2024</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Suspects</div>
+                                <div class="meta-value">4 Persons of Interest</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Evidence</div>
+                                <div class="meta-value">Fingerprints, Security Logs</div>
+                            </div>
+                        </div>
+                        <a href="TheSterlingTechMurder.html" class="open-case-btn">Open Case File</a>
+                    </div>
+                </div>
+
+                <!-- Case 3: Blackwood Estate -->
+                <div class="case-file">
+                    <div class="case-header">
+                        <div class="case-number">CASE #2024-1203</div>
+                        <div class="case-title">The Blackwood Estate</div>
+                        <div class="case-location">Blackwood Estate, Ravenswood</div>
+                    </div>
+                    <div class="case-body">
+                        <div class="difficulty hard">DIFFICULTY: VERY HARD (9/10)</div>
+                        <p class="case-description">
+                            Adrian Blackwood, investigative journalist, found in wine cellar of isolated estate. Staged accident or genuine fall? Complex forensic evidence, multiple suspects with motives tied to 15-year-old conspiracy. Requires exceptional deduction.
+                        </p>
+                        <div class="case-meta">
+                            <div class="meta-item">
+                                <div class="meta-label">Victim</div>
+                                <div class="meta-value">Adrian Blackwood</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Date</div>
+                                <div class="meta-value">Dec 3, 2024</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Suspects</div>
+                                <div class="meta-value">6 Persons of Interest</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Evidence</div>
+                                <div class="meta-value">Manuscript, Boot Prints, Fibers</div>
+                            </div>
+                        </div>
+                        <a href="blackwoodEstate.html" class="open-case-btn">Open Case File</a>
+                    </div>
+                </div>
+
+                <!-- Case 4: The Basement Enigma -->
+                <div class="case-file">
+                    <div class="case-header">
+                        <div class="case-number">CASE #2024-1547</div>
+                        <div class="case-title">The Basement Enigma</div>
+                        <div class="case-location">847 Elm Street, Oakridge</div>
+                    </div>
+                    <div class="case-body">
+                        <div class="difficulty extreme">DIFFICULTY: EXTREME (10/10)</div>
+                        <p class="case-description">
+                            Unidentified body found with face removed and fingers surgically amputated. All suspects connected to 8-year-old "accident." Requires forensic analysis, entomology, and connecting deeply buried clues. Hours of investigation required.
+                        </p>
+                        <div class="case-meta">
+                            <div class="meta-item">
+                                <div class="meta-label">Victim</div>
+                                <div class="meta-value">John Doe #47 (Unknown)</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Date</div>
+                                <div class="meta-value">Nov 16, 2024</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Suspects</div>
+                                <div class="meta-value">7 Persons of Interest</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Evidence</div>
+                                <div class="meta-value">Forensics, DNA, Documents</div>
+                            </div>
+                        </div>
+                        <a href="basement_enigma.html" class="open-case-btn">Open Case File</a>
+                    </div>
+                </div>
+
+                <!-- Case: Incident-->
+                 <div class="case-file">
+                    <div class="case-header">
+                        <div class="case-number">CASE #2025-0088</div>
+                        <div class="case-title">The Schrödinger Incident</div>
+                        <div class="case-location">A Murder That Exists in Superposition</div>
+                    </div>
+                    <div class="case-body">
+                        <div class="difficulty extreme">DIFFICULTY: EXTREME (10/10)</div>
+                        
+                        <div class="case-meta">
+                            <div class="meta-item">
+                                <div class="meta-label">Victim</div>
+                                <div class="meta-value">Nathan Pierce 41</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Date</div>
+                                <div class="meta-value">Jan 08, 205</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Suspects</div>
+                                <div class="meta-value">7 Persons of Interest</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Evidence</div>
+                                <div class="meta-value">Forensics, DNA, Documents</div>
+                            </div>
+                        </div>
+                        <a href="TheSchrödingerIncident.html" class="open-case-btn">Open Case File</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>DETECTIVE DIVISION - COLD CASE UNIT</p>
+            <p class="warning-footer">These cases are works of fiction. All names, characters, and incidents are products of the imagination.</p>
+        </div>
+    </footer>
+</body>
+</html>
