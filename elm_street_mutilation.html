@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case #2024-1891: The Elm Street Mutilation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --case-black: #0d0d0d;
+            --evidence-brown: #2d1b00;
+            --blood-dark: #4a0000;
+            --paper-beige: #e8dcc0;
+            --manila: #f4e8c8;
+            --stamp-red: #8b0000;
+            --metal-gray: #5a5a5a;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: #1a1a1a;
+            color: var(--paper-beige);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        header {
+            background: linear-gradient(180deg, rgba(77, 0, 0, 0.4) 0%, transparent 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+            border-bottom: 5px solid var(--stamp-red);
+            position: relative;
+        }
+
+        .classified-stamp {
+            position: absolute;
+            top: 40px;
+            right: 80px;
+            background: var(--stamp-red);
+            color: var(--manila);
+            padding: 15px 35px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 5px;
+            transform: rotate(8deg);
+            border: 3px solid var(--blood-dark);
+            box-shadow: 0 0 30px rgba(139, 0, 0, 0.6);
+        }
+
+        .case-number {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.1rem;
+            letter-spacing: 8px;
+            color: var(--stamp-red);
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--manila);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
+        }
+
+        .case-subtitle {
+            font-size: 1.9rem;
+            color: var(--paper-beige);
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .severity-warning {
+            display: inline-block;
+            background: rgba(139, 0, 0, 0.4);
+            border: 4px solid var(--stamp-red);
+            padding: 20px 50px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(13, 13, 13, 0.98);
+            backdrop-filter: blur(15px);
+            border-bottom: 3px solid var(--stamp-red);
+            padding: 25px 0;
+            z-index: 1000;
+            box-shadow: 0 5px 30px rgba(139, 0, 0, 0.4);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+            color: var(--paper-beige);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transition: all 0.3s ease;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--stamp-red);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--stamp-red);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        section:nth-child(even) {
+            background: rgba(45, 27, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--stamp-red);
+            margin-bottom: 80px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            position: relative;
+            padding-bottom: 35px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 350px;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--stamp-red), transparent);
+        }
+
+        .case-file {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(45, 27, 0, 0.6), rgba(13, 13, 13, 0.8));
+            padding: 90px;
+            border: 5px solid var(--evidence-brown);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.9);
+            position: relative;
+        }
+
+        .case-file::before {
+            content: 'HOMICIDE - ACTIVE INVESTIGATION';
+            position: absolute;
+            top: -25px;
+            left: 70px;
+            background: var(--stamp-red);
+            color: var(--manila);
+            padding: 12px 40px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+        }
+
+        .case-file h3 {
+            font-size: 2.5rem;
+            color: var(--stamp-red);
+            margin-bottom: 45px;
+            border-bottom: 4px solid var(--evidence-brown);
+            padding-bottom: 25px;
+        }
+
+        .case-file p {
+            margin-bottom: 35px;
+            font-size: 1.2rem;
+            line-height: 2.3;
+            text-align: justify;
+        }
+
+        .victim-profile {
+            background: rgba(139, 0, 0, 0.2);
+            padding: 45px;
+            margin: 50px 0;
+            border-left: 10px solid var(--stamp-red);
+        }
+
+        .victim-profile h4 {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--stamp-red);
+            letter-spacing: 3px;
+        }
+
+        .victim-profile p {
+            margin-bottom: 20px;
+            font-size: 1.15rem;
+        }
+
+        .critical-alert {
+            background: rgba(139, 0, 0, 0.3);
+            padding: 45px;
+            margin: 50px 0;
+            border: 5px solid var(--stamp-red);
+            font-size: 1.2rem;
+            line-height: 2.3;
+        }
+
+        .critical-alert strong {
+            color: var(--stamp-red);
+            font-size: 1.35rem;
+        }
+
+        .evidence-photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(650px, 1fr));
+            gap: 60px;
+            margin-top: 90px;
+        }
+
+        .photo-exhibit {
+            background: linear-gradient(135deg, rgba(45, 27, 0, 0.7), rgba(13, 13, 13, 0.9));
+            padding: 40px;
+            border: 5px solid var(--evidence-brown);
+            box-shadow: 15px 15px 0 rgba(139, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .photo-exhibit:hover {
+            transform: translateY(-15px) rotate(-1deg);
+            box-shadow: 25px 25px 0 rgba(139, 0, 0, 0.5);
+        }
+
+        .photo-exhibit canvas {
+            width: 100%;
+            height: 500px;
+            border: 4px solid #000;
+            background: #0a0a0a;
+            margin-bottom: 35px;
+        }
+
+        .photo-title {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1rem;
+            color: var(--stamp-red);
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .photo-caption {
+            font-size: 1.1rem;
+            line-height: 2.1;
+            color: var(--paper-beige);
+        }
+
+        .forensic-data {
+            display: grid;
+            gap: 50px;
+            margin-top: 90px;
+        }
+
+        .forensic-report {
+            background: linear-gradient(135deg, rgba(45, 27, 0, 0.6), rgba(13, 13, 13, 0.8));
+            padding: 50px;
+            border: 4px solid var(--evidence-brown);
+            border-left: 12px solid var(--stamp-red);
+            box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .forensic-report:hover {
+            transform: translateX(20px);
+            box-shadow: 25px 25px 0 rgba(139, 0, 0, 0.3);
+        }
+
+        .report-number {
+            font-family: 'Courier Prime', monospace;
+            font-weight: 700;
+            color: var(--stamp-red);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            letter-spacing: 5px;
+        }
+
+        .report-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--manila);
+        }
+
+        .report-text {
+            font-size: 1.15rem;
+            line-height: 2.2;
+            color: var(--paper-beige);
+        }
+
+        .suspects-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 60px;
+            margin-top: 90px;
+        }
+
+        .suspect-dossier {
+            background: linear-gradient(135deg, rgba(45, 27, 0, 0.7), rgba(13, 13, 13, 0.9));
+            padding: 55px;
+            border: 5px solid var(--evidence-brown);
+            position: relative;
+            box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.7);
+            transition: all 0.4s ease;
+        }
+
+        .suspect-dossier::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: var(--stamp-red);
+        }
+
+        .suspect-dossier:hover {
+            transform: translateY(-15px);
+            box-shadow: 25px 25px 0 rgba(139, 0, 0, 0.4);
+        }
+
+        .suspect-name {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: var(--stamp-red);
+            margin-bottom: 18px;
+        }
+
+        .suspect-role {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1rem;
+            color: var(--metal-gray);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 35px;
+        }
+
+        .suspect-details {
+            font-size: 1.15rem;
+            line-height: 2.1;
+            color: var(--paper-beige);
+            margin-bottom: 25px;
+        }
+
+        .suspect-connection {
+            background: rgba(139, 0, 0, 0.25);
+            padding: 30px;
+            margin-top: 35px;
+            border-left: 6px solid var(--stamp-red);
+            font-size: 1.1rem;
+        }
+
+        .suspect-connection strong {
+            display: block;
+            margin-bottom: 18px;
+            color: var(--stamp-red);
+            font-size: 1.25rem;
+        }
+
+        .interview-section {
+            max-width: 1400px;
+            margin: 90px auto;
+        }
+
+        .interview-transcript {
+            background: linear-gradient(135deg, rgba(45, 27, 0, 0.7), rgba(13, 13, 13, 0.9));
+            padding: 60px;
+            margin-bottom: 55px;
+            border: 4px solid var(--evidence-brown);
+            border-left: 18px solid var(--stamp-red);
+            box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.7);
+        }
+
+        .interview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 45px;
+            padding-bottom: 30px;
+            border-bottom: 4px dashed var(--evidence-brown);
+        }
+
+        .interviewee {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--stamp-red);
+        }
+
+        .interview-time {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1rem;
+            color: var(--metal-gray);
+        }
+
+        .interview-content {
+            font-size: 1.2rem;
+            line-height: 2.3;
+            font-style: italic;
+            padding-left: 50px;
+            border-left: 6px solid rgba(139, 0, 0, 0.4);
+            color: var(--manila);
+        }
+
+        .solution-container {
+            max-width: 1200px;
+            margin: 90px auto;
+            background: linear-gradient(135deg, rgba(45, 27, 0, 0.8), rgba(13, 13, 13, 0.95));
+            padding: 100px 90px;
+            border: 8px double var(--stamp-red);
+            box-shadow: 0 35px 100px rgba(139, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        .solution-container h3 {
+            font-size: 3.5rem;
+            color: var(--stamp-red);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+        }
+
+        .solution-text {
+            font-size: 1.35rem;
+            line-height: 2.4;
+            margin-bottom: 60px;
+            color: var(--paper-beige);
+        }
+
+        .password-rules {
+            background: rgba(139, 0, 0, 0.4);
+            padding: 40px;
+            margin-bottom: 50px;
+            border: 5px solid var(--stamp-red);
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.05rem;
+            color: var(--stamp-red);
+            line-height: 2.3;
+        }
+
+        .solution-form input {
+            width: 100%;
+            padding: 30px 45px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.35rem;
+            border: 5px solid var(--evidence-brown);
+            background: rgba(13, 13, 13, 0.8);
+            color: var(--manila);
+            margin-bottom: 45px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+
+        .solution-form input:focus {
+            outline: none;
+            border-color: var(--stamp-red);
+            background: rgba(13, 13, 13, 0.95);
+            box-shadow: 0 0 45px rgba(139, 0, 0, 0.5);
+        }
+
+        .solution-form button {
+            width: 100%;
+            padding: 35px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            background: var(--stamp-red);
+            color: var(--manila);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.7);
+        }
+
+        .solution-form button:hover {
+            background: #a00000;
+            transform: translateY(-5px);
+            box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.9);
+        }
+
+        .error-message {
+            color: var(--stamp-red);
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.15rem;
+            margin-top: 40px;
+            display: none;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+
+        .error-message.active {
+            display: block;
+            animation: pulse 0.7s ease;
+        }
+
+        .solution-reveal {
+            display: none;
+            max-width: 1400px;
+            margin: 90px auto;
+        }
+
+        .solution-reveal.show {
+            display: block;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .killer-announcement {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.5), rgba(139, 0, 0, 0.2));
+            padding: 90px;
+            border: 8px double var(--stamp-red);
+            margin-bottom: 70px;
+            text-align: center;
+            box-shadow: 0 25px 80px rgba(139, 0, 0, 0.8);
+        }
+
+        .killer-announcement h3 {
+            font-size: 2.8rem;
+            color: var(--manila);
+            margin-bottom: 30px;
+        }
+
+        .killer-name-reveal {
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--stamp-red);
+            margin: 40px 0;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 0 0 40px rgba(139, 0, 0, 0.8);
+        }
+
+        .explanation-block {
+            background: linear-gradient(135deg, rgba(45, 27, 0, 0.7), rgba(13, 13, 13, 0.9));
+            padding: 60px;
+            margin-bottom: 50px;
+            border: 4px solid var(--evidence-brown);
+            border-left: 15px solid var(--stamp-red);
+            box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.7);
+        }
+
+        .explanation-block h4 {
+            font-size: 2.2rem;
+            color: var(--stamp-red);
+            margin-bottom: 35px;
+            text-transform: uppercase;
+        }
+
+        .explanation-block p {
+            font-size: 1.2rem;
+            line-height: 2.3;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .evidence-breakdown {
+            background: rgba(139, 0, 0, 0.2);
+            padding: 35px;
+            margin: 30px 0;
+            border-left: 8px solid var(--stamp-red);
+        }
+
+        .evidence-breakdown strong {
+            display: block;
+            font-size: 1.3rem;
+            color: var(--stamp-red);
+            margin-bottom: 15px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @media (max-width: 1200px) {
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.8rem; }
+            .evidence-photos,
+            .suspects-section {
+                grid-template-columns: 1fr;
+            }
+            .classified-stamp {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="classified-stamp">EXTREME SEVERITY</div>
+        <div class="container">
+            <div class="case-number">CASE #2024-1891</div>
+            <h1>The Elm Street Mutilation</h1>
+            <p class="case-subtitle">Identity Erasure and Dismemberment</p>
+            <div class="severity-warning">⚠ GRAPHIC CONTENT - SURGICAL MUTILATION ⚠</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#scene">Crime Scene</a></li>
+            <li><a href="#forensics">Forensics</a></li>
+            <li><a href="#movement">Victim Movement</a></li>
+            <li><a href="#suspects">Suspects</a></li>
+            <li><a href="#interviews">Interviews</a></li>
+            <li><a href="#solution">Solution</a></li>
+        </ul>
+    </nav>
+
+    <section id="overview">
+        <div class="container">
+            <h2>Case Overview</h2>
+            <div class="case-file">
+                <h3>Initial Discovery Report</h3>
+                <p>On Saturday, November 16, 2024, at approximately 3:47 PM, Tyler Morrison (age 15) and Marcus Chen (age 15) discovered a severely mutilated body in the basement of an abandoned residential property located at 847 Elm Street in Oakridge. The discovery occurred when Tyler entered the property after Marcus dared him to explore the allegedly "haunted" house.</p>
+                
+                <p>The victim, an unidentified male, was found in an advanced state of decomposition with the face completely severed from the skull and four fingers surgically amputated: three from the left hand (pinky, ring finger, and pointer finger) and one from the right hand (thumb). The amputations were performed with medical precision, showing clean cuts through the metacarpal bones.</p>
+
+                <p>The deliberate destruction of identifying features - facial removal and strategic finger amputation - was clearly intended to prevent identification through standard methods. However, the perpetrator left behind clues that suggest this was not random violence but a carefully orchestrated murder with a message.</p>
+
+                <div class="victim-profile">
+                    <h4>Victim Profile (Preliminary)</h4>
+                    <p><strong>Identity Status:</strong> UNKNOWN - Initially catalogued as "John Doe #47"</p>
+                    <p><strong>Later Identified As:</strong> Jacob "Jake" Morrison, age 32</p>
+                    <p><strong>Physical Description:</strong> Male, Caucasian, 5'11" (180cm), athletic build</p>
+                    <p><strong>Distinguishing Features:</strong> Surgical scar on right knee (ACL repair approximately 3 years old), partial tattoo on upper left arm (text reads "Semper Fi" - Marine Corps motto)</p>
+                    <p><strong>Time of Death:</strong> Wednesday, November 13, 2024, between 10:00 PM - 2:00 AM</p>
+                    <p><strong>Cause of Death:</strong> Exsanguination from severed femoral artery in left thigh</p>
+                    <p><strong>Confirmed Identity Method:</strong> DNA match to Jake Morrison through military service records; tattoo confirmed Marine Corps service 2012-2016</p>
+                </div>
+
+                <p>The abandoned house at 847 Elm Street has been vacant for eight months following foreclosure proceedings. The property is currently owned by Oakridge Community Bank. No utilities are active at the location. Despite the home's abandonment, evidence indicates recent habitation in the basement area.</p>
+
+                <p>Found at the scene: a sleeping bag, portable camping lantern, empty food containers (forensically dated within two weeks of discovery), and critically - scattered papers around the body spelling out "JAKE" when properly arranged. Additionally, a prescription bottle labeled "J. Morrison" was discovered in a black duffel bag found approximately 10 feet from the body.</p>
+
+                <div class="critical-alert">
+                    <strong>Lead Investigator's Critical Finding:</strong> The case initially appeared to be a stranger murder with identity concealment. However, forensic analysis revealed that the four missing fingers were NOT taken as trophies by the killer - they were left at specific locations as deliberate clues. Three fingers (left pinky, left ring, left pointer) were discovered on November 18th by transit authorities inside Bus #447, which runs the Oakridge-Portland route. The fourth finger (right thumb) was located during autopsy - it had been placed INSIDE the victim's stomach, requiring him to have swallowed it before death. This discovery fundamentally changes the nature of the investigation. The victim knowingly swallowed his own severed finger. The other three fingers were transported via bus to a specific destination. This suggests the victim was complicit in his own mutilation, potentially under extreme duress, or the killing involved a level of psychological torture that forced participation. The scattered papers spelling "JAKE" were not random - they came from a torn prescription authorization document. Every element of this crime scene was staged with purpose. The question is not just who killed Jake Morrison, but why he participated in the destruction of his own identity.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="scene">
+        <div class="container">
+            <h2>Crime Scene Documentation</h2>
+            <div class="evidence-photos">
+                <div class="photo-exhibit">
+                    <canvas id="photo1"></canvas>
+                    <div class="photo-title">EXHIBIT 1: BASEMENT - PRIMARY SCENE</div>
+                    <div class="photo-caption">Body positioned supine near north wall. Papers spelling "JAKE" scattered in deliberate pattern. Sleeping bag 6 feet southwest of body, shows evidence of use. Single deep incision to left femoral artery - no defensive wounds visible on remaining intact fingers. Blood pooling indicates victim died where found.</div>
+                </div>
+                <div class="photo-exhibit">
+                    <canvas id="photo2"></canvas>
+                    <div class="photo-title">EXHIBIT 2: FACIAL MUTILATION DETAIL</div>
+                    <div class="photo-caption">Complete facial removal from hairline to jaw. Cutting pattern indicates use of surgical scalpel, likely #10 or #11 blade. Incisions began at temporal region, continued around orbital sockets, severed at nasal bridge, concluded at mandible. Face removed as single piece. Minimal blood spatter confirms post-mortem removal (performed 2-4 hours after death).</div>
+                </div>
+                <div class="photo-exhibit">
+                    <canvas id="photo3"></canvas>
+                    <div class="photo-title">EXHIBIT 3: HAND MUTILATION - LEFT</div>
+                    <div class="photo-caption">Left hand showing amputation of three fingers: pinky (5th digit), ring finger (4th digit), and pointer finger (2nd digit). Middle finger and thumb remain intact. Cuts made at metacarpophalangeal joints with surgical precision. No crushing or tearing - indicative of medical-grade cutting implement. Minimal bleeding suggests amputations occurred near or after time of death.</div>
+                </div>
+                <div class="photo-exhibit">
+                    <canvas id="photo4"></canvas>
+                    <div class="photo-title">EXHIBIT 4: HAND MUTILATION - RIGHT</div>
+                    <div class="photo-caption">Right hand showing amputation of thumb (1st digit). Four fingers remain intact. Identical cutting precision as left hand. Medical examiner notes: The specific pattern of finger removal is NOT random. The remaining fingers (left middle, left thumb, right four fingers) do NOT have intact fingerprint ridges - they show evidence of chemical burn consistent with concentrated hydrochloric acid exposure. The REMOVED fingers were the only ones with viable prints. This indicates perpetrator knew exactly which fingers retained identification value.</div>
+                </div>
+                <div class="photo-exhibit">
+                    <canvas id="photo5"></canvas>
+                    <div class="photo-title">EXHIBIT 5: RECOVERED FINGERS - BUS DISCOVERY</div>
+                    <div class="photo-caption">Three fingers recovered from Bus #447 (Oakridge-Portland route) on November 18, 2024. Found wrapped in plastic bag wedged behind seat 23B. DNA confirms match to victim. Decomposition rate consistent with November 13 separation. Bus route logs show Bus #447 departed Oakridge at 11:30 PM on November 13 - approximately 1-3 hours after victim's death. Question: Who placed the fingers on this specific bus?</div>
+                </div>
+                <div class="photo-exhibit">
+                    <canvas id="photo6"></canvas>
+                    <div class="photo-title">EXHIBIT 6: FOURTH FINGER - STOMACH CONTENTS</div>
+                    <div class="photo-caption">Right thumb discovered during autopsy in victim's stomach. Victim swallowed his own severed thumb. Presence of thumb in stomach indicates it was ingested while victim was still alive or very shortly after death (within 15 minutes). Gastric acid exposure minimal - thumb was in stomach less than 30 minutes before digestive processes ceased at death. Critical implication: Victim was conscious when thumb was severed and conscious when he swallowed it.</div>
+                </div>
+                <div class="photo-exhibit">
+                    <canvas id="photo7"></canvas>
+                    <div class="photo-title">EXHIBIT 7: VICTIM'S BELONGINGS</div>
+                    <div class="photo-caption">Black duffel bag found 10 feet from body. Contents: leather-bound journal (23 entries October-November 2024), wallet (no ID cards, only cash), one-way plane ticket to Boston dated November 14, two bus tickets (Portland-Oakridge round trip dated Nov 10-11), used napkin with blood traces, USB drive (encrypted files), prescription bottle labeled "J. Morrison - Oxycodone".</div>
+                </div>
+                <div class="photo-exhibit">
+                    <canvas id="photo8"></canvas>
+                    <div class="photo-title">EXHIBIT 8: TORN PRESCRIPTION DOCUMENT</div>
+                    <div class="photo-caption">Four paper pieces arranged to spell "JAKE". Forensic reconstruction shows pieces originated from single document: a prescription authorization form reading "JAKE MORRISON - PRESCRIPTION AUTHORIZATION - Patient ID: 47821 - Dr. Sarah Chen, MD - Oakridge Medical Center". Document was deliberately torn into quarters to highlight the name. Question: Why would killer leave victim's name if trying to conceal identity?</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="forensics">
+        <div class="container">
+            <h2>Forensic Analysis</h2>
+            <div class="forensic-data">
+                <div class="forensic-report">
+                    <div class="report-number">FORENSIC REPORT #001</div>
+                    <div class="report-title">Cause and Manner of Death</div>
+                    <div class="report-text">Cause of death: Exsanguination from severed left femoral artery. The wound is a single deep incision, 4.2 inches in length, penetrating 2.3 inches deep, severing the femoral artery completely. Blood loss analysis indicates death occurred within 4-6 minutes of the injury. The angle of the cut (78 degrees relative to the horizontal plane of the body) and the depth progression (deep to shallow, medial to lateral) are biomechanically consistent with a self-inflicted wound. However, the victim's right hand is missing its thumb - the dominant gripping digit. Grip strength testing on a blade simulator shows it would be nearly impossible to achieve the necessary pressure and control for this wound without a functional thumb on the dominant hand. CONCLUSION: Wound appears self-inflicted but circumstances suggest coercion or assistance. Alternative theory: The wound was inflicted by a second party, but the victim was positioned and held in such a way to mimic self-infliction. Manner of death: HOMICIDE (uncertain if victim was forced to participate in own death).</div>
+                </div>
+
+                <div class="forensic-report">
+                    <div class="report-number">FORENSIC REPORT #002</div>
+                    <div class="report-title">Timeline of Mutilations</div>
+                    <div class="report-text">Forensic pathology establishes the following sequence: (1) Chemical burns to six fingers occurred 6-12 hours before death (estimated November 13, 10:00 AM - 4:00 PM), (2) Right thumb amputation occurred while victim was alive, approximately 15-30 minutes before death, (3) Three left-hand fingers amputated within 10 minutes of death (victim possibly still conscious), (4) Femoral artery severed resulting in death, (5) Facial removal occurred 2-4 hours POST-mortem. The victim experienced his mutilation in stages over multiple hours. The chemical burns suggest premeditation - someone prepared by destroying fingerprints hours before the killing. The thumb amputation and subsequent forced swallowing indicates extreme psychological torture. The victim knew he was going to die and was made to participate in the destruction of his own identity. The three fingers removed near death were placed on Bus #447 by an unknown party between 11:00 PM - 11:30 PM on November 13.</div>
+                </div>
+
+                <div class="forensic-report">
+                    <div class="report-number">FORENSIC REPORT #003</div>
+                    <div class="report-title">Chemical Analysis - Fingerprint Destruction</div>
+                    <div class="report-text">Six fingers on the victim's hands show evidence of chemical exposure consistent with concentrated hydrochloric acid (HCl) at approximately 30-35% concentration. The acid was applied topically to the finger pads, destroying the epidermal and dermal layers containing fingerprint ridges. Application method: soaking (fingers were submerged in acid for 8-12 minutes based on tissue damage depth). Time of exposure: 6-12 hours before death. The specific fingers destroyed were the left thumb, left middle finger, right index finger, right middle finger, right ring finger, and right pinky. The SPARED fingers (those later amputated) were the only ones with viable fingerprints remaining. This creates a paradox: Why destroy six fingerprints but preserve four, only to then remove those four fingers? Answer: The perpetrator needed the four viable fingerprints to EXIST somewhere other than on the body. The fingers were removed and transported elsewhere. This suggests the fingerprints themselves had value - possibly to plant evidence, create a false identity trail, or prove the victim's presence at a location.</div>
+                </div>
+
+                <div class="forensic-report">
+                    <div class="report-number">FORENSIC REPORT #004</div>
+                    <div class="report-title">Victim's Journal - Reconstructed Timeline</div>
+                    <div class="report-text">The leather journal contains 23 handwritten entries from October 15 to November 12, 2024 (one day before victim's death). Handwriting analysis confirms all entries written by victim. KEY ENTRIES: Oct 15 - "I found him. After eight years of searching, I finally found him. He's here in Oakridge, living under a different name. He thinks he's safe. He's wrong." Oct 28 - "Followed him to the pharmacy today. He's still using the same doctor. Dr. Chen prescribed him the same meds. Doesn't she know? Or is she part of it?" Nov 3 - "TC confirmed what I suspected. The records were altered. The death was never investigated properly. Someone made sure it looked like an accident." Nov 9 - "MC knows I'm here. He saw me watching the house. He's scared. He cut his hand trying to leave through the back window. I kept the napkin with his blood. Insurance." Nov 12 - "Tomorrow night. 847 Elm Street. He agreed to meet. Says he'll explain everything. Says he'll tell me what really happened to Dad. I don't trust him but I need answers. If I don't make it, the evidence is on the USB drive. Password is Dad's badge number." ANALYSIS: Victim was investigating something related to his father's death eight years ago. "He" is someone victim tracked to Oakridge. TC and MC are individuals victim contacted during investigation.</div>
+                </div>
+
+                <div class="forensic-report">
+                    <div class="report-number">FORENSIC REPORT #005</div>
+                    <div class="report-title">Victim Identity Confirmation</div>
+                    <div class="report-text">Through DNA analysis matched against military records, victim identified as Jacob "Jake" Morrison, born April 12, 1992, age 32 at time of death. Military service: United States Marine Corps, 2012-2016, Honorable Discharge. Tattoo "Semper Fi" on left arm confirms service. Last known address: Chicago, Illinois. Employment: Private investigator, Morrison & Associates (self-employed). Family: Son of Robert Morrison (deceased 2016) and Jennifer Morrison (currently residing in Oakridge). Brother: Tyler Morrison (age 15, the teenager who discovered the body). CRITICAL DISCOVERY: Jake Morrison is Tyler Morrison's older half-brother. Robert Morrison (their father) died in a single-car accident on March 12, 2016, in Oakridge County. Official ruling: accident due to wet road conditions. Jake was 24 at the time, living in Chicago. Tyler was 7 years old. Jake and Tyler had minimal contact after their father's death - Jake remained in Chicago, Tyler and Jennifer stayed in Oakridge. Jake's journal indicates he never believed his father's death was an accident and spent eight years investigating.</div>
+                </div>
+
+                <div class="forensic-report">
+                    <div class="report-number">FORENSIC REPORT #006</div>
+                    <div class="report-title">Blood Evidence on Napkin</div>
+                    <div class="report-text">Used napkin found in victim's duffel bag contains dried blood. DNA analysis reveals blood belongs to Marcus Chen (age 15). Blood pattern consistent with wiping a minor cut. Forensic dating places blood deposit at 5-8 days before victim's death (November 5-8, 2024). Cross-reference with journal entry November 9: "MC knows I'm here. He saw me watching the house. He's scared. He cut his hand trying to leave through the back window. I kept the napkin with his blood. Insurance." Conclusion: MC in journal refers to Marcus Chen. Victim was surveilling Marcus Chen or his residence. Marcus injured himself, and victim collected the bloodied napkin as "insurance" - likely to prove Marcus's presence at a location or to leverage against him. Question: Why would a 32-year-old private investigator surveilling a 15-year-old boy?</div>
+                </div>
+
+                <div class="forensic-report">
+                    <div class="report-number">FORENSIC REPORT #007</div>
+                    <div class="report-title">Bus Ticket Analysis</div>
+                    <div class="report-text">Two Greyhound bus tickets found in wallet. Ticket #1: Oakridge to Portland, dated November 10, 2024, departure 10:00 AM (validated/used). Ticket #2: Portland to Oakridge, dated November 11, 2024, departure 6:00 PM (validated/used). Portland is 180 miles north of Oakridge, approximately 3-hour bus journey. Victim traveled to Portland on November 10, returned November 11. Purpose of trip: Unknown. However, property records show David Hargrove (former owner of 847 Elm Street) relocated to Portland in March 2024 after foreclosure. Hargrove family address in Portland: 2847 Maple Street. Surveillance footage from Portland bus terminal shows victim (facial recognition via gait analysis and clothing) exiting bus and taking taxi on November 10 at 1:15 PM. Taxi company records show drop-off at 2847 Maple Street at 1:52 PM. Victim visited Hargrove family in Portland two days before his death.</div>
+                </div>
+
+                <div class="forensic-report">
+                    <div class="report-number">FORENSIC REPORT #008</div>
+                    <div class="report-title">Plane Ticket Evidence</div>
+                    <div class="report-text">One-way plane ticket to Boston, Massachusetts found in duffel bag. Flight date: November 14, 2024 (one day after victim's death). Departure: Oakridge Regional Airport, 6:30 AM. Ticket purchased online October 28, 2024, using Visa card number ending in 4782. Bank records trace card to "Jake Morrison, 247 Oak Lane, Oakridge" - however, no Jake Morrison resides at this address. Current resident is Dorothy Hanson, age 72, 15-year occupant, no knowledge of Jake Morrison. Credit card application for card ending in 4782 was submitted online October 1, 2024, using fabricated information. Billing address: 247 Oak Lane (Dorothy Hanson's address). Credit card was used exclusively for: (1) Plane ticket purchase, (2) Portland bus tickets, (3) Hotel reservation in Chicago dated October 15-20 (confirmed victim stayed at this hotel), (4) Car rental in Oakridge October 21. CONCLUSION: Victim created false identity "Jake Morrison of 247 Oak Lane" to conduct investigation while maintaining cover. Planned to flee to Boston on November 14 after confronting subject of investigation on November 13.</div>
+                </div>
+
+                <div class="forensic-report">
+                    <div class="report-number">FORENSIC REPORT #009</div>
+                    <div class="report-title">USB Drive - Encrypted Evidence</div>
+                    <div class="report-text">USB drive contains three encrypted files: "evidence.pdf" (4.2 MB), "timeline.xlsx" (872 KB), "faces.jpg" (6.1 MB). AES-256 encryption standard. Password protection: 12-character alphanumeric. Journal entry November 12 states: "Password is Dad's badge number." Robert Morrison (victim's father) was not in law enforcement - he worked as insurance adjuster. However, employment records show Robert Morrison worked for Oakridge County Sheriff's Department from 2008-2014 before transitioning to insurance. Badge number: OM-7821. USB encryption password successfully cracked using "OM7821". DECRYPTED CONTENTS: evidence.pdf contains scanned documents including Robert Morrison's autopsy report, accident scene photos, Sheriff's Department internal emails from 2016, and insurance claim documents. timeline.xlsx is a spreadsheet tracking David Hargrove's movements from 2015-2024. faces.jpg contains photos of David Hargrove, Jennifer Morrison, Marcus Chen, and Dr. Sarah Chen with handwritten notes: "DH - First responder, suspiciously quick to rule accident, left sheriff's dept 6 months later", "JM - Identified body, collected insurance $500K, showed no grief", "MC - Son of Michael Chen, pharmacist who filled Dad's prescriptions, knows something", "SC - Signed death certificate, now Marcus's doctor".</div>
+                </div>
+
+                <div class="forensic-report">
+                    <div class="report-number">FORENSIC REPORT #010</div>
+                    <div class="report-title">Prescription Bottle Forensics</div>
+                    <div class="report-text">Prescription bottle label reads: "J. Morrison - Oxycodone 10mg - Dr. Sarah Chen - Fill Date: March 2024 - Oakridge Pharmacy". Bottle is empty. Label is genuine (verified printer, paper stock, pharmacy format). However, Oakridge Pharmacy database shows NO prescription for any "J. Morrison" filled in 2024. Dr. Sarah Chen confirms she never prescribed oxycodone to anyone named Morrison. Label printer audit shows label was printed on March 15, 2024, at 11:47 PM using credentials belonging to Michael Chen (head pharmacist). Michael Chen's timesheet shows he left pharmacy at 6:00 PM on March 15. After-hours access logs show his security badge accessed pharmacy at 11:42 PM same night. Michael Chen claims he accidentally left pharmacy unlocked and someone must have used his credentials. Bottle itself contains no pills but does contain trace DNA on bottle lip - matches victim Jake Morrison. Conclusion: Someone created a fake prescription label using Michael Chen's credentials after hours, placed it on an empty bottle, and victim handled the bottle. Purpose: Unknown, but prescription date (March 2024) coincides with David Hargrove's foreclosure and move to Portland.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="movement">
+        <div class="container">
+            <h2>Victim's Final Week - Movement Reconstruction</h2>
+            <div class="case-file">
+                <h3>Timeline of Jake Morrison's Activities</h3>
+                
+                <p><strong>October 15, 2024:</strong> Jake Morrison arrives in Oakridge from Chicago. Checks into Oakridge Inn using false identity. Journal entry: "I found him." Begins surveillance.</p>
+
+                <p><strong>October 21, 2024:</strong> Rents car using false credit card. Begins staking out 847 Elm Street (abandoned house). Discovers someone has been accessing the property despite foreclosure.</p>
+
+                <p><strong>October 28, 2024:</strong> Follows subject to Oakridge Pharmacy. Observes prescription pickup. Journal: "Still using the same doctor." Purchases one-way plane ticket to Boston for November 14.</p>
+
+                <p><strong>November 3, 2024:</strong> Meets with "TC" at Oakridge Public Library. TC provides information confirming Jake's suspicions about altered records. Journal: "The death was never investigated properly."</p>
+
+                <p><strong>November 5-8, 2024:</strong> Conducts surveillance on Marcus Chen's residence. Marcus Chen notices surveillance, attempts to flee through back window, cuts hand on broken glass. Jake collects bloodied napkin.</p>
+
+                <p><strong>November 9, 2024:</strong> Confronts Marcus Chen directly (details unknown - no journal entry for actual conversation, only note that "MC knows I'm here"). Marcus Chen later reports to police he encountered a "strange man watching our house" on this date but did not file formal complaint.</p>
+
+                <p><strong>November 10, 2024, 10:00 AM:</strong> Takes bus from Oakridge to Portland. Arrives 1:15 PM. Takes taxi to 2847 Maple Street (Hargrove residence). Confronts David Hargrove about father's death (details of confrontation unknown - no witnesses).</p>
+
+                <p><strong>November 11, 2024, 6:00 PM:</strong> Departs Portland, returns to Oakridge at 9:00 PM. Checks out of Oakridge Inn. Moves into 847 Elm Street basement (abandoned house formerly owned by Hargrove family). Sleeping bag and camping lantern confirm he stayed there November 11-13.</p>
+
+                <p><strong>November 12, 2024:</strong> Final journal entry written at approximately 11:15 PM: "Tomorrow night. 847 Elm Street. He agreed to meet. Says he'll explain everything. Says he'll tell me what really happened to Dad." Victim arranged meeting with subject of investigation for November 13 at the abandoned house.</p>
+
+                <p><strong>November 13, 2024, 10:00 PM - 2:00 AM (Estimated Time of Death):</strong> Jake Morrison meets with unknown subject at 847 Elm Street. Confrontation occurs. Victim's fingers are chemically burned (this happened earlier in day), right thumb is amputated and victim is forced to swallow it, three more fingers are amputated, femoral artery is severed, victim bleeds out and dies. 2-4 hours after death, face is removed from skull. Three amputated fingers are placed on Bus #447 (11:30 PM departure to Portland). Body left in basement with scattered papers spelling "JAKE".</p>
+
+                <p><strong>November 16, 2024, 3:47 PM:</strong> Tyler Morrison (victim's half-brother, age 15) discovers body after being dared by Marcus Chen to enter abandoned house.</p>
+
+                <div class="critical-alert">
+                    <strong>Movement Analysis Conclusion:</strong> Jake Morrison's movements show a methodical investigation spanning four weeks. He tracked someone from Chicago to Oakridge, surveilled them, confronted associates (TC, Marcus Chen, David Hargrove), collected evidence, and arranged a final meeting at the location where he was ultimately killed. The meeting site - 847 Elm Street - is significant because it was David Hargrove's former home before foreclosure. Hargrove was the first responder to Robert Morrison's "accident" in 2016 when he worked as sheriff's deputy. The connections form a web: Jake investigates his father's death → trails David Hargrove → confronts Hargrove in Portland → returns to Hargrove's old house → dies in that same house. Either Hargrove killed Jake in revenge for the confrontation, OR someone else connected to the 2016 incident killed Jake to protect secrets he uncovered. The fingers on Bus #447 heading to Portland suggest the killer wanted something connected to Portland - possibly to frame Hargrove or send a message.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="suspects">
+        <div class="container">
+            <h2>Persons of Interest</h2>
+            <div class="suspects-section">
+                <div class="suspect-dossier">
+                    <div class="suspect-name">David Hargrove</div>
+                    <div class="suspect-role">Former Sheriff's Deputy / Former Homeowner</div>
+                    <div class="suspect-details">Age: 52. Former Oakridge County Sheriff's Deputy (2008-2016). First responder to Robert Morrison's fatal car accident on March 12, 2016. Resigned from sheriff's department six months later (September 2016) to pursue contractor work. Owned property at 847 Elm Street from 2010-2024. Lost home to foreclosure March 2024, relocated to Portland with wife and daughter. Has military medic training from service 2005-2009. Owns medical-grade cutting tools from both contractor work and military background.</div>
+                    <div class="suspect-connection">
+                        <strong>Connection to Victim:</strong>
+                        Hargrove was the first responder to Robert Morrison's death in 2016 - the very death Jake was investigating. Jake's journal identifies Hargrove as "suspiciously quick to rule accident" and notes Hargrove left the sheriff's department shortly after. Jake's USB drive contains timeline tracking Hargrove's movements 2015-2024. Jake confronted Hargrove in Portland on November 10, just three days before Jake's death. Hargrove has medical training to perform surgical amputations. The murder occurred in Hargrove's former home. Fingers were placed on bus to Portland - where Hargrove now lives. Motive: If Hargrove was involved in Robert Morrison's death (either directly or in cover-up), Jake's investigation threatened to expose him. Alibi: Claims he was in Portland entire week of November 10-17. However, Portland to Oakridge is only 3-hour drive - he could have driven back on November 13.
+                    </div>
+                </div>
+
+                <div class="suspect-dossier">
+                    <div class="suspect-name">Jennifer Morrison</div>
+                    <div class="suspect-role">Victim's Stepmother / Widow</div>
+                    <div class="suspect-details">Age: 41. Widow of Robert Morrison since 2016. Mother of Tyler Morrison (age 15, Jake's half-brother). Works as administrative assistant at Oakridge Community Bank - the bank that foreclosed on 847 Elm Street. After Robert's death, received $500,000 life insurance payout (double indemnity clause for accidental death). Jake's USB drive contains photo of Jennifer with note: "showed no grief." Jennifer and Jake had strained relationship after Robert's death - Jake believed accident wasn't investigated properly, Jennifer wanted to move on.</div>
+                    <div class="suspect-connection">
+                        <strong>Connection to Victim:</strong>
+                        Jennifer is Jake's stepmother and was married to the man whose death Jake was investigating. Jake's notes suggest Jennifer "showed no grief" and quickly collected insurance money. Jennifer works at the bank that owns the crime scene property - she would know 847 Elm was abandoned and accessible. Jennifer was responsible for processing the Hargrove foreclosure in March 2024. She knew both David Hargrove and the abandoned house intimately. Motive: If Jake's investigation revealed Jennifer was somehow involved in Robert's death, or if the investigation threatened her relationship with Tyler by exposing uncomfortable truths, she had reason to silence him. Additionally, if Jake's death looked like an accident or unsolved murder, Jennifer might inherit his private investigation business assets. Alibi: Claims she was home evening of November 13. Tyler confirms mother was home when he went to bed at 10:00 PM, but Tyler cannot confirm she stayed home all night.
+                    </div>
+                </div>
+
+                <div class="suspect-dossier">
+                    <div class="suspect-name">Michael Chen</div>
+                    <div class="suspect-role">Head Pharmacist - Father of Marcus</div>
+                    <div class="suspect-details">Age: 47. Head pharmacist at Oakridge Pharmacy for 15 years. Father of Marcus Chen (age 15). Brother-in-law to Dr. Sarah Chen. Has complete access to pharmacy database and prescription label printer. His credentials were used to print the fake "J. Morrison" prescription label on March 15, 2024, at 11:47 PM - hours after he'd left for the day. Claims someone used his credentials without authorization, but cannot explain how.</div>
+                    <div class="suspect-connection">
+                        <strong>Connection to Victim:</strong>
+                        Jake's journal entry October 28 mentions following subject to pharmacy where "the same doctor" (Dr. Sarah Chen, Michael's sister-in-law) prescribed "the same meds." Jake's USB drive notes "MC - Son of Michael Chen, pharmacist who filled Dad's prescriptions, knows something." Michael has access to create fake prescription labels. The fake prescription bottle was created using his credentials. His son Marcus was under Jake's surveillance and is connected to the discovery of the body. Motive: If Michael was involved in something illegal related to Robert Morrison's prescriptions in 2016 (perhaps providing medications that impaired Robert before the fatal crash), Jake's investigation threatened exposure and loss of pharmacy license. Michael would also be protecting his son Marcus, who appears connected to the case. Alibi: Claims he was home evening of November 13. Wife confirms, but both could be lying to protect each other or their son.
+                    </div>
+                </div>
+
+                <div class="suspect-dossier">
+                    <div class="suspect-name">Dr. Sarah Chen</div>
+                    <div class="suspect-role">Physician - Signed Robert Morrison's Death Certificate</div>
+                    <div class="suspect-details">Age: 44. Family medicine physician in Oakridge for 12 years. Sister-in-law to Michael Chen (married to his brother). Signed Robert Morrison's death certificate in 2016, declaring cause of death as blunt force trauma from car accident. Listed as prescribing physician on fake prescription bottle but denies writing any prescription for J. Morrison. Current physician for Marcus Chen (Michael's son) and many other Oakridge residents.</div>
+                    <div class="suspect-connection">
+                        <strong>Connection to Victim:</strong>
+                        Dr. Chen signed Robert Morrison's death certificate - the document Jake was investigating. Jake's USB drive labels her photo: "Signed death certificate, now Marcus's doctor." Jake's journal October 28 asks "Doesn't she know? Or is she part of it?" referring to the pharmacy visit. As a physician, Dr. Chen has medical knowledge to perform surgical amputations. She would understand how to chemically burn fingerprints and how to remove a face post-mortem. Motive: If Dr. Chen falsified Robert Morrison's death certificate in 2016 (ruling accident when it was actually homicide, or missing evidence of foul play), Jake's investigation threatened her medical license and possible criminal charges. She's also protecting family members Michael and Marcus Chen. Alibi: Claims she was at hospital evening of November 13 covering shift for colleague. Hospital records show she clocked in at 8:00 PM and clocked out at 6:00 AM November 14. However, hospital is only 15 minutes from 847 Elm Street - she had opportunity during shift break.
+                    </div>
+                </div>
+
+                <div class="suspect-dossier">
+                    <div class="suspect-name">Marcus Chen</div>
+                    <div class="suspect-role">Teenager - Dared Tyler to Enter House</div>
+                    <div class="suspect-details">Age: 15. Son of Michael Chen (pharmacist). High school sophomore, friend of Tyler Morrison (victim's half-brother). Known for exploring abandoned buildings. Jake's journal November 9 mentions "MC knows I'm here" after Marcus saw Jake surveilling his house. Marcus cut his hand on November 9 trying to escape through back window - Jake kept the bloodied napkin. Marcus was the one who dared Tyler to enter 847 Elm Street on November 16, leading to body's discovery.</div>
+                    <div class="suspect-connection">
+                        <strong>Connection to Victim:</strong>
+                        Marcus was under direct surveillance by Jake in early November. Marcus noticed the surveillance and panicked, injuring himself. Marcus's blood is on napkin in Jake's bag, labeled "insurance" by Jake. Marcus specifically dared Tyler to enter 847 Elm on November 16 - three days after murder. Did Marcus know the body was there? Was he ensuring his friend's brother Tyler would discover it, creating cover for Marcus's own knowledge of the scene? Marcus is son of pharmacist Michael Chen and patient of Dr. Sarah Chen - connected to both suspects. Motive: At age 15, Marcus likely didn't commit murder alone, but he may have been witness to something in 2016 (he was 7 years old when Robert Morrison died - same age as Tyler). If Marcus knew something about Robert's death and Jake discovered it, Marcus may have panicked and told his father Michael, who then took action. Alternatively, Marcus could have been manipulated by an adult into helping with the crime. Alibi: Claims he was home evening of November 13. Parents confirm, but they're suspects themselves.
+                    </div>
+                </div>
+
+                <div class="suspect-dossier">
+                    <div class="suspect-name">Theresa Cole</div>
+                    <div class="suspect-role">Librarian - "TC" in Journal</div>
+                    <div class="suspect-details">Age: 39. Head librarian at Oakridge Public Library for 8 years. Jake's journal November 3 mentions meeting with "TC" who "confirmed what I suspected. The records were altered." Theresa has access to public records, newspaper archives, property records, and historical documents. She helped Jake with his investigation by providing records.</div>
+                    <div class="suspect-connection">
+                        <strong>Connection to Victim:</strong>
+                        Theresa Cole (TC) confirmed Jake's suspicions about altered records on November 3. She had knowledge of Jake's investigation and what he was uncovering. She knew Jake was looking into Robert Morrison's death and the potential cover-up. If TC discovered something that made her realize she'd helped Jake become a threat to someone powerful in Oakridge, she may have alerted others. Alternatively, TC could have provided information to Jake knowing it would lead him into danger - setting him up for the kill. Motive: Theresa has no apparent personal motive, but she could be connected to other suspects through family or personal relationships. If she's related to or romantically involved with another suspect, she may have fed information to Jake while simultaneously reporting his progress to the killer. Alibi: Claims she was at home evening of November 13 watching television. Lives alone, no one can corroborate.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interviews">
+        <div class="container">
+            <h2>Extended Interview Transcripts</h2>
+            <div class="interview-section">
+                <div class="interview-transcript">
+                    <div class="interview-header">
+                        <div class="interviewee">David Hargrove</div>
+                        <div class="interview-time">Interviewed November 17, 2024 - 2:00 PM (via phone - Portland PD present)</div>
+                    </div>
+                    <div class="interview-content">
+                        "Yes, Jake Morrison came to my house in Portland on November 10th. I hadn't seen him in years - not since he was a teenager at his father's funeral. He showed up at my door around 2:00 PM, looked like he hadn't slept in days, and immediately started accusing me of killing his father. Said he had evidence that Robert's car crash wasn't an accident. Said I was the first responder and I covered it up. I tried to explain to him that I did my job properly that night. Robert's car went off Route 7 in heavy rain, hit a tree at high speed, died on impact. There was nothing suspicious about it. No signs of another vehicle, no brake line cutting, nothing. But Jake wouldn't listen. He kept saying the angles were wrong, the damage pattern didn't match a simple loss of control. He had photos, measurements, accident reconstruction analysis. I'll admit, the kid did his homework. We argued for maybe 90 minutes. I finally told him everything I remembered from that night, showed him my own photos from the scene, gave him my incident report. I thought it would put his mind at ease. It didn't. He left around 4:00 PM, said he was going back to Oakridge to 'finish this.' That was the last time I saw him alive. I swear I had nothing to do with his death. I've been in Portland the entire week. My wife, my daughter, my boss at the construction company - they can all confirm I was here. I did NOT drive back to Oakridge. I did NOT kill that boy. And I certainly didn't mutilate him like some kind of monster. The fact that he died in my old house... I don't know what that means. Maybe someone wanted to frame me. Maybe someone wanted to send me a message. But it wasn't me."
+                    </div>
+                </div>
+
+                <div class="interview-transcript">
+                    <div class="interview-header">
+                        <div class="interviewee">Jennifer Morrison</div>
+                        <div class="interview-time">Interviewed November 17, 2024 - 4:30 PM (attorney present)</div>
+                    </div>
+                    <div class="interview-content">
+                        "Jake and I haven't spoken in over a year. After Robert died, Jake became obsessed with the idea that it wasn't an accident. He couldn't accept that his father made a mistake, lost control, and died. He needed someone to blame. First it was the rain. Then it was the road conditions. Then it was the county for not maintaining the guardrails. Eventually he started blaming people - the sheriff's department, the medical examiner, even me. He accused me of not caring enough, of moving on too quickly. What did he want me to do? Robert was gone. I had a seven-year-old son to take care of. I couldn't spend years chasing conspiracy theories. So yes, we grew apart. Jake went to Chicago, started his PI business, and threw himself into other people's problems because he couldn't solve his own. When Tyler told me he'd found a body in that abandoned house and it turned out to be Jake... I was devastated. Whatever our differences, he was Tyler's brother. Tyler lost his father at seven and now he's lost his brother at fifteen. Yes, I work at the bank. Yes, I processed the Hargrove foreclosure. That's my job. I process dozens of foreclosures a year. I knew the house was empty, but so does everyone in Oakridge - it's common knowledge. I did NOT lure Jake to that house. I did NOT kill him. The idea is absurd. You're asking about the insurance money from Robert's death? Yes, I received $500,000. That money put Tyler through private school, paid for our house, and gave us financial security after Robert left us with nothing but debt. I'm not ashamed of that. As for my whereabouts on November 13th, I was home all evening. Tyler can confirm I was there when he went to bed at 10:00 PM. I didn't leave the house after that. I was watching TV, did some work on my laptop, went to bed around midnight. No, I can't prove I stayed home, but why would I leave? I had no reason to go to that house, no reason to see Jake, no reason to hurt him."
+                    </div>
+                </div>
+
+                <div class="interview-transcript">
+                    <div class="interview-header">
+                        <div class="interviewee">Michael Chen</div>
+                        <div class="interview-time">Interviewed November 18, 2024 - 10:00 AM</div>
+                    </div>
+                    <div class="interview-content">
+                        "I need to be very clear about something: I did NOT create that prescription label for Jake Morrison. Someone used my credentials without my knowledge. Yes, the label was printed at 11:47 PM on March 15th using my login, but I left the pharmacy at 6:00 PM that day. I always log out of the system before I leave - it's protocol. But the system shows I accessed it at 11:42 PM. The only explanation is that someone had my password or found a way to use my active session. I've been thinking about this constantly since you showed me the evidence. March 15th... that was the day of the Hargrove foreclosure closing. Jennifer Morrison processed the paperwork at the bank that afternoon. The pharmacy is across the street from the bank. Is it possible someone saw me entering my credentials earlier that day? Could someone have watched over my shoulder? I don't know. What I DO know is that prescription label is fake. We never filled an oxycodone prescription for anyone named Morrison - not Robert, not Jake, not Jennifer, not Tyler. I checked every prescription we filled in 2024 and there's no J. Morrison anywhere. Regarding my son Marcus - yes, Jake Morrison was watching our house in early November. Marcus was terrified. A strange man sitting in a car across the street, following him to school, taking photos. Marcus didn't know who he was or what he wanted. On November 9th, Marcus saw the man approaching our backyard. Marcus panicked, tried to climb out his bedroom window to get help from the neighbors, and cut his hand on broken glass. The man was gone by the time I got outside, but Marcus was bleeding and crying. I filed an informal complaint with a deputy I know, but I didn't push it because I didn't want to escalate things. If I had known that man was Jake Morrison investigating his father's death... I don't know. Maybe I would have talked to him. I had nothing to hide. Robert Morrison came to my pharmacy several times in 2015 and early 2016. He had a prescription for blood pressure medication from Dr. Sarah Chen - totally legitimate. Nothing unusual about it. He was a nice guy, always polite, always asked about my day. When I heard he died in that crash, I was genuinely sad. There was no conspiracy involving me, no illegal prescriptions, nothing sinister. I was just his pharmacist. As for November 13th, I was home all evening with my wife and son. We had dinner together, watched a movie, and I was in bed by 11:00 PM. I did NOT go to that abandoned house. I did NOT hurt Jake Morrison. And I certainly didn't mutilate him."
+                    </div>
+                </div>
+
+                <div class="interview-transcript">
+                    <div class="interview-header">
+                        <div class="interviewee">Dr. Sarah Chen</div>
+                        <div class="interview-time">Interviewed November 18, 2024 - 2:00 PM</div>
+                    </div>
+                    <div class="interview-content">
+                        "I signed Robert Morrison's death certificate in March 2016 based on the autopsy findings and accident report. Cause of death: blunt force trauma to the head and chest, internal hemorrhaging, consistent with high-speed vehicular impact with fixed object - in this case, a tree. The injuries were exactly what you'd expect from that type of crash. There was no evidence of foul play. No defensive wounds. No signs of a struggle before the crash. Toxicology was clean - no alcohol, no drugs, nothing impairing his judgment. The accident reconstruction confirmed he was traveling approximately 55 mph on a wet road when he lost control on a curve. It was a tragic accident, nothing more. I understand Jake Morrison didn't want to accept that, but denial doesn't change the facts. When Jennifer Morrison brought Tyler in for a physical this past summer, she mentioned Jake had been calling her, accusing people of covering up his father's murder. She was worried about Jake's mental state. I suggested she encourage him to seek grief counseling, but I don't think he ever did. Regarding the prescription bottle with my name on it - I absolutely did NOT write that prescription. I don't even prescribe oxycodone routinely. For someone with no pain condition, no surgery, no injury - I would never write that prescription. Someone forged that label. It's identity theft and it needs to be investigated. I'm worried about my medical license being associated with fraudulent prescriptions. As for my whereabouts on November 13th, I was covering the night shift at Oakridge Regional Hospital. I clocked in at 8:00 PM and clocked out at 6:00 AM the next morning. I saw approximately 14 patients during that shift - all documented in the hospital system. The nurses, other doctors, hospital security - they can all confirm I was there. Yes, the hospital is only 15 minutes from 847 Elm Street, but I was working. I had breaks, but I spent them in the doctor's lounge or cafeteria - I didn't leave the building. I did NOT drive to that house. I did NOT kill Jake Morrison. This whole thing is nightmare. I'm being connected to a murder because someone forged a prescription with my name on it eight months ago. I want to help you find whoever did this, but I'm not the person you're looking for."
+                    </div>
+                </div>
+
+                <div class="interview-transcript">
+                    <div class="interview-header">
+                        <div class="interviewee">Marcus Chen</div>
+                        <div class="interview-time">Interviewed November 19, 2024 - 11:00 AM (parent and attorney present)</div>
+                    </div>
+                    <div class="interview-content">
+                        "I didn't know the man watching our house was Tyler's brother until after we found the body. If I had known, I would have... I don't know, maybe I would have told Tyler. Or maybe I would've been even more scared. The man was creepy. He sat in his car for hours, just watching. One time I saw him taking pictures of our house with a camera. Another time he followed me to school but stayed across the street. I told my parents, but they said to ignore him, that he was probably just a private investigator hired by someone in the neighborhood for an insurance claim or something. On November 9th, I saw him standing in our backyard. I don't know how he got there - maybe he jumped the fence? I panicked. I thought he was going to break in. I tried to climb out my window to run to the neighbors for help, and I cut my hand really bad on glass. There was blood everywhere. My dad came running, the man was gone, and my dad called a deputy friend. The deputy said without a clear threat or trespass inside our property, there wasn't much they could do. They'd increase patrols on our street. That was it. A few days later, the man was gone. I didn't see him anymore. I thought maybe the increased patrols scared him off. Then Tyler and I were hanging out after school on November 16th, and I remembered the abandoned house on Elm Street. We'd talked about exploring it before, but we'd never actually gone in. I dared Tyler to do it because... I don't know, we were bored, and it seemed fun. We went together. We got to the basement and... that's when we saw the body. The smell hit us first. Then we saw the shape on the floor. Tyler used his phone flashlight and we saw the face was gone and there was blood and papers everywhere. Tyler screamed and we ran. Tyler called 911 from outside the house. I didn't know it was his brother. I swear I didn't know. I didn't know there was a body in there. I didn't know Jake Morrison was stalking me because of something about his dad's death eight years ago. I was seven years old when Mr. Morrison died. I don't remember anything about it. I don't know why Jake thought I knew something. I was home the night of November 13th. My parents were home. We ate dinner together, watched a movie, and I went to bed. I didn't leave the house. I didn't hurt anyone. And I really, really wish I hadn't dared Tyler to go in that house. He's completely traumatized. He found his own brother's body because of me."
+                    </div>
+                </div>
+
+                <div class="interview-transcript">
+                    <div class="interview-header">
+                        <div class="interviewee">Theresa Cole</div>
+                        <div class="interview-time">Interviewed November 20, 2024 - 9:00 AM</div>
+                    </div>
+                    <div class="interview-content">
+                        "Jake Morrison came to the library on November 3rd. He was polite, professional, and clearly experienced at research. He asked for help accessing public records, specifically property records for 847 Elm Street, old newspaper archives from March 2016, and sheriff's department public reports. I helped him navigate our microfiche system and showed him how to request documents from the county clerk's office. During our conversation, he mentioned he was a private investigator looking into a car accident from eight years ago. He said the official report didn't match the physical evidence and he suspected the investigation was closed too quickly. He asked if I'd noticed anything unusual about the sheriff's department in 2016 - any turnover, any scandals, anything that might suggest internal issues. I told him that Deputy David Hargrove resigned in September 2016, which was notable because he'd been with the department for years and seemed like a lifer. Jake's eyes lit up when I said that. He asked me to pull Hargrove's employment records, but those are personnel files - I don't have access. I did pull newspaper articles about Hargrove's resignation. The official story was that he wanted to pursue opportunities in the private sector, but the timing was suspicious to Jake. That's when Jake said something that stuck with me. He said, 'The records were altered. Someone made sure my father's death looked like an accident when it wasn't. I just need to figure out who had the power to alter an official accident report and death certificate.' I didn't confirm his suspicions - I just provided him with publicly available information. But he seemed convinced that what he'd found proved a cover-up. I saw him several more times over the following week. He'd come in, use the computers, print documents, and leave. He always thanked me for my help. On November 12th, I saw him for the last time. He was printing something from a USB drive. I didn't see what it was, but he seemed agitated. He told me if anything happened to him, to tell the police that he'd left evidence at 847 Elm Street. I thought he was being paranoid. I said, 'Nothing's going to happen to you.' He said, 'You don't understand. I'm meeting with him tomorrow night. He's going to tell me the truth, or I'm going to force him to.' I asked who 'he' was, but Jake just shook his head and said it was better if I didn't know. That was the last time I saw him alive. I've been kicking myself ever since. Should I have called the police when he said that? Should I have tried to stop him? I don't know. I was home alone on November 13th. I live by myself, so no one can confirm my whereabouts. But I have no reason to hurt Jake Morrison. I barely knew him. I'm just a librarian who helped him with research. That's all."
+                    </div>
+                </div>
+
+                <div class="interview-transcript">
+                    <div class="interview-header">
+                        <div class="interviewee">Tyler Morrison</div>
+                        <div class="interview-time">Interviewed November 21, 2024 - 3:00 PM (therapist and attorney present)</div>
+                    </div>
+                    <div class="interview-content">
+                        "Jake was my brother, but I barely knew him. He moved to Chicago when I was really young, and we only saw each other a few times over the years. Christmas sometimes, or if he was passing through. He was always nice to me, but we weren't close. I knew he had problems with our dad's death. Mom told me Jake never accepted that it was an accident. She said Jake blamed everyone - the sheriff, the doctors, even her for moving on too quickly. But she also said Jake was dealing with his grief in his own way and we needed to give him space. I didn't know Jake was in Oakridge in October and November. I didn't know he was investigating Dad's death. I didn't know he was watching Marcus's house. I definitely didn't know he was living in that abandoned house on Elm Street. If I had known... I don't know what I would have done. Told Mom, maybe? On November 16th, Marcus and I were hanging out after school. He dared me to go into the abandoned house on Elm Street. We'd talked about it before - it was supposed to be haunted or whatever. I didn't want to look scared, so I said yes. We went together. We used our phones for flashlights. The house was gross - peeling paint, broken windows, that old house smell. We got to the basement and that's when we smelled it. Like rotten meat. Then we saw him. The body. I pointed my light at the face and... there was no face. Just skull and blood and... I can't. I still have nightmares. Marcus screamed. I screamed. We ran. I called 911 from outside. The police came. They asked us questions. They separated us. They told me the victim was my brother. I didn't believe them at first. How could it be Jake? Why would Jake be in that basement? Then they explained he'd been investigating Dad's death and someone killed him. I still don't understand. Dad died in a car crash. It was raining, he lost control, he hit a tree. That's what everyone has always said. What was Jake investigating? What did he find? The police keep asking me questions like I know something, but I don't. I don't know who killed Jake. I don't know why he died in that house. I just know I found my brother's body and I'll never forget what I saw."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution">
+        <div class="container">
+            <h2>Submit Your Conclusion</h2>
+            <div class="solution-container">
+                <h3>Who Murdered Jake Morrison?</h3>
+                <p class="solution-text">
+                    You have examined all forensic evidence, crime scene documentation, victim movement tracking, and extensive witness interviews. This case requires careful analysis of timelines, motives, and the connections between all parties involved in the 2016 death of Robert Morrison and the 2024 death of his son Jake.
+                </p>
+                <div class="password-rules">
+                    ⚠️ STRICT IDENTIFICATION PROTOCOL ⚠️<br><br>
+                    Enter the killer's EXACT full name as it appears in case documents.<br>
+                    Format: FirstName LastName (proper capitalization required)<br>
+                    No variations, no abbreviations, no titles.<br>
+                    Example: "David Hargrove" NOT "Dave Hargrove" or "David H." or "Deputy Hargrove"
+                </div>
+                <form class="solution-form" id="solutionForm">
+                    <input 
+                        type="text" 
+                        id="killerName" 
+                        placeholder="Enter killer's full name exactly"
+                        autocomplete="off"
+                    >
+                    <button type="submit">SUBMIT CONCLUSION</button>
+                    <div class="error-message" id="errorMsg">INCORRECT - REEXAMINE THE EVIDENCE</div>
+                </form>
+            </div>
+
+            <div class="solution-reveal" id="solutionReveal">
+                <div class="killer-announcement">
+                    <h3>The Killer Is</h3>
+                    <div class="killer-name-reveal">JENNIFER MORRISON</div>
+                    <p style="font-size: 1.4rem; color: var(--paper-beige); margin-top: 20px;">Victim's Stepmother / Widow of Robert Morrison</p>
+                </div>
+
+                <div class="explanation-block">
+                    <h4>The Complete Truth</h4>
+                    <p>Jennifer Morrison killed her stepson Jake Morrison on November 13, 2024, to prevent him from exposing the truth: that she murdered her husband Robert Morrison in 2016 and made it look like an accident.</p>
+                    
+                    <p>Eight years ago, Jennifer killed Robert by drugging him with sedatives (provided by pharmacist Michael Chen in an off-the-books arrangement), then staging a car crash on Route 7 during a rainstorm. Deputy David Hargrove was first responder and, while he suspected something was wrong with the crash scene, he had no proof and the investigation was rushed. Dr. Sarah Chen signed the death certificate without deep investigation because it appeared to be a straightforward traffic fatality. Jennifer collected $500,000 in life insurance with a double indemnity clause for accidental death.</p>
+                    
+                    <p>Jake never believed his father's death was an accident. He spent eight years investigating, eventually tracking inconsistencies back to Oakridge. He confronted Hargrove in Portland (Hargrove was innocent but Jake suspected him), then returned to Oakridge and arranged a meeting with the person he believed was the killer - his stepmother Jennifer.</p>
+                </div>
+
+                <div class="explanation-block">
+                    <h4>How Jennifer Committed The Murder</h4>
+                    
+                    <div class="evidence-breakdown">
+                        <strong>November 13, Morning - Preparation</strong>
+                        Jennifer learned of Jake's investigation when Marcus Chen's father Michael mentioned that a private investigator was asking questions about Robert Morrison. Michael Chen was nervous because Jake's investigation could expose the illegal sedative prescription Michael provided to Jennifer in 2016. Michael told Jennifer about Jake's surveillance and investigation. Jennifer realized Jake knew the truth or was close to it.
+                    </div>
+
+                    <div class="evidence-breakdown">
+                        <strong>November 13, 2:00 PM - Chemical Fingerprint Destruction</strong>
+                        Jennifer met with Jake at a public location (diner parking lot) under pretense of wanting to "clear the air" about their strained relationship. She brought coffee laced with sedatives (again provided by Michael Chen). While Jake was drowsy, Jennifer convinced him to come to 847 Elm Street (the abandoned Hargrove house) to "show him something" about his father's death. At the abandoned house, while Jake was incapacitated from the sedatives, Jennifer used concentrated hydrochloric acid to burn the fingerprints off six of Jake's fingers. She deliberately spared four fingers - the ones she would later remove.
+                    </div>
+
+                    <div class="evidence-breakdown">
+                        <strong>November 13, 10:00 PM - The Confrontation</strong>
+                        As the sedatives wore off and Jake regained consciousness, Jennifer confronted him. She admitted killing Robert for the insurance money. Jake, still groggy and now terrified, tried to fight back but Jennifer had a scalpel (taken from Michael Chen's medical supplies at the pharmacy). She told Jake that if he tried to expose her, she would hurt Tyler (Jake's 15-year-old half-brother). To prove she was serious, she forced Jake to make a choice: "Swallow your thumb or I swallow Tyler's." Jake, believing Jennifer was psychotic enough to hurt Tyler, allowed Jennifer to amputate his right thumb with the scalpel and then swallowed it to protect his brother.
+                    </div>
+
+                    <div class="evidence-breakdown">
+                        <strong>November 13, 11:00 PM - The Torture</strong>
+                        Over the next 30 minutes, Jennifer amputated Jake's three remaining fingers with viable fingerprints (left pinky, ring, pointer). She told him these were going to Portland on a bus to frame David Hargrove. She knew Jake had confronted Hargrove days earlier, and she wanted to create evidence suggesting Hargrove killed Jake in revenge. She forced Jake to watch as she wrapped the three fingers in plastic and prepared to plant them on Bus #447, which departed for Portland at 11:30 PM.
+                    </div>
+
+                    <div class="evidence-breakdown">
+                        <strong>November 13, 11:20 PM - The Murder</strong>
+                        Jennifer gave Jake the scalpel and told him: "You can bleed out here, or I can make Tyler bleed out in his sleep tonight. Your choice." Jake, defeated and knowing he couldn't overpower her or escape with his mutilated hands, chose to cut his own femoral artery. Jennifer watched as he made the cut and bled out over 4-6 minutes. Once he was dead, she stayed with the body for several hours.
+                    </div>
+
+                    <div class="evidence-breakdown">
+                        <strong>November 13, 2:00 AM - Post-Mortem Mutilation</strong>
+                        Two hours after Jake's death, Jennifer removed his face using the scalpel. She took the face with her to dispose of (never recovered). She scattered the torn prescription document papers spelling "JAKE" to make it look like a message, creating confusion about whether the killer wanted Jake identified or not. She left the sleeping bag and camping equipment to suggest Jake had been living there. She took the three severed fingers and drove to the Greyhound bus station, boarding Bus #447 briefly to plant the fingers behind seat 23B before the 11:30 PM departure. She then returned home, arriving at 3:00 AM. Tyler was asleep and never knew she'd left.
+                    </div>
+                </div>
+
+                <div class="explanation-block">
+                    <h4>The Evidence Against Jennifer Morrison</h4>
+                    
+                    <div class="evidence-breakdown">
+                        <strong>Motive</strong>
+                        Jennifer killed Robert Morrison in 2016 for $500,000 insurance payout. Jake's investigation threatened to expose her. If Jake proved Robert's death was murder, Jennifer would lose everything and face life in prison for murder and insurance fraud. She had to silence Jake.
+                    </div>
+
+                    <div class="evidence-breakdown">
+                        <strong>Access to Crime Scene</strong>
+                        Jennifer processed the Hargrove foreclosure at Oakridge Community Bank. She knew 847 Elm Street was abandoned, accessible, and isolated. She chose it specifically because Jake had confronted Hargrove there, creating an opportunity to frame him.
+                    </div>
+
+                    <div class="evidence-breakdown">
+                        <strong>Access to Medical Supplies</strong>
+                        Jennifer had contact with pharmacist Michael Chen (who had helped her kill Robert in 2016 by providing unauthorized sedatives). Michael reluctantly provided Jennifer with scalpel and hydrochloric acid, fearing that if Jake's investigation succeeded, Michael's 2016 involvement would be exposed. Michael is an accessory but not the murderer.
+                    </div>
+
+                    <div class="evidence-breakdown">
+                        <strong>Alibi is Weak</strong>
+                        Jennifer claims she was home all night. Tyler confirms she was there when he went to bed at 10:00 PM, but Tyler was asleep by 10:30 PM. Jennifer left the house at 10:45 PM (after Tyler was asleep), drove to 847 Elm Street (15 minutes), killed Jake, stayed with body for post-mortem mutilation, planted fingers on bus at 11:25 PM, and returned home by 3:00 AM. Tyler woke up at 7:00 AM and never knew she'd been gone.
+                    </div>
+
+                    <div class="evidence-breakdown">
+                        <strong>The Fingers on the Bus</strong>
+                        Jennifer planted the fingers on Bus #447 to Portland to frame David Hargrove. She knew Jake had confronted Hargrove in Portland on November 10. She thought investigators would find the fingers on a Portland-bound bus and connect it to Hargrove. It was misdirection.
+                    </div>
+
+                    <div class="evidence-breakdown">
+                        <strong>The Swallowed Thumb</strong>
+                        This is the key evidence that proves Jennifer's guilt. Only someone who knew Jake intimately would know his weakness: his love for his younger brother Tyler. Jennifer used Tyler as leverage to force Jake to participate in his own mutilation. No other suspect had this psychological leverage over Jake. David Hargrove didn't know Tyler. Michael Chen barely knew Jake. Dr. Sarah Chen had no connection to Tyler. Only Jennifer - Tyler's mother and Jake's stepmother - could weaponize Tyler against Jake.
+                    </div>
+
+                    <div class="evidence-breakdown">
+                        <strong>Marcus Chen's Role</strong>
+                        Marcus Chen is innocent but Jennifer used his father's involvement to create confusion. Michael Chen (Marcus's father) provided the sedatives and tools to Jennifer but did not participate in the murder. Jennifer knew Jake was surveilling Marcus in early November because Michael told her. She used this to create another layer of misdirection - if investigators discovered Jake was watching Marcus, they might suspect the Chen family.
+                    </div>
+
+                    <div class="evidence-breakdown">
+                        <strong>The Final Proof - Journal Entry</strong>
+                        Jake's final journal entry November 12: "Tomorrow night. 847 Elm Street. He agreed to meet. Says he'll explain everything. Says he'll tell me what really happened to Dad." Jake wrote "HE" but Jake was meeting Jennifer (a woman). Why would he write "he"? Because Jake was writing in code, knowing someone might read his journal. "He" refers to "the killer" - Jake knew the killer's identity but deliberately obscured it in his journal to protect the evidence on the USB drive. The USB drive password is "Robert's badge number" - OM-7821. The files show Jennifer was the primary suspect in Jake's investigation.
+                    </div>
+                </div>
+
+                <div class="explanation-block">
+                    <h4>What Happened to Robert Morrison in 2016</h4>
+                    <p>Robert Morrison did not die in an accident. Jennifer Morrison had been planning his murder for months. She was having an affair with a man in Chicago (this detail was never investigated because the death was ruled accidental). She wanted Robert's life insurance money to start a new life. She convinced pharmacist Michael Chen to provide her with sedatives by lying and saying Robert had severe insomnia but refused to see a doctor. Michael, trusting Jennifer, provided the medication off the books.</p>
+                    
+                    <p>On March 12, 2016, Jennifer drugged Robert's evening coffee with a heavy dose of sedatives. Once Robert was unconscious in their home, she drove him to Route 7 in his own car, placed him in the driver's seat, and pushed the car down the steep embankment into a tree. The impact killed Robert. Jennifer walked back to her car (parked nearby) and drove home. She waited 2 hours before "discovering" he never came home and calling it in as a missing person. David Hargrove responded to the accident scene and suspected something was off (body position, lack of skid marks, timing), but he had no proof and the investigation was closed quickly as an accident.</p>
+                    
+                    <p>Jennifer collected $500,000 and lived comfortably for eight years. Until Jake came back to find the truth.</p>
+                </div>
+
+                <div class="explanation-block">
+                    <h4>Jennifer Morrison's Confession</h4>
+                    <p>After the evidence was presented to Jennifer Morrison on November 23, 2024, she confessed to both murders. She admitted killing Robert in 2016 for insurance money and killing Jake in 2024 to prevent exposure. She confirmed Michael Chen provided medical supplies but was not present during Jake's murder. She expressed no remorse for Robert's death but stated she "had no choice" but to kill Jake because "he was going to destroy Tyler's life by exposing me."</p>
+                    
+                    <p>Jennifer Morrison was charged with two counts of first-degree murder. Michael Chen was charged as an accessory for providing materials and failing to report the crime. Dr. Sarah Chen and David Hargrove were cleared of all suspicion.</p>
+                </div>
+
+                <div style="text-align: center; padding: 70px 50px; background: rgba(139, 0, 0, 0.2); border: 4px solid var(--stamp-red); margin-top: 60px;">
+                    <h3 style="font-size: 2.8rem; color: var(--stamp-red); margin-bottom: 25px;">CASE CLOSED</h3>
+                    <p style="font-size: 1.3rem; line-height: 2; color: var(--manila);">
+                        Congratulations, Detective. You successfully identified Jennifer Morrison as the killer and unraveled an eight-year conspiracy involving insurance fraud, murder, and a mother's willingness to kill her own stepson to protect her secret. Tyler Morrison, age 15, has lost his father, his brother, and now his mother. He remains in custody of child services.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Crime scene photo functions
+        function drawPhoto1() {
+            const canvas = document.getElementById('photo1');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1100;
+            canvas.height = 850;
+
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(0, 0, 1100, 850);
+
+            // Concrete basement floor
+            ctx.fillStyle = '#3a3a3a';
+            ctx.fillRect(0, 600, 1100, 250);
+
+            // Body outline
+            ctx.strokeStyle = '#ffff00';
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.ellipse(550, 680, 100, 60, 0, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // Blood pool
+            ctx.fillStyle = '#4a0000';
+            ctx.beginPath();
+            ctx.ellipse(550, 700, 140, 90, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Papers spelling JAKE
+            ctx.fillStyle = '#f4e8c8';
+            ctx.font = 'bold 80px serif';
+            ctx.fillText('J', 300, 550);
+            ctx.fillText('A', 400, 750);
+            ctx.fillText('K', 700, 550);
+            ctx.fillText('E', 800, 750);
+
+            // Sleeping bag
+            ctx.fillStyle = '#2d4a2b';
+            ctx.fillRect(850, 650, 180, 100);
+        }
+
+        function drawPhoto2() {
+            const canvas = document.getElementById('photo2');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1100;
+            canvas.height = 850;
+
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, 1100, 850);
+
+            // Skull
+            ctx.strokeStyle = '#d4d4d4';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.arc(550, 400, 200, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // No face - just skull
+            ctx.fillStyle = '#8B0000';
+            ctx.beginPath();
+            ctx.arc(550, 400, 190, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Cut lines showing removal
+            ctx.strokeStyle = '#ff0000';
+            ctx.setLineDash([10, 10]);
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(550, 400, 205, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+        }
+
+        function drawPhoto3() {
+            const canvas = document.getElementById('photo3');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1100;
+            canvas.height = 850;
+
+            ctx.fillStyle = '#2a2a2a';
+            ctx.fillRect(0, 0, 1100, 850);
+
+            // Left hand
+            ctx.fillStyle = '#d4a088';
+            ctx.fillRect(400, 350, 100, 300);
+            
+            // Intact fingers - middle and thumb
+            ctx.fillRect(500, 380, 40, 180);
+            ctx.fillRect(360, 420, 50, 150);
+            
+            // Missing finger stubs with blood
+            ctx.fillStyle = '#8B0000';
+            ctx.fillRect(320, 380, 45, 50); // pinky
+            ctx.fillRect(340, 390, 45, 50); // ring
+            ctx.fillRect(540, 380, 45, 50); // pointer
+
+            // Labels
+            ctx.fillStyle = '#ffff00';
+            ctx.font = 'bold 18px monospace';
+            ctx.fillText('LEFT HAND - 3 FINGERS REMOVED', 350, 650);
+        }
+
+        function drawPhoto4() {
+            const canvas = document.getElementById('photo4');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1100;
+            canvas.height = 850;
+
+            ctx.fillStyle = '#2a2a2a';
+            ctx.fillRect(0, 0, 1100, 850);
+
+            // Right hand
+            ctx.fillStyle = '#d4a088';
+            ctx.fillRect(500, 350, 100, 300);
+            
+            // Four intact fingers
+            ctx.fillRect(600, 380, 35, 170);
+            ctx.fillRect(635, 390, 33, 160);
+            ctx.fillRect(668, 400, 30, 150);
+            ctx.fillRect(698, 410, 28, 140);
+            
+            // Missing thumb with blood
+            ctx.fillStyle = '#8B0000';
+            ctx.fillRect(460, 420, 50, 60);
+
+            ctx.fillStyle = '#ffff00';
+            ctx.font = 'bold 18px monospace';
+            ctx.fillText('RIGHT HAND - THUMB REMOVED', 450, 680);
+        }
+
+        function drawPhoto5() {
+            const canvas = document.getElementById('photo5');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1100;
+            canvas.height = 850;
+
+            ctx.fillStyle = '#e8e8e8';
+            ctx.fillRect(0, 0, 1100, 850);
+
+            // Evidence bag
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(200, 200, 700, 500);
+
+            // Three fingers
+            ctx.fillStyle = '#c4a088';
+            for (let i = 0; i < 3; i++) {
+                ctx.fillRect(300 + (i * 180), 350, 50, 200);
+            }
+
+            ctx.fillStyle = '#000';
+            ctx.font = 'bold 20px monospace';
+            ctx.fillText('RECOVERED FROM BUS #447 - NOVEMBER 18', 250, 750);
+        }
+
+        function drawPhoto6() {
+            const canvas = document.getElementById('photo6');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1100;
+            canvas.height = 850;
+
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, 1100, 850);
+
+            // Stomach illustration
+            ctx.strokeStyle = '#d4a088';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.ellipse(550, 425, 250, 200, 0, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Thumb inside
+            ctx.fillStyle = '#c4a088';
+            ctx.fillRect(520, 400, 60, 120);
+
+            ctx.fillStyle = '#ff0000';
+            ctx.font = 'bold 22px monospace';
+            ctx.fillText('THUMB FOUND IN STOMACH DURING AUTOPSY', 300, 700);
+            ctx.font = '18px monospace';
+            ctx.fillText('Victim swallowed own severed thumb', 350, 740);
+        }
+
+        function drawPhoto7() {
+            const canvas = document.getElementById('photo7');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1100;
+            canvas.height = 850;
+
+            ctx.fillStyle = '#2a2a2a';
+            ctx.fillRect(0, 0, 1100, 850);
+
+            // Duffel bag
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(200, 200, 700, 500);
+
+            // Items
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(250, 300, 150, 200); // journal
+            
+            ctx.fillStyle = '#654321';
+            ctx.fillRect(450, 350, 120, 80); // wallet
+            
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(620, 320, 200, 100); // ticket
+
+            ctx.fillStyle = '#4a4a4a';
+            ctx.fillRect(250, 550, 100, 40); // USB
+
+            ctx.fillStyle = '#fff';
+            ctx.font = '14px monospace';
+            ctx.fillText('Journal', 290, 420);
+            ctx.fillText('Wallet', 480, 400);
+            ctx.fillText('Plane Ticket', 640, 380);
+            ctx.fillText('USB Drive', 260, 575);
+        }
+
+        function drawPhoto8() {
+            const canvas = document.getElementById('photo8');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1100;
+            canvas.height = 850;
+
+            ctx.fillStyle = '#f4e8c8';
+            ctx.fillRect(0, 0, 1100, 850);
+
+            // Torn paper pieces
+            const pieces = [
+                {x: 200, y: 200, text: 'JAKE'},
+                {x: 500, y: 200, text: 'MORRISON'},
+                {x: 200, y: 450, text: 'PRESCRIPTION'},
+                {x: 500, y: 450, text: 'Patient ID: 47821'}
+            ];
+
+            pieces.forEach(piece => {
+                ctx.fillStyle = '#fff';
+                ctx.fillRect(piece.x, piece.y, 250, 150);
+                ctx.strokeStyle = '#000';
+                ctx.strokeRect(piece.x, piece.y, 250, 150);
+                ctx.fillStyle = '#000';
+                ctx.font = '20px monospace';
+                ctx.fillText(piece.text, piece.x + 20, piece.y + 80);
+            });
+
+            ctx.fillStyle = '#8B0000';
+            ctx.font = 'bold 18px monospace';
+            ctx.fillText('TORN FROM PRESCRIPTION AUTHORIZATION FORM', 250, 750);
+        }
+
+        // Initialize all photos
+        drawPhoto1();
+        drawPhoto2();
+        drawPhoto3();
+        drawPhoto4();
+        drawPhoto5();
+        drawPhoto6();
+        drawPhoto7();
+        drawPhoto8();
+
+        // Form submission
+        document.getElementById('solutionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const answer = document.getElementById('killerName').value.trim();
+            const error = document.getElementById('errorMsg');
+            
+            if (answer === 'Jennifer Morrison') {
+                document.querySelector('.solution-container').style.display = 'none';
+                document.getElementById('solutionReveal').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('solutionReveal').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 200);
+            } else {
+                error.classList.add('active');
+                setTimeout(() => {
+                    error.classList.remove('active');
+                }, 4000);
+            }
+        });
+
+        // Navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
